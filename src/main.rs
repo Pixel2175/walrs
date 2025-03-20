@@ -4,7 +4,6 @@ mod reload;
 mod wallpaper;
 mod utils;
 
-use wallpaper::change_wallpaper;
 use reload::reload;
 use create_templates::create_template;
 use get_colors::get_colors;
@@ -40,6 +39,7 @@ fn main() {
         std::process::exit(1);
     }
 
+
     if arg.reload {
         reload(!arg.quit);
         exit(0);
@@ -63,13 +63,11 @@ fn main() {
         }
     };
 
-    let palette = get_colors(image_path.clone(), !arg.quit);
+    let palette = get_colors(&image_path, !arg.quit);
     info("Generate", "generate colors", !arg.quit);
 
-    create_template(palette, image_path.clone());
+    create_template(palette, &image_path);
     info("Template", "create templates", !arg.quit);
-
-    change_wallpaper(&image_path.to_string(),!arg.quit);
 
     reload(!arg.quit);
 

@@ -105,7 +105,7 @@ fn fill_template(template_name: &str, template: &str, colors: &(Vec<(u8, u8, u8)
     write(output_path, result).expect("Failed to write filled template");
 }
 
-pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: String) {
+pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str) {
     let system_template_path = "/etc/walrs/templates/";
     let user_template_path = format!("{}/walrs/templates/", get_config_folder().unwrap());
     let cache_path = format!("{}/wal/", get_cache_folder().unwrap());

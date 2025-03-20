@@ -36,7 +36,7 @@ fn generate_variation(color: (u8, u8, u8), offset: i16) -> (u8, u8, u8) {
     adjust_rgb(color.0, color.1, color.2, offset, 50)
 }
 
-pub fn get_colors(image_path: String,send:bool) -> (Vec<(u8,u8,u8)>,u8){
+pub fn get_colors(image_path: &str,send:bool) -> (Vec<(u8,u8,u8)>,u8){
     let image = match image::open(image_path){
         Ok(v) => v,
         Err(_) => {warning("Image", "Unsupported or corrupted image format",send);exit(1)},

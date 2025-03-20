@@ -1,9 +1,10 @@
-use std::fs::{File, read_dir};
-use std::io::{BufRead, BufReader};
+use std::fs::{read_dir, read_to_string};
 use std::process::{Command, Stdio};
 use std::fs::OpenOptions;
 use std::io::Write;
 use std::process::exit;
+
+use crate::wallpaper;
 
 
 use crate::utils::{get_cache_folder,info,warning};
@@ -94,10 +95,11 @@ pub fn reload(send:bool) {
     let cache = get_cache_folder().expect("Can't get cache path");
     let file_path = format!("{}/wal/colors", cache);
 
-    let lines: Vec<String> = BufReader::new(File::open(&file_path).expect("Can't load colors"))
+    let lines: Vec<String> = std::fs::read_to_string(&file_path)
+        .expect("Can't load colors")
         .lines()
-        .collect::<Result<_, _>>()
-        .expect("Failed to read lines");
+        .map(|line| line.to_string())
+        .collect();
 
     // Spawn threads
     let cache = match get_cache_folder() {
@@ -106,6 +108,9 @@ pub fn reload(send:bool) {
     };
 
 
+    let wallpaper = read_to_string(&format!("{}/wal/wal",cache)).expect("run 'cp /etc/walrs/templates/wal ~/.config/walrs/templates/' and restart app").lines().next().unwrap().trim().to_string();
+    println!("wal: '{}'", wallpaper.as_str());
+    wallpaper::change_wallpaper(wallpaper.as_str(),true);
     
     colors(lines,send);
     xrdb(&cache,send);
