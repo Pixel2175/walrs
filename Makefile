@@ -11,6 +11,7 @@ install: build
 uninstall:
 	sudo rm -f /usr/bin/walrs
 	sudo rm -rf /etc/walrs/
+	sudo rm -rf ~/.config/walrs
 
 clean:
 	cargo clean
