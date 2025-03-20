@@ -198,7 +198,7 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
             // No monitors detected, try generic approach
             if run("which hyprpaper") {
                 // Using hyprpaper
-                spawn(&format!("echo 'preload = {}\\nwallpaper = {}' > ~/.config/hypr/hyprpaper.conf", abs_path, abs_path));
+                spawn(&format!("echo 'preload = {}\nwallpaper = ,{}' >> ~/.config/hypr/hyprpaper.conf", abs_path, abs_path));
                 //spawn(&format!("echo 'wallpaper = ,{}' >> ~/.config/hypr/hyprpaper.conf", abs_path));
                 spawn("killall hyprpaper; hyprpaper &");
                 info("Wallpaper", "wallpaper set with hyprpaper", send);
