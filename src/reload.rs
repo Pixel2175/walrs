@@ -62,12 +62,6 @@ fn polybar(send:bool) {
     }
 }
 
-fn sway(send:bool) {
-    if run("which swaymsg") && run("pgrep sway") {
-        run("swaymsg reload");
-        info("Sway", "sway colorscheme set",send);
-    }
-}
 
 fn colors(colors:Vec<String>,send:bool){
 
@@ -117,7 +111,6 @@ pub fn reload(send:bool) {
     xrdb(&cache,send);
     kitty(&cache,send);
     i3(send);
-    sway(send);
     bspwm(send);
     polybar(send);
     tty(&cache);

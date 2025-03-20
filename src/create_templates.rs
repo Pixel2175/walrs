@@ -5,19 +5,19 @@ fn change(template: &str, colors: (u8, u8, u8), alpha: u8) -> String {
     let (r, g, b) = colors;
     
     if template.contains(".strip") {
-        format!("{:02X}{:02X}{:02X}", r, g, b)
+        format!("{:02x}{:02x}{:02x}", r, g, b)
     } else if template.contains(".xrgba") {
-        format!("{:02X}/{:02X}/{:02X}/{:02X}", r, g, b, alpha)
+        format!("{:02x}/{:02x}/{:02x}/{:02x}", r, g, b, alpha)
     } else if template.contains(".rgba") {
         format!("{},{},{},{}", r, g, b, alpha)
     } else if template.contains(".rgb") {
         format!("{},{},{}", r, g, b)
-    } else if template.contains(".alpha_dec") {
-        format!("{:.2}", alpha as f32 / 255.0)
+    } else if template.contains(".alpha_per") {
+        format!("{:.1}", (alpha / 255) * 100)
     } else if template.contains(".alpha") {
-        format!("#{:02X}{:02X}{:02X}{:02X}", r, g, b, alpha)
+        format!("#{:02x}{:02x}{:02x}{:02x}", r, g, b, alpha)
     } else {
-        format!("#{:02X}{:02X}{:02X}", r, g, b)
+        format!("#{:02x}{:02x}{:02x}", r, g, b)
     }
 }
 
@@ -35,7 +35,6 @@ fn fill_template(template_name: &str, template: &str, colors: &(Vec<(u8, u8, u8)
             "{background.xrgba}",
             "{background.rgba}",
             "{background.rgb}",
-            "{background.alpha_dec}",
             "{background.alpha}",
             "{background}",
         ];
@@ -52,7 +51,6 @@ fn fill_template(template_name: &str, template: &str, colors: &(Vec<(u8, u8, u8)
             "{foreground.xrgba}",
             "{foreground.rgba}",
             "{foreground.rgb}",
-            "{foreground.alpha_dec}",
             "{foreground.alpha}",
             "{foreground}",
         ];
@@ -67,7 +65,6 @@ fn fill_template(template_name: &str, template: &str, colors: &(Vec<(u8, u8, u8)
             "{cursor.xrgba}",
             "{cursor.rgba}",
             "{cursor.rgb}",
-            "{cursor.alpha_dec}",
             "{cursor.alpha}",
             "{cursor}",
         ];

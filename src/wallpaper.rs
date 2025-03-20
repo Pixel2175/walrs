@@ -187,27 +187,44 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
         ));
         info("Wallpaper", "wallpaper set with Cinnamon settings", send);
     } else if d.contains("hyprland") {
-        // Try to determine the monitor configuration
-        let monitors = run_with_output("hyprctl monitors -j | jq -r '.[].name'").unwrap_or_default();
-        if !monitors.is_empty() {
-            // Set for each monitor
-            for monitor in monitors.lines() {
-                spawn(&format!("hyprctl hyprpaper wallpaper \"{},{}\"", monitor.trim(), abs_path));
-            }
-        } else {
-            // No monitors detected, try generic approach
-            if run("which hyprpaper") {
-                // Using hyprpaper
-                spawn(&format!("echo 'preload = {}\\nwallpaper = {}' > ~/.config/hypr/hyprpaper.conf", abs_path, abs_path));
-                //spawn(&format!("echo 'wallpaper = ,{}' >> ~/.config/hypr/hyprpaper.conf", abs_path));
-                spawn("killall hyprpaper; hyprpaper &");
-                info("Wallpaper", "wallpaper set with hyprpaper", send);
-            } else {
-                // Using swaybg as fallback for Hyprland
-                spawn(&format!("pkill swaybg; swaybg -i '{}' -m fill &", abs_path));
-                info("Wallpaper", "wallpaper set with swaybg for Hyprland", send);
-            }
+    // Get monitors using a more reliable approach
+    let monitors: Vec<String> = run_with_output("hyprctl monitors | grep Monitor | cut -d' ' -f2")
+        .unwrap_or_default()
+        .lines()
+        .map(|s| s.trim().to_string())
+        .filter(|s| !s.is_empty())
+        .collect();
+
+    if !monitors.is_empty() {
+        println!("Found monitors: {:?}", monitors);
+        
+        // Create a new hyprpaper.conf file
+        let home = env::var("HOME").unwrap_or_else(|_| ".".to_string());
+        let config_path = format!("{}/.config/hypr/hyprpaper.conf", home);
+        
+        // Write configuration as a single operation instead of multiple echo commands
+        let mut config = format!("preload = {}\n", abs_path);
+        for monitor in &monitors {
+            config.push_str(&format!("wallpaper = {},{}\n", monitor, abs_path));
         }
+        
+        // Use filesystem operations instead of echo
+        if let Err(e) = std::fs::write(&config_path, config) {
+            warning("Wallpaper", &format!("failed to write hyprpaper config: {}", e), send);
+        } else {
+            // Restart hyprpaper
+            spawn("killall hyprpaper 2>/dev/null; hyprpaper &");
+            info("Wallpaper", "wallpaper set with hyprpaper", send);
+        }
+    } else {
+        // Fallback to swaybg if no monitors detected
+        spawn(&format!("pkill swaybg; swaybg -i '{}' -m fill &", abs_path));
+        info("Wallpaper", "wallpaper set with swaybg for Hyprland", send);
+    }
+
+
+
+
     } else if d == "sway" {
         // Using swww or swaybg for Sway
         if run("which swww") {
@@ -333,7 +350,6 @@ pub fn change_wallpaper(img: &str, send: bool) {
     
     match get_desktop_env() {
         Some(d) => {
-            info("Wallpaper", &format!("detected environment: {}", d), send);
             set_desktop_wallpaper(&d, img, send);
         },
         None => {
