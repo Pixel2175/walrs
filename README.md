@@ -37,6 +37,8 @@ cargo install rswal
 
 ### From Source
 ```bash
+git clone https://github.com/pixel2175/walrs.git
+cd walrs
 make install
 ```
 The make install command will place all necessary files in their appropriate locations.
