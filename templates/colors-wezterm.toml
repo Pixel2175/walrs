@@ -1,0 +1,80 @@
+[colors]
+ansi = [
+  '{color0}',
+  '{color1}',
+  '{color2}',
+  '{color3}',
+  '{color4}',
+  '{color5}',
+  '{color6}',
+  '{color7}',
+]
+background = '{background}'
+brights = [
+  '{color8}',
+  '{color9}',
+  '{color10}',
+  '{color11}',
+  '{color12}',
+  '{color13}',
+  '{color14}',
+  '{color15}',
+]
+compose_cursor = '{cursor}'
+cursor_bg = '{color1}'
+cursor_border = '{color1}'
+cursor_fg = '{background}'
+foreground = '{foreground}'
+scrollbar_thumb = '{color1}'
+selection_bg = '{color2}'
+selection_fg = '{background}'
+split = '{background}'
+visual_bell = '{color1}'
+
+[colors.indexed]
+16 = '{background}'
+17 = '{background}'
+
+[colors.tab_bar]
+background = '{background}'
+inactive_tab_edge = '{color8}'
+
+[colors.tab_bar.active_tab]
+bg_color = '{color1}'
+fg_color = '{background}'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '{color8}'
+fg_color = '{foreground}'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '{color1}'
+fg_color = '{background}'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '{background}'
+fg_color = '{color1}'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '{color1}'
+fg_color = '{background}'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'

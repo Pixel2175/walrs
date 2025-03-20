@@ -1,7 +1,3 @@
-/*
- *		pywal theme template for notepadqq by threadreaper
- *		https:
- */
 .cm-s-nqqwal .CodeMirror-gutters { background: {background} !important; }
 .cm-s-nqqwal .CodeMirror-foldgutter-open, .CodeMirror-foldgutter-folded { color: {foreground}; }
 .cm-s-nqqwal .CodeMirror-cursor { border-left: 1px solid {foreground}; background-color: rgba({color6.rgb},0.4)}

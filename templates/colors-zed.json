@@ -1,10 +1,10 @@
 {
     "$schema": "https:
-    "name": "pywal",
+    "name": "walrs",
     "author": "pywal",
     "themes": [
         {
-            "name": "pywal",
+            "name": "walrs",
             "appearance": "dark",
             "style": {
                 "background": "{background}90",
