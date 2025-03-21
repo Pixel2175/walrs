@@ -3,7 +3,7 @@ use image;
 use palette_extract::{MaxColors, Quality,};
 use std::collections::HashSet;
 use std::process::exit;
-use std::u8;
+use std::fs::read;
 use crate::utils::warning;
 
 fn adjust_rgb(r: u8, g: u8, b: u8, brightness: i16, saturation: i16) -> (u8, u8, u8) {
@@ -37,10 +37,21 @@ fn generate_variation(color: (u8, u8, u8), offset: i16) -> (u8, u8, u8) {
 }
 
 pub fn get_colors(image_path: &str,send:bool) -> (Vec<(u8,u8,u8)>,u8){
-    let image = match image::open(image_path){
-        Ok(v) => v,
-        Err(_) => {warning("Image", "Unsupported or corrupted image format",send);exit(1)},
+
+    let image = match image::open(image_path) {
+        Ok(img) => img,
+        Err(_) => {
+            let data = read(image_path).unwrap();
+            match image::guess_format(&data) {
+                Ok(fmt) => image::load_from_memory_with_format(&data, fmt).unwrap(),
+                Err(_) => {
+                    warning("Image", "Unsupported or corrupted image format", send);
+                    exit(1);
+                }
+            }
+        }
     };
+
     let native_rgba = image.to_rgba8();
     let alpha = &native_rgba.get_pixel(0, 0)[3];
     let mut collect_rgb:Vec<(u8,u8,u8)> = Vec::new();
