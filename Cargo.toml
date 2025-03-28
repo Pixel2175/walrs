@@ -1,9 +1,9 @@
 [package]
 name = "walrs"
-version = "1.0.1"
+version = "1.0.2"
 edition = "2024"
 description = "walrs is a fast color scheme generator."
-license = "MIT"
+license = "GPL"
 repository = "https://github.com/pixel2175/walrs"
 
 [dependencies]

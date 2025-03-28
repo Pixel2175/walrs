@@ -27,6 +27,20 @@ struct Arg {
     /// set quit mode (no output)
     #[arg(short = 'q', action = ArgAction::SetTrue)]
     quit: bool,
+
+
+    /// specify the saturation value 
+    #[arg(short = 's')]
+    saturation: Option<i8>,
+
+
+    /// specify the brightness value
+    #[arg(short = 'b')]
+    brightness: Option<i8>,
+
+
+
+
 }
 
 fn main() {
@@ -63,7 +77,7 @@ fn main() {
         }
     };
 
-    let palette = get_colors(&image_path, !arg.quit);
+    let palette = get_colors(&image_path, !arg.quit,arg.brightness,arg.saturation);
     info("Generate", "generate colors", !arg.quit);
 
     create_template(palette, &image_path);

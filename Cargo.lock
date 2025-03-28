@@ -1061,7 +1061,7 @@ checksum = "852e951cb7832cb45cb1169900d19760cfa39b82bc0ea9c0e5a14ae88411c98b"
 
 [[package]]
 name = "walrs"
-version = "1.0.1"
+version = "1.0.2"
 dependencies = [
  "clap",
  "color-thief",
