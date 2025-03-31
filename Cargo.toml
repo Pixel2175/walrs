@@ -3,7 +3,7 @@ name = "walrs"
 version = "1.0.3"
 edition = "2024"
 description = "walrs is a fast color scheme generator."
-license = "GPL"
+license = "GPL" 
 repository = "https://github.com/pixel2175/walrs"
 
 [dependencies]

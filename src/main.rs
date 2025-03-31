@@ -4,6 +4,7 @@ mod reload;
 mod wallpaper;
 mod utils;
 
+
 use reload::reload;
 use create_templates::create_template;
 use get_colors::get_colors;
