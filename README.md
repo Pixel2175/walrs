@@ -1,4 +1,4 @@
-# walrs: Fast Color Scheme Generator
+# walrs: Fast Colorscheme Generator
 
 walrs is a fast color scheme generator written in Rust that creates terminal color schemes from images.
 
@@ -21,6 +21,7 @@ walrs is a fast color scheme generator written in Rust that creates terminal col
 - **Reload themes instantly**
 - **Compatible with pywal templates**
 - **Seamless integration** with various terminal emulators and applications
+- **Specify the saturation and brightness value**
 
 ---
 
@@ -84,7 +85,7 @@ walrs is designed to be lightweight and fast:
 
 Example benchmark:
 ```sh
-time walrs -i /home/pixel/.config/wallpaper/wallhaven-ymwj9d.jpg
+time walrs -i /path/to/image.{png, jpg, webp, etc...}
 [I] Generate: generate colors.
 [I] Template: create templates.
 [I] Wallpaper: set the wallpaper.
