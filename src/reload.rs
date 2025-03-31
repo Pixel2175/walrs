@@ -108,7 +108,7 @@ pub fn reload(send:bool) {
     };
 
 
-    let wallpaper = read_to_string(&format!("{}/wal/wal",cache)).expect("run 'cp /etc/walrs/templates/wal ~/.config/walrs/templates/' and restart app").lines().next().unwrap().trim().to_string();
+    let wallpaper = read_to_string(format!("{}/wal/wal",cache)).expect("run 'cp /etc/walrs/templates/wal ~/.config/walrs/templates/' and restart app").lines().next().unwrap().trim().to_string();
     wallpaper::change_wallpaper(wallpaper.as_str(),send);
     
     colors(lines,send);

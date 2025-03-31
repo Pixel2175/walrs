@@ -29,7 +29,7 @@ fn fill_template(template_name: &str, template: &str, colors: &(Vec<(u8, u8, u8)
         .replace("{wallpaper}", wallpaper)
         .replace("{alpha}", &format!("{}", (alpha / 255) * 100));
     
-    if colors.0.len() > 0 {
+    if !colors.0.is_empty()  {
         let background_patterns = [
             "{background.strip}",
             "{background.xrgba}",
@@ -119,7 +119,7 @@ pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str) {
                 has_user_templates = true;
                 let Ok(content) = read_to_string(entry.path()) else { continue };
                 let Some(name) = entry.file_name().into_string().ok() else { continue };
-                fill_template(&name, &content, &colors, &wallpaper);
+                fill_template(&name, &content, &colors, wallpaper);
             }
         }
     }
@@ -138,7 +138,7 @@ pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str) {
                     let user_file_path = format!("{}{}", user_template_path, name);
                     let _ = write(&user_file_path, &content);
                     
-                    fill_template(&name, &content, &colors, &wallpaper);
+                    fill_template(&name, &content, &colors, wallpaper);
                 }
             }
         }

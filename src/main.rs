@@ -13,8 +13,7 @@ use std::process::exit;
 use utils::*;
 
 #[derive(Parser, Debug)]
-#[command(name = "walrs",version="v1.0.1",about= "walrs - Generate colorscheme from image")]
-
+#[command(name = "walrs",version="v1.0.3",about= "walrs - Generate colorscheme from image")]
 struct Arg {
     /// path/to/your/wal.png
     #[arg(short = 'i')]

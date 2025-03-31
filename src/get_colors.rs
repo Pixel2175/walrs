@@ -1,5 +1,4 @@
 use color_thief::ColorFormat;
-use image;
 use palette_extract::{MaxColors, Quality,};
 use std::collections::HashSet;
 use std::process::exit;

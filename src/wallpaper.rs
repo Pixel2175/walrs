@@ -113,7 +113,7 @@ fn set_wm_wallpaper(img: &str, send: bool) {
         info("Wallpaper", "wallpaper set with nitrogen", send);
     } else if run("which xsetroot") {
         warning("Wallpaper", "using xsetroot, but it does not support images properly", send);
-        spawn(&format!("xsetroot -solid '#000000'"));
+        spawn("xsetroot -solid '#000000'");
         info("Wallpaper", "set solid background with xsetroot", send);
     } else {
         warning("Wallpaper", "can't find any app to set wallpaper", send);
