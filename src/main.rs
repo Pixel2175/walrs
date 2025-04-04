@@ -52,12 +52,12 @@ fn main() {
 
 
     if arg.reload_nowal {
-        reload(!arg.quit,false);
+        reload(!arg.quit,true);
         exit(0);
     }
 
     if arg.reload {
-        reload(!arg.quit,true);
+        reload(!arg.quit,false);
         exit(0);
     }
 
