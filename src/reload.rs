@@ -91,7 +91,7 @@ fn colors(colors:Vec<String>,send:bool){
     info("Terminal", "terminal colorscheme set",send);
 }
 
-pub fn reload(send:bool) {
+pub fn reload(send:bool,set_wal:bool) {
     let cache = get_cache_folder().expect("Can't get cache path");
     let file_path = format!("{}/wal/colors", cache);
 
@@ -107,10 +107,10 @@ pub fn reload(send:bool) {
         None =>  {warning("Path", "can't found cache folder",send);exit(1)}
     };
 
-
-    let wallpaper = read_to_string(format!("{}/wal/wal",cache)).expect("run 'cp /etc/walrs/templates/wal ~/.config/walrs/templates/' and restart app").lines().next().unwrap().trim().to_string();
-    wallpaper::change_wallpaper(wallpaper.as_str(),send);
-    
+    if set_wal{
+        let wallpaper = read_to_string(format!("{}/wal/wal",cache)).expect("run 'cp /etc/walrs/templates/wal ~/.config/walrs/templates/' and restart app").lines().next().unwrap().trim().to_string();
+        wallpaper::change_wallpaper(wallpaper.as_str(),send);
+    }
     colors(lines,send);
     xrdb(&cache,send);
     kitty(&cache,send);

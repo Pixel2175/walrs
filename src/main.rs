@@ -20,7 +20,11 @@ struct Arg {
     #[arg(short = 'i')]
     image: Option<String>,
 
-    /// reload Templates from cache file
+    /// reload Templates from cache file without set the wallpaper
+    #[arg(short = 'r', action = ArgAction::SetTrue)]
+    reload_nowal: bool,
+
+    /// reload Templates from cache file and set the wallpaper
     #[arg(short = 'R', action = ArgAction::SetTrue)]
     reload: bool,
 
@@ -46,17 +50,23 @@ struct Arg {
 fn main() {
     let arg = Arg::parse();
 
-    if !arg.reload && arg.image.is_none() {
-        let mut cmd = Arg::command();
-        let _ = cmd.print_help();
-        
-        std::process::exit(1);
+
+    if arg.reload_nowal {
+        reload(!arg.quit,false);
+        exit(0);
+    }
+
+    if arg.reload {
+        reload(!arg.quit,true);
+        exit(0);
     }
 
 
-    if arg.reload {
-        reload(!arg.quit);
-        exit(0);
+    if arg.image.is_none() {
+        let mut cmd = Arg::command();
+        let _ = cmd.print_help();
+
+        std::process::exit(1);
     }
 
     let image_path = match arg.image {
@@ -83,7 +93,7 @@ fn main() {
     create_template(palette, &image_path);
     info("Template", "create templates", !arg.quit);
 
-    reload(!arg.quit);
+    reload(!arg.quit,true);
 
     print_colors(!arg.quit);
 }
