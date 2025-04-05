@@ -20,6 +20,11 @@ struct Arg {
     #[arg(short = 'i')]
     image: Option<String>,
 
+    
+    /// generate colors and save it into .cache/wal 
+    #[arg(short = 'g')]
+    generate: Option<String>,
+
     /// reload Templates from cache file without set the wallpaper
     #[arg(short = 'r', action = ArgAction::SetTrue)]
     reload_nowal: bool,
@@ -62,11 +67,32 @@ fn main() {
     }
 
 
-    if arg.image.is_none() {
+    if arg.image.is_none() && arg.generate.is_none() {
         let mut cmd = Arg::command();
         let _ = cmd.print_help();
+        exit(1);
+    }
 
-        std::process::exit(1);
+    match arg.generate {
+        Some(ref v) if Path::new(v).exists() => match get_absolute_path(v) {
+            Some(p) => {
+                let palette = get_colors(&p, !arg.quit,arg.brightness,arg.saturation);
+                info("Generate", "generate colors", !arg.quit);
+
+                create_template(palette, &p);
+                info("Template", "create templates", !arg.quit);
+                exit(0)
+            },
+            None => {
+                warning("Wallpaper", "Can't find wallpaper absolute path!", !arg.quit);
+                exit(1);
+            }
+        },
+        Some(_) => {
+            warning("Image", "Image does not exist", !arg.quit);
+            exit(1);
+        }
+        None => {}
     }
 
     let image_path = match arg.image {
