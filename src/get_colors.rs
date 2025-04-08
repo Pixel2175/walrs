@@ -101,7 +101,8 @@ pub fn get_colors(image_path: &str,send:bool,brightness: Option<i8>,saturation: 
     }
 
     let (mut r,mut g,mut b) =  collect_rgb[20];
-    (r,g,b) = adjust_rgb(r,g,b,70,10);
+    (r,g,b) = adjust_rgb(r,g,b,40,10);
+    
     (r,g,b) = to_gray(r, g, b, Some(2));
     done[7] =  (r,g,b);
     done[15] = (r,g,b);

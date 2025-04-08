@@ -25,11 +25,11 @@ struct Arg {
     #[arg(short = 'g')]
     generate: Option<String>,
 
-    /// reload Templates from cache file without set the wallpaper
+    /// reload Templates from cache file and set the wallpaper
     #[arg(short = 'r', action = ArgAction::SetTrue)]
     reload_nowal: bool,
 
-    /// reload Templates from cache file and set the wallpaper
+    /// reload Templates from cache file without set the wallpaper
     #[arg(short = 'R', action = ArgAction::SetTrue)]
     reload: bool,
 
