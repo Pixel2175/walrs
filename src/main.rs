@@ -1,9 +1,8 @@
 mod get_colors;
 mod create_templates;
 mod reload;
-mod wallpaper;
 mod utils;
-
+mod wallpaper;
 
 use reload::reload;
 use create_templates::create_template;
@@ -14,13 +13,13 @@ use std::process::exit;
 use utils::*;
 
 #[derive(Parser, Debug)]
-#[command(name = "walrs",version="v1.0.4-2",about= "walrs - Generate colorscheme from image")]
+#[command(name = "walrs",version="v1.0.5",about= "walrs - Generate colorscheme from image")]
 struct Arg {
     /// path/to/your/wal.png
     #[arg(short = 'i')]
     image: Option<String>,
 
-    
+
     /// generate colors and save it into .cache/wal 
     #[arg(short = 'g')]
     generate: Option<String>,
@@ -38,19 +37,50 @@ struct Arg {
     quit: bool,
 
 
-    /// specify the saturation value 
-    #[arg(short = 's')]
+    /// specify the saturation value -128 => 127
+    #[arg(short = 's', allow_hyphen_values = true)]
     saturation: Option<i8>,
 
 
-    /// specify the brightness value
-    #[arg(short = 'b')]
+    /// specify the brightness value -128 => 127
+    #[arg(short = 'b', allow_hyphen_values = true)]
     brightness: Option<i8>,
 
-
-
-
 }
+
+
+fn image_path(image:Option<String>,send:bool) -> String{
+    match image {
+        Some(ref v) if Path::new(v).exists() => match get_absolute_path(v) {
+            Some(p) => {
+                if Path::new(&p).is_file() {
+                    p
+                }else {
+                    std::str::from_utf8(&std::process::Command::new("sh").arg("-c").arg(format!("find \"{}\" -type f | sort -R | head -n1", p)).output().unwrap().stdout).unwrap().trim().to_string()
+                }
+                
+
+            } ,
+            None => {
+                warning("Wallpaper", "Can't find wallpaper absolute path!", send);
+                exit(1);
+            }
+        },
+        Some(_) => {
+            warning("Image", "Image does not exist", send);
+            exit(1);
+        }
+        None => {
+            warning("Image", "Can't find Image", send);
+            exit(1);
+        }
+    }
+}
+
+
+
+
+
 
 fn main() {
     let arg = Arg::parse();
@@ -73,54 +103,29 @@ fn main() {
         exit(1);
     }
 
-    match arg.generate {
-        Some(ref v) if Path::new(v).exists() => match get_absolute_path(v) {
-            Some(p) => {
-                let palette = get_colors(&p, !arg.quit,arg.brightness,arg.saturation);
-                info("Generate", "generate colors", !arg.quit);
+    if arg.generate.is_some() {
+        let image_path = image_path(arg.generate,!arg.quit);
+        let palette = get_colors(&image_path, !arg.quit,arg.brightness,arg.saturation);
+        info("Generate", "generate colors", !arg.quit);
 
-                create_template(palette, &p);
-                info("Template", "create templates", !arg.quit);
-                exit(0)
-            },
-            None => {
-                warning("Wallpaper", "Can't find wallpaper absolute path!", !arg.quit);
-                exit(1);
-            }
-        },
-        Some(_) => {
-            warning("Image", "Image does not exist", !arg.quit);
-            exit(1);
-        }
-        None => {}
-    }
-
-    let image_path = match arg.image {
-        Some(ref v) if Path::new(v).exists() => match get_absolute_path(v) {
-            Some(p) => p,
-            None => {
-                warning("Wallpaper", "Can't find wallpaper absolute path!", !arg.quit);
-                exit(1);
-            }
-        },
-        Some(_) => {
-            warning("Image", "Image does not exist", !arg.quit);
-            exit(1);
-        }
-        None => {
-            warning("Image", "Can't find Image", !arg.quit);
-            exit(1);
-        }
+        create_template(palette, &image_path);
+        info("Template", "create templates", !arg.quit);
+        exit(0)
     };
 
-    let palette = get_colors(&image_path, !arg.quit,arg.brightness,arg.saturation);
-    info("Generate", "generate colors", !arg.quit);
 
-    create_template(palette, &image_path);
-    info("Template", "create templates", !arg.quit);
 
-    reload(!arg.quit,true);
+    if arg.image.is_some() {
+        let image_path = image_path(arg.image,!arg.quit);
 
-    print_colors(!arg.quit);
+        let palette = get_colors(&image_path, !arg.quit,arg.brightness,arg.saturation);
+        info("Generate", "generate colors", !arg.quit);
+
+        create_template(palette, &image_path);
+        info("Template", "create templates", !arg.quit);
+
+        reload(!arg.quit,true);
+        print_colors(!arg.quit);
+
+    };
 }
-
