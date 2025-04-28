@@ -13,7 +13,7 @@ use std::process::exit;
 use utils::*;
 
 #[derive(Parser, Debug)]
-#[command(name = "walrs",version="v1.0.5",about= "walrs - Generate colorscheme from image")]
+#[command(name = "walrs",version="v1.0.6",about= "walrs - Generate colorscheme from image")]
 struct Arg {
     /// path/to/your/wal.png
     #[arg(short = 'i')]
@@ -84,7 +84,6 @@ fn image_path(image:Option<String>,send:bool) -> String{
 
 fn main() {
     let arg = Arg::parse();
-
 
     if arg.reload_nowal {
         reload(!arg.quit,true);

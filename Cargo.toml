@@ -1,6 +1,6 @@
 [package]
 name = "walrs"
-version = "1.0.5"
+version = "1.0.6"
 edition = "2024"
 description = "walrs is a fast color scheme generator."
 license = "GPL" 
@@ -11,4 +11,6 @@ clap = { version = "4.5.34", features = ["derive"] }
 color-thief = "0.2.2"
 dirs-next = "2.0.0"
 image = "0.25.6"
+kmeans_colors = "0.7.0"
+palette = "0.7.6"
 palette_extract = "0.1.0"
