@@ -1,7 +1,7 @@
+use crate::utils::{info, warning};
 use std::env;
 use std::path::Path;
 use std::process::{Command, Stdio};
-use crate::utils::{info, warning};
 
 fn run(command: &str) -> bool {
     Command::new("sh")
@@ -22,7 +22,7 @@ fn run_with_output(command: &str) -> Option<String> {
         .stdout(Stdio::null())
         .output()
         .ok()?;
-    
+
     if output.status.success() {
         String::from_utf8(output.stdout).ok()
     } else {
@@ -51,17 +51,17 @@ fn get_desktop_env() -> Option<String> {
         "I3SOCK",
         "WAYLAND_DISPLAY",
     ];
-    
+
     // Check specifically for Sway
     if env::var("SWAYSOCK").is_ok() || run("pgrep -x sway") {
         return Some("SWAY".to_string());
     }
-    
+
     // Check if Hyprland is running
     if run("pgrep -x Hyprland") || env::var("HYPRLAND_INSTANCE_SIGNATURE").is_ok() {
         return Some("HYPRLAND".to_string());
     }
-    
+
     // Check if i3 is running
     if run("pgrep -x i3") || env::var("I3SOCK").is_ok() {
         return Some("I3".to_string());
@@ -112,7 +112,11 @@ fn set_wm_wallpaper(img: &str, send: bool) {
         spawn(&format!("nitrogen --set-zoom-fill --save '{}'", img));
         info("Wallpaper", "wallpaper set with nitrogen", send);
     } else if run("which xsetroot") {
-        warning("Wallpaper", "using xsetroot, but it does not support images properly", send);
+        warning(
+            "Wallpaper",
+            "using xsetroot, but it does not support images properly",
+            send,
+        );
         spawn("xsetroot -solid '#000000'");
         info("Wallpaper", "set solid background with xsetroot", send);
     } else {
@@ -122,7 +126,7 @@ fn set_wm_wallpaper(img: &str, send: bool) {
 
 fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
     let d = desktop.to_lowercase();
-    
+
     // Convert img to absolute path
     let abs_path = if Path::new(img).is_absolute() {
         img.to_string()
@@ -135,15 +139,17 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
             }
         }
     };
-    
+
     if d.contains("xfce") || d.contains("xubuntu") {
         // Try to find the active monitor
-        let monitors = run_with_output("xfconf-query -c xfce4-desktop -l | grep last-image").unwrap_or_default();
+        let monitors = run_with_output("xfconf-query -c xfce4-desktop -l | grep last-image")
+            .unwrap_or_default();
         if !monitors.is_empty() {
             for line in monitors.lines() {
                 spawn(&format!(
                     "xfconf-query --channel xfce4-desktop --property {} --set '{}'",
-                    line.trim(), abs_path
+                    line.trim(),
+                    abs_path
                 ));
             }
         } else {
@@ -187,44 +193,45 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
         ));
         info("Wallpaper", "wallpaper set with Cinnamon settings", send);
     } else if d.contains("hyprland") {
-    // Get monitors using a more reliable approach
-    let monitors: Vec<String> = run_with_output("hyprctl monitors | grep Monitor | cut -d' ' -f2")
-        .unwrap_or_default()
-        .lines()
-        .map(|s| s.trim().to_string())
-        .filter(|s| !s.is_empty())
-        .collect();
+        // Get monitors using a more reliable approach
+        let monitors: Vec<String> =
+            run_with_output("hyprctl monitors | grep Monitor | cut -d' ' -f2")
+                .unwrap_or_default()
+                .lines()
+                .map(|s| s.trim().to_string())
+                .filter(|s| !s.is_empty())
+                .collect();
 
-    if !monitors.is_empty() {
-        println!("Found monitors: {:?}", monitors);
-        
-        // Create a new hyprpaper.conf file
-        let home = env::var("HOME").unwrap_or_else(|_| ".".to_string());
-        let config_path = format!("{}/.config/hypr/hyprpaper.conf", home);
-        
-        // Write configuration as a single operation instead of multiple echo commands
-        let mut config = format!("preload = {}\n", abs_path);
-        for monitor in &monitors {
-            config.push_str(&format!("wallpaper = {},{}\n", monitor, abs_path));
-        }
-        
-        // Use filesystem operations instead of echo
-        if let Err(e) = std::fs::write(&config_path, config) {
-            warning("Wallpaper", &format!("failed to write hyprpaper config: {}", e), send);
+        if !monitors.is_empty() {
+            println!("Found monitors: {:?}", monitors);
+
+            // Create a new hyprpaper.conf file
+            let home = env::var("HOME").unwrap_or_else(|_| ".".to_string());
+            let config_path = format!("{}/.config/hypr/hyprpaper.conf", home);
+
+            // Write configuration as a single operation instead of multiple echo commands
+            let mut config = format!("preload = {}\n", abs_path);
+            for monitor in &monitors {
+                config.push_str(&format!("wallpaper = {},{}\n", monitor, abs_path));
+            }
+
+            // Use filesystem operations instead of echo
+            if let Err(e) = std::fs::write(&config_path, config) {
+                warning(
+                    "Wallpaper",
+                    &format!("failed to write hyprpaper config: {}", e),
+                    send,
+                );
+            } else {
+                // Restart hyprpaper
+                spawn("killall hyprpaper 2>/dev/null; hyprpaper &");
+                info("Wallpaper", "wallpaper set with hyprpaper", send);
+            }
         } else {
-            // Restart hyprpaper
-            spawn("killall hyprpaper 2>/dev/null; hyprpaper &");
-            info("Wallpaper", "wallpaper set with hyprpaper", send);
+            // Fallback to swaybg if no monitors detected
+            spawn(&format!("pkill swaybg; swaybg -i '{}' -m fill &", abs_path));
+            info("Wallpaper", "wallpaper set with swaybg for Hyprland", send);
         }
-    } else {
-        // Fallback to swaybg if no monitors detected
-        spawn(&format!("pkill swaybg; swaybg -i '{}' -m fill &", abs_path));
-        info("Wallpaper", "wallpaper set with swaybg for Hyprland", send);
-    }
-
-
-
-
     } else if d == "sway" {
         // Using swww or swaybg for Sway
         if run("which swww") {
@@ -232,13 +239,20 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
             if !run("pgrep -x swww-daemon") {
                 spawn("swww init");
             }
-            spawn(&format!("swww img '{}' --transition-type fade --transition-fps 60", abs_path));
+            spawn(&format!(
+                "swww img '{}' --transition-type fade --transition-fps 60",
+                abs_path
+            ));
             info("Wallpaper", "wallpaper set with swww for Sway", send);
         } else if run("which swaybg") {
             spawn(&format!("pkill swaybg; swaybg -i '{}' -m fill &", abs_path));
             info("Wallpaper", "wallpaper set with swaybg for Sway", send);
         } else {
-            warning("Wallpaper", "no suitable wallpaper tool found for Sway", send);
+            warning(
+                "Wallpaper",
+                "no suitable wallpaper tool found for Sway",
+                send,
+            );
         }
     } else if d.contains("awesome") {
         spawn(&format!(
@@ -287,7 +301,11 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
             spawn(&format!("swww img '{}'", abs_path));
             info("Wallpaper", "wallpaper set with swww", send);
         } else {
-            warning("Wallpaper", "no suitable Wayland wallpaper tool found", send);
+            warning(
+                "Wallpaper",
+                "no suitable Wayland wallpaper tool found",
+                send,
+            );
         }
     } else if d.contains("wayfire") {
         // Wayfire compositor
@@ -306,17 +324,11 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
         info("Wallpaper", "wallpaper set with Deepin settings", send);
     } else if d.contains("lxqt") {
         // LXQt uses pcmanfm-qt for desktop management
-        spawn(&format!(
-            "pcmanfm-qt --set-wallpaper='{}'",
-            abs_path
-        ));
+        spawn(&format!("pcmanfm-qt --set-wallpaper='{}'", abs_path));
         info("Wallpaper", "wallpaper set with LXQt settings", send);
     } else if d.contains("lxde") {
         // LXDE uses pcmanfm for desktop management
-        spawn(&format!(
-            "pcmanfm --set-wallpaper='{}'",
-            abs_path
-        ));
+        spawn(&format!("pcmanfm --set-wallpaper='{}'", abs_path));
         info("Wallpaper", "wallpaper set with LXDE settings", send);
     } else if d.contains("budgie") {
         // Budgie uses GNOME settings
@@ -324,7 +336,11 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
             "gsettings set org.gnome.desktop.background picture-uri 'file://{}'",
             abs_path
         ));
-        info("Wallpaper", "wallpaper set with Budgie (GNOME) settings", send);
+        info(
+            "Wallpaper",
+            "wallpaper set with Budgie (GNOME) settings",
+            send,
+        );
     } else if d.contains("enlightenment") || d.contains("e17") || d.contains("e16") {
         // Enlightenment WM - try using enlightenment_remote
         if run("which enlightenment_remote") {
@@ -344,17 +360,17 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
 
 pub fn change_wallpaper(img: &str, send: bool) {
     if !Path::new(img).is_file() {
-        println!("asdf: {}",img);
+        println!("asdf: {}", img);
         warning("Wallpaper", "invalid image path", send);
         return;
     }
-    
+
     match get_desktop_env() {
         Some(d) => {
             set_desktop_wallpaper(&d, img, send);
-        },
+        }
         None => {
             set_wm_wallpaper(img, send);
-        },
+        }
     }
 }

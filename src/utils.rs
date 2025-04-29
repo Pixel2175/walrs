@@ -1,10 +1,9 @@
-use std::{fs, process::Command};
 use dirs_next::{cache_dir, config_dir};
 use std::path::Path;
+use std::{fs, process::Command};
 
-pub fn print_colors(send:bool) {
-    if send{
-
+pub fn print_colors(send: bool) {
+    if send {
         if let Ok(output) = Command::new("bash")
             .arg("-c")
             .arg(r#"for i in {30..37} 90; do echo -en "\033[0;${i}m●\033[0m "; done; echo"#)
@@ -17,19 +16,17 @@ pub fn print_colors(send:bool) {
     }
 }
 
-
-pub fn warning(title:&str,message:&str,send:bool){
-    if send{
+pub fn warning(title: &str, message: &str, send: bool) {
+    if send {
         println!("[\x1b[33mW\x1b[0m] \x1b[31m{title}:\x1b[0m {message}.");
     }
 }
 
-pub fn info(title:&str,message:&str, send:bool){
-    if send{
+pub fn info(title: &str, message: &str, send: bool) {
+    if send {
         println!("[\x1b[32mI\x1b[0m] \x1b[31m{title}:\x1b[0m {message}.");
     }
 }
-
 
 pub fn get_config_folder() -> Option<String> {
     config_dir()?.to_str().map(|s| s.to_string())
@@ -43,4 +40,3 @@ pub fn get_absolute_path(path_str: &str) -> Option<String> {
     let path = Path::new(path_str);
     fs::canonicalize(path).ok()?.to_str().map(|s| s.to_string())
 }
-
