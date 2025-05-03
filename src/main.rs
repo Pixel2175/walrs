@@ -19,7 +19,7 @@ use utils::*;
     about = "walrs - Generate colorscheme from image"
 )]
 struct Arg {
-    /// path/to/your/wal.png
+    /// path/to/your/wal.png | for random image: path/to/your/wallpapers/
     #[arg(short = 'i')]
     image: Option<String>,
 
