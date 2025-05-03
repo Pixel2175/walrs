@@ -15,7 +15,7 @@ use utils::*;
 #[derive(Parser, Debug)]
 #[command(
     name = "walrs",
-    version = "v1.0.6",
+    version = "v1.0.7",
     about = "walrs - Generate colorscheme from image"
 )]
 struct Arg {
