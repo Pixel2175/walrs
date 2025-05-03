@@ -9,9 +9,6 @@ install: build
 	/usr/bin/walrs --install-completions -q
 	sudo cp -r templates/* /etc/walrs/templates/
 
-aur:
-	./target/release/walrs --install-completions -q 
-
 uninstall:
 	sudo rm -f /usr/bin/walrs
 	sudo rm -rf /etc/walrs/
@@ -20,4 +17,4 @@ uninstall:
 clean:
 	cargo clean
 
-.PHONY: all build install uninstall clean aur
+.PHONY: all build install uninstall clean
