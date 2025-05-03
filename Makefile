@@ -10,7 +10,7 @@ install: build
 	sudo cp -r templates/* /etc/walrs/templates/
 
 aur:
-    ./target/release/walrs --install-completions -q --output "$pkgdir/usr/share"
+	./target/release/walrs --install-completions -q --output "$(pkgdir)/usr/share"
 
 uninstall:
 	sudo rm -f /usr/bin/walrs
