@@ -6,6 +6,7 @@ build:
 install: build
 	sudo install -m755 target/release/walrs /usr/bin/walrs
 	sudo install -d ./templates/ /etc/walrs/templates
+	/usr/bin/walrs  --install-completions -q
 	sudo cp -r templates/* /etc/walrs/templates/
 
 uninstall:

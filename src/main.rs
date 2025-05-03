@@ -1,3 +1,4 @@
+mod completions;
 mod create_templates;
 mod get_colors;
 mod reload;
@@ -15,8 +16,8 @@ use utils::*;
 #[derive(Parser, Debug)]
 #[command(
     name = "walrs",
-    version = "v1.0.7",
-    about = "walrs - Generate colorscheme from image"
+    version = env!("CARGO_PKG_VERSION"),
+    about = "walrs - Generate colorscheme from image",
 )]
 struct Arg {
     /// path/to/your/wal.png | for random image: path/to/your/wallpapers/
@@ -50,6 +51,10 @@ struct Arg {
     /// specify the brightness value -128 => 127
     #[arg(short = 'b', allow_hyphen_values = true)]
     brightness: Option<i8>,
+
+    /// Install completions for the current shell
+    #[arg(long = "install-completions", hide = true)]
+    install_completions: bool,
 }
 
 fn image_path(image: Option<String>, send: bool) -> String {
@@ -65,11 +70,11 @@ fn image_path(image: Option<String>, send: bool) -> String {
                             .arg(format!("find \"{}\" -type f | sort -R | head -n1", p))
                             .output()
                             .unwrap()
-                        .stdout,
+                            .stdout,
                     )
-                        .unwrap()
-                        .trim()
-                        .to_string()
+                    .unwrap()
+                    .trim()
+                    .to_string()
                 }
             }
             None => {
@@ -91,6 +96,19 @@ fn image_path(image: Option<String>, send: bool) -> String {
 fn main() {
     let arg = Arg::parse();
 
+    if arg.install_completions {
+        if let Err(_) = completions::install_completions() {
+            warning("Completions", "Failed to install completions", !arg.quit);
+            exit(1);
+        }
+        info(
+            "Completions",
+            "Completions installed successfully!",
+            !arg.quit,
+        );
+        exit(0)
+    }
+
     let output_dir = match arg.output {
         Some(v) => {
             if !Path::new(&v).is_dir() {
@@ -98,8 +116,8 @@ fn main() {
                 exit(1)
             }
             v
-        },
-        None => "None".to_string()
+        }
+        None => "None".to_string(),
     };
     if arg.reload_nowal {
         reload(!arg.quit, true);
@@ -122,7 +140,7 @@ fn main() {
         let palette = get_colors(&image_path, !arg.quit, arg.brightness, arg.saturation);
         info("Generate", "generate colors", !arg.quit);
 
-        create_template(palette, &image_path,output_dir);
+        create_template(palette, &image_path, output_dir);
         info("Template", "create templates", !arg.quit);
         exit(0)
     };
@@ -133,13 +151,10 @@ fn main() {
         let palette = get_colors(&image_path, !arg.quit, arg.brightness, arg.saturation);
         info("Generate", "generate colors", !arg.quit);
 
-        create_template(palette, &image_path,output_dir);
+        create_template(palette, &image_path, output_dir);
         info("Template", "create templates", !arg.quit);
 
         reload(!arg.quit, true);
         print_colors(!arg.quit);
     };
 }
-
-
-
