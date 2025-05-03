@@ -6,8 +6,11 @@ build:
 install: build
 	sudo install -m755 target/release/walrs /usr/bin/walrs
 	sudo install -d ./templates/ /etc/walrs/templates
-	/usr/bin/walrs  --install-completions -q
+	/usr/bin/walrs --install-completions -q
 	sudo cp -r templates/* /etc/walrs/templates/
+
+aur:
+	/usr/bin/walrs --install-completions -q
 
 uninstall:
 	sudo rm -f /usr/bin/walrs
@@ -17,4 +20,4 @@ uninstall:
 clean:
 	cargo clean
 
-.PHONY: all build install uninstall clean
+.PHONY: all build install uninstall clean aur
