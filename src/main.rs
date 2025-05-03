@@ -27,6 +27,10 @@ struct Arg {
     #[arg(short = 'g')]
     generate: Option<String>,
 
+    /// output generated diractory | default: .cache/wal/
+    #[arg(short = 'o')]
+    output: Option<String>,
+
     /// reload Templates from cache file and set the wallpaper
     #[arg(short = 'r', action = ArgAction::SetTrue)]
     reload_nowal: bool,
@@ -61,11 +65,11 @@ fn image_path(image: Option<String>, send: bool) -> String {
                             .arg(format!("find \"{}\" -type f | sort -R | head -n1", p))
                             .output()
                             .unwrap()
-                            .stdout,
+                        .stdout,
                     )
-                    .unwrap()
-                    .trim()
-                    .to_string()
+                        .unwrap()
+                        .trim()
+                        .to_string()
                 }
             }
             None => {
@@ -87,6 +91,16 @@ fn image_path(image: Option<String>, send: bool) -> String {
 fn main() {
     let arg = Arg::parse();
 
+    let output_dir = match arg.output {
+        Some(v) => {
+            if !Path::new(&v).is_dir() {
+                warning("Error", "Can't find a directory", !arg.quit);
+                exit(1)
+            }
+            v
+        },
+        None => "None".to_string()
+    };
     if arg.reload_nowal {
         reload(!arg.quit, true);
         exit(0);
@@ -108,7 +122,7 @@ fn main() {
         let palette = get_colors(&image_path, !arg.quit, arg.brightness, arg.saturation);
         info("Generate", "generate colors", !arg.quit);
 
-        create_template(palette, &image_path);
+        create_template(palette, &image_path,output_dir);
         info("Template", "create templates", !arg.quit);
         exit(0)
     };
@@ -119,10 +133,13 @@ fn main() {
         let palette = get_colors(&image_path, !arg.quit, arg.brightness, arg.saturation);
         info("Generate", "generate colors", !arg.quit);
 
-        create_template(palette, &image_path);
+        create_template(palette, &image_path,output_dir);
         info("Template", "create templates", !arg.quit);
 
         reload(!arg.quit, true);
         print_colors(!arg.quit);
     };
 }
+
+
+

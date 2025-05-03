@@ -1,5 +1,5 @@
 use crate::utils::{get_cache_folder, get_config_folder};
-use std::fs::{self, create_dir_all, read_to_string, write};
+use std::{fs::{self, create_dir_all, read_to_string, write}, path::Path};
 
 fn change(template: &str, colors: (u8, u8, u8), alpha: u8) -> String {
     let (r, g, b) = colors;
@@ -26,12 +26,17 @@ fn fill_template(
     template: &str,
     colors: &(Vec<(u8, u8, u8)>, u8),
     wallpaper: &str,
+    output_dir:String
 ) {
-    let output_path = format!(
-        "{}/wal/{}",
-        get_cache_folder().expect("Can't find cache folder"),
-        template_name
-    );
+    let output_path = if output_dir == "None" {
+format!(
+    "{}/wal/{}",
+    get_cache_folder().expect("Can't find cache folder"),
+    template_name
+)
+    }else {
+Path::new(&output_dir).join(template_name).to_string_lossy().to_string() 
+    };
     let alpha = colors.1;
 
     let mut result = template
@@ -116,7 +121,7 @@ fn fill_template(
     write(output_path, result).expect("Failed to write filled template");
 }
 
-pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str) {
+pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str,output_dir:String) {
     let system_template_path = "/etc/walrs/templates/";
     let user_template_path = format!("{}/walrs/templates/", get_config_folder().unwrap());
     let cache_path = format!("{}/wal/", get_cache_folder().unwrap());
@@ -134,7 +139,7 @@ pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str) {
                 let Some(name) = entry.file_name().into_string().ok() else {
                     continue;
                 };
-                fill_template(&name, &content, &colors, wallpaper);
+                fill_template(&name, &content, &colors, wallpaper,output_dir.clone());
             }
         }
     }
@@ -157,7 +162,7 @@ pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str) {
                     let user_file_path = format!("{}{}", user_template_path, name);
                     let _ = write(&user_file_path, &content);
 
-                    fill_template(&name, &content, &colors, wallpaper);
+                    fill_template(&name, &content, &colors, wallpaper,output_dir.clone());
                 }
             }
         }
