@@ -203,8 +203,6 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
                 .collect();
 
         if !monitors.is_empty() {
-            println!("Found monitors: {:?}", monitors);
-
             // Create a new hyprpaper.conf file
             let home = env::var("HOME").unwrap_or_else(|_| ".".to_string());
             let config_path = format!("{}/.config/hypr/hyprpaper.conf", home);
@@ -360,7 +358,6 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
 
 pub fn change_wallpaper(img: &str, send: bool) {
     if !Path::new(img).is_file() {
-        println!("asdf: {}", img);
         warning("Wallpaper", "invalid image path", send);
         return;
     }

@@ -1,6 +1,18 @@
 use dirs_next::{cache_dir, config_dir};
 use std::path::Path;
+use std::process::Stdio;
 use std::{fs, process::Command};
+
+pub fn run(command: &str) -> bool {
+    Command::new("sh")
+        .arg("-c")
+        .arg(command)
+        .stdout(Stdio::null())
+        .stderr(Stdio::null())
+        .status()
+        .map(|s| s.success())
+        .unwrap_or(false)
+}
 
 pub fn print_colors(send: bool) {
     if send {
