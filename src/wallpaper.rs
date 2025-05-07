@@ -2,17 +2,8 @@ use crate::utils::{info, warning};
 use std::env;
 use std::path::Path;
 use std::process::{Command, Stdio};
+use crate::utils::run;
 
-fn run(command: &str) -> bool {
-    Command::new("sh")
-        .arg("-c")
-        .arg(command)
-        .stdout(Stdio::null())
-        .stderr(Stdio::null())
-        .status()
-        .map(|s| s.success())
-        .unwrap_or(false)
-}
 
 fn run_with_output(command: &str) -> Option<String> {
     let output = Command::new("sh")
@@ -99,12 +90,12 @@ fn get_desktop_env() -> Option<String> {
 }
 
 fn set_wm_wallpaper(img: &str, send: bool) {
-    if run("which feh") {
-        spawn(&format!("feh --no-fehbg --bg-fill '{}'", img));
-        info("Wallpaper", "wallpaper set with feh", send);
-    } else if run("which xwallpaper") {
+    if run("which xwallpaper") {
         spawn(&format!("xwallpaper --zoom '{}'", img));
         info("Wallpaper", "wallpaper set with xwallpaper", send);
+    } else if run("which feh") {
+        spawn(&format!("feh --no-fehbg --bg-fill '{}'", img));
+        info("Wallpaper", "wallpaper set with feh", send);
     } else if run("which hsetroot") {
         spawn(&format!("hsetroot -fill '{}'", img));
         info("Wallpaper", "wallpaper set with hsetroot", send);
