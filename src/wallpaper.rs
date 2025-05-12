@@ -94,6 +94,7 @@ fn set_wm_wallpaper(img: &str, send: bool) {
         spawn(&format!("xwallpaper --zoom '{}'", img));
         info("Wallpaper", "wallpaper set with xwallpaper", send);
     } else if run("which feh") {
+   // I thought there was a problem, but there isn't.
         spawn(&format!("feh --no-fehbg --bg-fill '{}'", img));
         info("Wallpaper", "wallpaper set with feh", send);
     } else if run("which hsetroot") {
