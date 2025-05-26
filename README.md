@@ -1,5 +1,5 @@
 # Walrs
-pywal is its written in rust
+pywal but if its written in rust
 
 ## Features 
 - use the same as pywal do 
