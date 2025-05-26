@@ -1,45 +1,51 @@
 # Walrs
-pywal but if its written in rust
+Like Pywal, but written in Rust
 
-## Features 
-- use the same as pywal do 
-- fast and minimal (10x faster than pywal)
-- better than wallust in colors, speed ,simplest
-- you can edit the brightness and saturation as you want 
+## Features
+- Uses the same method as Pywal
+- Fast and minimal (10× faster than Pywal)
+- Better than Wallust in color accuracy, speed, and simplicity
+- Allows customization of brightness and saturation
 
 ## Usage
 ```bash
-walrs - Generate colorscheme from image
+walrs - Generate a colorscheme from an image
 
 Usage: walrs [OPTIONS]
 
 Options:
-  -i <IMAGE>                     path/to/your/wal.png | for random image: path/to/your/wallpapers/
-  -r, --reload-nowal             reload Templates with setting the wallpaper
-  -R, --reload                   reload Templates without setting the wallpaper
-  -t, --theme <THEME>            use external theme file
-  -g, --generate <GENERATE>      generate theme and save it in themes folder (.cache/wal/colorschemes)
-  -s, --saturation <SATURATION>  specify the saturation value -128 => 127
-  -b, --brightness <BRIGHTNESS>  specify the brightness value -128 => 127
-  -q, --quit                     set quit mode (no output)
+  -i <IMAGE>                     Path to your wal.png | For random image: path to your wallpapers/
+  -r, --reload-nowal             Reload templates and set the wallpaper
+  -R, --reload                   Reload templates without setting the wallpaper
+  -t, --theme <THEME>            Use an external theme file
+  -g, --generate <GENERATE>      Generate theme and save it in the themes folder (.cache/wal/colorschemes)
+  -s, --saturation <SATURATION>  Specify saturation value (-128 to 127)
+  -b, --brightness <BRIGHTNESS>  Specify brightness value (-128 to 127)
+  -q, --quit                     Enable quit mode (no output)
       --install-completions      Install completions for the current shell
   -h, --help                     Print help
   -V, --version                  Print version
+
 ```
 
 ## Installation
 - AUR
-```bash yay -S walrs```
+```bash
+  yay -S walrs
+```
 - Source
-```git clone https://github.com/pixel2175/walrs && make install```
+```bash
+git clone https://github.com/pixel2175/walrs && make install
+```
 
 ## Performance
-- **Memory** : 3mb 
-- **Time**   : 290ms for image 1.5mb 1080P image
-- **Dep**    : this app just requires an external app to set wallpaper (feh,xwallpaper,etc...)
+- Memory: ~3 MB
+- Time: ~290 ms for a 1.5 MB 1080P image
+- Dependencies: Requires an external app to set the wallpaper (feh, xwallpaper, etc.)
 
 ### Benchmark
-```bash 
+```bash
+
 time walrs -i ~/.config/wallpaper/
 [I] Generate: generate colors.
 [I] Template: create templates.
@@ -55,5 +61,5 @@ Executed in  376.01 millis    fish           external
    sys time  132.21 millis    1.04 millis  131.17 millis
 ```
 
+If you need any help, reach me on Discord @pi66
 
-- if you want any help catch me on discord @pi66
