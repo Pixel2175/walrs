@@ -1,100 +1,59 @@
-# walrs: Fast Colorscheme Generator
+# Walrs
+pywal is its written in rust
 
-walrs is a fast color scheme generator written in Rust that creates terminal color schemes from images.
-
-[![Screenshot](screenshots/preview.gif)](screenshots/preview.gif)
-
----
-
-## Shortcuts
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Supported Terminals and Applications](#supported-terminals-and-applications)
-- [Performance](#performance)
-
----
-
-## Features
-- **Rust-based**: Fast and minimal resource usage
-- **Generate terminal color schemes** from images
-- **Reload themes instantly**
-- **Compatible with pywal templates**
-- **Seamless integration** with various terminal emulators and applications
-- **Specify the saturation and brightness value**
-
----
-
-## Installation
-### From AUR
-```bash
-yay -S walrs
-```
-
-### From Cargo
-```bash
-cargo install rswal
-```
-
-### From Source
-```bash
-git clone https://github.com/pixel2175/walrs.git
-cd walrs
-make install
-```
-The make install command will place all necessary files in their appropriate locations.
-
----
+## Features 
+- use the same as pywal do 
+- fast and minimal (10x faster than pywal)
+- better than wallust in colors, speed ,simplest
+- you can edit the brightness and saturation as you want 
 
 ## Usage
-
-Generate a color scheme from an image:
 ```bash
-walrs -i /path/to/image.jpg
+walrs - Generate colorscheme from image
+
+Usage: walrs [OPTIONS]
+
+Options:
+  -i <IMAGE>                     path/to/your/wal.png | for random image: path/to/your/wallpapers/
+  -r, --reload-nowal             reload Templates with setting the wallpaper
+  -R, --reload                   reload Templates without setting the wallpaper
+  -t, --theme <THEME>            use external theme file
+  -g, --generate <GENERATE>      generate theme and save it in themes folder (.cache/wal/colorschemes)
+  -s, --saturation <SATURATION>  specify the saturation value -128 => 127
+  -b, --brightness <BRIGHTNESS>  specify the brightness value -128 => 127
+  -q, --quit                     set quit mode (no output)
+      --install-completions      Install completions for the current shell
+  -h, --help                     Print help
+  -V, --version                  Print version
 ```
 
-Example output:
-```
-[I] Generate: generate colors.
-[I] Template: create templates.
-[I] Wallpaper: set the wallpaper.
-[I] Terminal: terminal colorscheme set.
-[I] Xrdb: xrdb colorscheme set.
-[I] Colors: colorscheme applied successfully.
-● ● ● ● ● ● ● ● ●
-```
-
----
-
-## Supported Terminals and Applications
-walrs is compatible with various terminals and applications through pywal templates:
-- sway
-- xrdb
-- tty
-- kitty
-- polybar
-- And more!
-
----
+## Installation
+- AUR
+```bash yay -S walrs```
+- Source
+```git clone https://github.com/pixel2175/walrs && make install```
 
 ## Performance
-walrs is designed to be lightweight and fast:
-- **Memory usage**: Approximately 3.9MB
-- **Processing time**: ~180-300ms to generate and apply a color scheme
-- **Dependencies**: Requires an external app to set wallpaper
+- **Memory** : 3mb 
+- **Time**   : 290ms for image 1.5mb 1080P image
+- **Dep**    : this app just requires an external app to set wallpaper (feh,xwallpaper,etc...)
 
-Example benchmark:
-```sh
-time walrs -i /path/to/image.{png, jpg, webp, etc...}
+### Benchmark
+```bash 
+time walrs -i ~/.config/wallpaper/
 [I] Generate: generate colors.
 [I] Template: create templates.
-[I] Wallpaper: set the wallpaper.
+[I] Wallpaper: wallpaper set with feh.
 [I] Terminal: terminal colorscheme set.
 [I] Xrdb: xrdb colorscheme set.
 [I] Colors: colorscheme applied successfully.
 ● ● ● ● ● ● ● ● ●
+
 ________________________________________________________
-Executed in  185.80 millis    fish           external
-   usr time  119.95 millis    0.56 millis  119.39 millis
-   sys time   58.95 millis    1.12 millis   57.82 millis
+Executed in  376.01 millis    fish           external
+   usr time  236.90 millis    2.05 millis  234.85 millis
+   sys time  132.21 millis    1.04 millis  131.17 millis
 ```
+
+
+- if you want any help catch me on discord @pi66
