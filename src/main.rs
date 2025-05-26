@@ -29,11 +29,11 @@ struct Arg {
     image: Option<String>,
 
     /// reload Templates with setting the wallpaper
-    #[arg(short = 'r',long="reload-nowal", action = ArgAction::SetTrue)]
+    #[arg(short = 'r',long="reload", action = ArgAction::SetTrue)]
     reload: bool,
 
     /// reload Templates without setting the wallpaper
-    #[arg(short = 'R',long="reload" ,action = ArgAction::SetTrue)]
+    #[arg(short = 'R',long="Reload" ,action = ArgAction::SetTrue)]
     reload_nowal: bool,
 
     /// use external theme file  
