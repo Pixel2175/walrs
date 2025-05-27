@@ -15,8 +15,8 @@ Usage: walrs [OPTIONS]
 
 Options:
   -i <IMAGE>                     Path to your wal.png | For random image: path to your wallpapers/
-  -r, --reload-nowal             Reload templates and set the wallpaper
-  -R, --reload                   Reload templates without setting the wallpaper
+  -r, --reload             Reload templates and set the wallpaper
+  -R, --Reload                   Reload templates without setting the wallpaper
   -t, --theme <THEME>            Use an external theme file
   -g, --generate <GENERATE>      Generate theme and save it in the themes folder (.cache/wal/colorschemes)
   -s, --saturation <SATURATION>  Specify saturation value (-128 to 127)
