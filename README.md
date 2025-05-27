@@ -62,4 +62,4 @@ Executed in  376.01 millis    fish           external
 ```
 
 If you need any help, reach me on Discord @pi66
-
+or open an issue
