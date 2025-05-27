@@ -35,7 +35,7 @@ Options:
 ```
 - Source
 ```bash
-git clone https://github.com/pixel2175/walrs && make install
+git clone https://github.com/pixel2175/walrs && cd walrs && make install
 ```
 
 ## Performance
