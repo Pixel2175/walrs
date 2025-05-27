@@ -28,11 +28,11 @@ struct Arg {
     #[arg(short = 'i')]
     image: Option<String>,
 
-    /// reload Templates with setting the wallpaper
+    /// reload Templates without setting the wallpaper
     #[arg(short = 'r',long="reload", action = ArgAction::SetTrue)]
     reload: bool,
 
-    /// reload Templates without setting the wallpaper
+    /// reload Templates with setting the wallpaper
     #[arg(short = 'R',long="Reload" ,action = ArgAction::SetTrue)]
     reload_nowal: bool,
 
