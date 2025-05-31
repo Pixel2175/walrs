@@ -46,7 +46,7 @@ struct Arg {
         long = "reload-no",
         description = "reload with changing the wallpaper"
     )]
-    reload_nowal: bool,
+    reload_no: bool,
 
     #[argh(
         option,
