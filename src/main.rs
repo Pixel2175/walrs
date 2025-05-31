@@ -172,7 +172,7 @@ fn main() {
         );
     }
 
-    if arg.reload_nowal {
+    if arg.reload_no {
         reload(!arg.quit, true);
         exit(0);
     }
