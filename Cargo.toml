@@ -1,16 +1,14 @@
 [package]
 name = "walrs"
-version = "1.1.0"
+version = "1.1.1"
 edition = "2024"
 description = "walrs - Generate colorscheme from image."
 license = "GPL" 
 repository = "https://github.com/pixel2175/walrs"
 
 [dependencies]
-clap = { version = "4.5.34", features = ["derive"] }
-clap_complete = "4.5.48"
+argh = "0.1.13"
 color-thief = "0.2.2"
-dirs-next = "2.0.0"
 image = "0.25.6"
 kmeans_colors = "0.7.0"
 palette = "0.7.6"
