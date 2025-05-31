@@ -1,12 +1,11 @@
 use std::fs::OpenOptions;
 use std::fs::{read_dir, read_to_string};
 use std::io::Write;
-use std::process::exit;
 use std::process::{Command, Stdio};
 
 use crate::wallpaper;
 
-use crate::utils::{get_cache_folder, info, warning};
+use crate::utils::{get_cache, info};
 
 fn run(command: &str) -> bool {
     Command::new("sh")
@@ -105,7 +104,7 @@ fn colors(colors: Vec<String>, send: bool) {
 }
 
 pub fn reload(send: bool, set_wal: bool) {
-    let cache = get_cache_folder().expect("Can't get cache path");
+    let cache = get_cache(send).to_string_lossy().to_string();
     let file_path = format!("{}/wal/colors", cache);
 
     let lines: Vec<String> = std::fs::read_to_string(&file_path)
@@ -115,13 +114,7 @@ pub fn reload(send: bool, set_wal: bool) {
         .collect();
 
     // Spawn threads
-    let cache = match get_cache_folder() {
-        Some(v) => v,
-        None => {
-            warning("Path", "can't found cache folder", send);
-            exit(1)
-        }
-    };
+    let cache = get_cache(send).to_string_lossy().to_string();
 
     if set_wal {
         let wallpaper = read_to_string(format!("{}/wal/wal", cache))

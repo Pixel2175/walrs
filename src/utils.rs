@@ -1,6 +1,6 @@
-use dirs_next::{cache_dir, config_dir};
-use std::path::Path;
-use std::process::Stdio;
+use std::env;
+use std::path::{Path, PathBuf};
+use std::process::{exit, Stdio};
 use std::{fs, process::Command};
 
 pub fn run(command: &str) -> bool {
@@ -31,6 +31,7 @@ pub fn print_colors(send: bool) {
 pub fn warning(title: &str, message: &str, send: bool) {
     if send {
         println!("[\x1b[33mW\x1b[0m] \x1b[31m{title}:\x1b[0m {message}.");
+        exit(1)
     }
 }
 
@@ -40,12 +41,17 @@ pub fn info(title: &str, message: &str, send: bool) {
     }
 }
 
-pub fn get_config_folder() -> Option<String> {
-    config_dir()?.to_str().map(|s| s.to_string())
+pub fn get_home(send: bool) -> PathBuf {
+    env::home_dir().unwrap_or_else(|| {
+        warning("Home", "can't find the home dir", send);
+        exit(1)
+    })
 }
-
-pub fn get_cache_folder() -> Option<String> {
-    cache_dir()?.to_str().map(|s| s.to_string())
+pub fn get_config(send: bool) -> PathBuf {
+    get_home(send).join(".config")
+}
+pub fn get_cache(send: bool) -> PathBuf {
+    get_home(send).join(".cache")
 }
 
 pub fn get_absolute_path(path_str: &str) -> Option<String> {

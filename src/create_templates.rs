@@ -1,4 +1,4 @@
-use crate::utils::{get_cache_folder, get_config_folder};
+use crate::utils::{get_cache, get_config, warning};
 use std::fs::{self, create_dir_all, read_to_string, write};
 
 fn change(template: &str, colors: (u8, u8, u8), alpha: u8) -> String {
@@ -26,10 +26,11 @@ fn fill_template(
     template: &str,
     colors: &(Vec<(u8, u8, u8)>, u8),
     wallpaper: &str,
+    send: bool,
 ) {
     let output_path = format!(
         "{}/wal/{}",
-        get_cache_folder().expect("Can't find cache folder"),
+        get_cache(send).to_string_lossy().to_string(),
         template_name
     );
     let alpha = colors.1;
@@ -116,11 +117,16 @@ fn fill_template(
     write(output_path, result).expect("Failed to write filled template");
 }
 
-pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str) {
+pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str, send: bool) {
     let system_template_path = "/etc/walrs/templates/";
-    let user_template_path = format!("{}/walrs/templates/", get_config_folder().unwrap());
-    let cache_path = format!("{}/wal/", get_cache_folder().unwrap());
-    let _ = create_dir_all(&cache_path);
+    let user_template_path = format!(
+        "{}/walrs/templates/",
+        get_config(send).to_string_lossy().to_string()
+    );
+    let cache_path = format!("{}/wal/", get_cache(send).to_string_lossy().to_string());
+    create_dir_all(&cache_path).unwrap_or_else(|_| {
+        warning("Create", "can't create the cache folder", send);
+    });
 
     // Check if user templates directory exists and has templates
     let mut has_user_templates = false;
@@ -134,14 +140,16 @@ pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str) {
                 let Some(name) = entry.file_name().into_string().ok() else {
                     continue;
                 };
-                fill_template(&name, &content, &colors, wallpaper);
+                fill_template(&name, &content, &colors, wallpaper, send);
             }
         }
     }
 
     // If no user templates, copy from system templates
     if !has_user_templates {
-        let _ = create_dir_all(&user_template_path);
+        create_dir_all(&user_template_path).unwrap_or_else(|_| {
+            warning("Create", "can't create user template path", send);
+        });
 
         if let Ok(entries) = fs::read_dir(system_template_path) {
             for entry in entries.flatten() {
@@ -157,7 +165,7 @@ pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str) {
                     let user_file_path = format!("{}{}", user_template_path, name);
                     let _ = write(&user_file_path, &content);
 
-                    fill_template(&name, &content, &colors, wallpaper);
+                    fill_template(&name, &content, &colors, wallpaper, send);
                 }
             }
         }
