@@ -1,4 +1,3 @@
-Run walrs --help for more information.
 mod create_templates;
 mod get_colors;
 mod reload;
