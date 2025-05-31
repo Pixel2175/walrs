@@ -87,6 +87,9 @@ struct Arg {
         description = "set quit mode (no output)"
     )]
     quit: bool,
+
+    #[argh(switch, short = 'v', long = "version", description = "version ")]
+    version: bool,
 }
 
 fn image_path(image: Option<String>, send: bool) -> String {
@@ -161,6 +164,13 @@ fn main() {
         }
         None => "kmeans".to_string(),
     };
+    if arg.version {
+        info(
+            "Version",
+            &format!("walrs {}", env!("CARGO_PKG_VERSION")),
+            !arg.quit,
+        );
+    }
 
     if arg.reload_nowal {
         reload(!arg.quit, true);
