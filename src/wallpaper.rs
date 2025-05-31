@@ -1,9 +1,8 @@
+use crate::utils::run;
 use crate::utils::{info, warning};
 use std::env;
 use std::path::Path;
 use std::process::{Command, Stdio};
-use crate::utils::run;
-
 
 fn run_with_output(command: &str) -> Option<String> {
     let output = Command::new("sh")
@@ -94,7 +93,7 @@ fn set_wm_wallpaper(img: &str, send: bool) {
         spawn(&format!("xwallpaper --zoom '{}'", img));
         info("Wallpaper", "wallpaper set with xwallpaper", send);
     } else if run("which feh") {
-   // I thought there was a problem, but there isn't.
+        // I thought there was a problem, but there isn't.
         spawn(&format!("feh --no-fehbg --bg-fill '{}'", img));
         info("Wallpaper", "wallpaper set with feh", send);
     } else if run("which hsetroot") {
@@ -184,48 +183,8 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
             abs_path
         ));
         info("Wallpaper", "wallpaper set with Cinnamon settings", send);
-    } else if d.contains("hyprland") {
-        // Get monitors using a more reliable approach
-        let monitors: Vec<String> =
-            run_with_output("hyprctl monitors | grep Monitor | cut -d' ' -f2")
-                .unwrap_or_default()
-                .lines()
-                .map(|s| s.trim().to_string())
-                .filter(|s| !s.is_empty())
-                .collect();
-
-        if !monitors.is_empty() {
-            // Create a new hyprpaper.conf file
-            let home = env::var("HOME").unwrap_or_else(|_| ".".to_string());
-            let config_path = format!("{}/.config/hypr/hyprpaper.conf", home);
-
-            // Write configuration as a single operation instead of multiple echo commands
-            let mut config = format!("preload = {}\n", abs_path);
-            for monitor in &monitors {
-                config.push_str(&format!("wallpaper = {},{}\n", monitor, abs_path));
-            }
-
-            // Use filesystem operations instead of echo
-            if let Err(e) = std::fs::write(&config_path, config) {
-                warning(
-                    "Wallpaper",
-                    &format!("failed to write hyprpaper config: {}", e),
-                    send,
-                );
-            } else {
-                // Restart hyprpaper
-                spawn("killall hyprpaper 2>/dev/null; hyprpaper &");
-                info("Wallpaper", "wallpaper set with hyprpaper", send);
-            }
-        } else {
-            // Fallback to swaybg if no monitors detected
-            spawn(&format!("pkill swaybg; swaybg -i '{}' -m fill &", abs_path));
-            info("Wallpaper", "wallpaper set with swaybg for Hyprland", send);
-        }
     } else if d == "sway" {
-        // Using swww or swaybg for Sway
         if run("which swww") {
-            // Initialize swww if not running
             if !run("pgrep -x swww-daemon") {
                 spawn("swww init");
             }
