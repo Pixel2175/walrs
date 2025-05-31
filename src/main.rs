@@ -1,3 +1,6 @@
+Unrecognized argument: "-rq". Did you mean "-r"?
+
+Run walrs --help for more information.
 mod create_templates;
 mod get_colors;
 mod reload;
@@ -43,7 +46,7 @@ struct Arg {
     #[argh(
         switch,
         short = 'R',
-        long = "reload-nowal",
+        long = "reload-no",
         description = "reload with changing the wallpaper"
     )]
     reload_nowal: bool,
