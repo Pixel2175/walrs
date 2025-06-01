@@ -162,7 +162,7 @@ fn main() {
                 v
             }
         }
-        None => "kmeans".to_string(),
+        None => "all".to_string(),
     };
     if arg.version {
         info(
