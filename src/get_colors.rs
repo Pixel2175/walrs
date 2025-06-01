@@ -179,17 +179,20 @@ pub fn get_colors(
             r,
             g,
             b,
-            brightness.unwrap_or(0) - 15,
+            brightness.unwrap_or(0) - 5,
             saturation.unwrap_or(0) + 80,
         );
         done.push((r, g, b));
     }
 
     let (mut r, mut g, mut b) = collect_rgb[20];
-    (r, g, b) = adjust_rgb(r, g, b, 40, 60);
-    (r, g, b) = to_gray(r, g, b, 15);
+    (r, g, b) = adjust_rgb(r, g, b, 45, 65);
+    (r, g, b) = to_gray(r, g, b, 25);
     done[7] = (r, g, b);
     done[15] = (r, g, b);
 
+    for (r, g, b) in &done {
+        println!("#{:02x}{:02x}{:02x}", r, g, b)
+    }
     (done, *alpha)
 }
