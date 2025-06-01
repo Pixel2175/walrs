@@ -191,8 +191,5 @@ pub fn get_colors(
     done[7] = (r, g, b);
     done[15] = (r, g, b);
 
-    for (r, g, b) in &done {
-        println!("#{:02x}{:02x}{:02x}", r, g, b)
-    }
     (done, *alpha)
 }
