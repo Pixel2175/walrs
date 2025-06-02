@@ -16,6 +16,6 @@
 
   </div>
 
-  <img src="https://pixelll.is-a.dev/static/images/walrs-logo.png" alt="walrs logo" height="200">
+  <img src="https://i.imgur.com/BORMhHc.png" alt="walrs logo" height="200">
 </div>
 
