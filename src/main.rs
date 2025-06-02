@@ -182,6 +182,27 @@ fn main() {
         exit(0);
     }
 
+    if arg.image.is_none() && arg.theme.is_none() && arg.generate.is_none() {
+        println!("Usage: walrs [-i <image>] [-k <backend>] [-r] [-R] [-t <theme>] [-g <generate>] [-s <saturation>] [-b <brightness>] [-q] [-v]
+
+walrs - Generate colorscheme from image
+
+Options:
+  -i, --image       path/to/your/wal.png | path/to/your/wallpapers/
+  -k, --backend     change the colors backend (walrs -k backends)
+  -r, --reload      reload without changing the wallpaper
+  -R, --reload-no   reload with changing the wallpaper
+  -t, --theme       use external theme file
+  -g, --generate    generate theme in themes folder (.cache/wal/colorschemes)
+  -s, --saturation  specify the saturation value -128 => 127
+  -b, --brightness  specify the brightness value -128 => 127
+  -q, --quit        set quit mode (no output)
+  -v, --version     version
+  --help, help      display usage information
+");
+        exit(1);
+    }
+
     if let Some(v) = arg.theme {
         if v == "themes" {
             print_themes(!arg.quit);
