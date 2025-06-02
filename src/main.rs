@@ -170,6 +170,7 @@ fn main() {
             &format!("walrs {}", env!("CARGO_PKG_VERSION")),
             !arg.quit,
         );
+        exit(0);
     }
 
     if arg.reload_no {
