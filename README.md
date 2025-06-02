@@ -1,9 +1,8 @@
 <div align="center" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <img src="https://i.imgur.com/BORMhHc.png" alt="walrs logo" align="right" height="200">
-    <div align="left">
-
-        ## walrs
-        #### Like Pywal, but written in Rust
+<img src="https://i.imgur.com/BORMhHc.png" alt="walrs logo" align="right" height="200">
+<div align="left">
+<h2>walrs</h2>
+<h4>Like Pywal, but written in Rust</h4>
 walrs is a fast, minimalist CLI tool for generating color schemes from wallpapers.  
 It works the same as pywal but is written in Rust, making it faster and more efficient.  
 No external dependencies are required — just an app to set your wallpaper.  
