@@ -7,6 +7,7 @@ install: build
 	sudo install -m755 target/release/walrs /usr/bin/walrs
 	sudo install -d ./templates/ /etc/walrs/templates
 	sudo cp -r templates/ /etc/walrs/
+	bash ./autocomplete.sh
 	sudo cp -r colorschemes/ /etc/walrs/
 
 uninstall:
