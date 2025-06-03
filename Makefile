@@ -8,13 +8,11 @@ install: build
 	sudo install -d ./templates/ /etc/walrs/templates
 	sudo cp -r templates/ /etc/walrs/
 	bash ./autocomplete.sh
+	sudo cp ./walrs.1 /usr/share/man/man1/
 	sudo cp -r colorschemes/ /etc/walrs/
 
 uninstall:
-	sudo rm -f /usr/bin/walrs
-	sudo rm -rf /etc/walrs/
-	sudo rm -rf ~/.config/walrs
-
+	sudo rm -rf /usr/bin/walrs /etc/walrs/ ~/.config/walrs/ /usr/share/man/man1/walrs.1
 clean:
 	cargo clean
 

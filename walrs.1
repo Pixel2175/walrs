@@ -1,0 +1,81 @@
+.TH WALRS 1 "June 2025" "Version 1.1.1" "User Commands"
+.SH NAME
+walrs \- Fast Rust-based wallpaper and colorscheme generator
+.SH SYNOPSIS
+.B walrs
+[\-i <image|directory>] [\-k <backend>] [\-b <value>] [\-s <value>]
+[\-r | \-R] [\-t <theme|themes>] [\-g <theme_name>] [\-q]
+.SH DESCRIPTION
+.B walrs
+is a command-line utility that generates a color scheme from the dominant colors in an image. This palette can then be applied system-wide and on the fly in various programs.
+.SH OPTIONS
+.TP
+.B \-i <image|directory>
+Generate colorscheme from specified image or a random image in the directory.
+.TP
+.B \-k <backend>
+Select color extraction backend. Options: kmeans, color_thief, palette_extract, all (default).
+.TP
+.B \-b <value>
+Adjust brightness. Range: -128 to 127.
+.TP
+.B \-s <value>
+Adjust saturation. Range: -128 to 127.
+.TP
+.B \-r
+Reload colors without changing wallpaper.
+.TP
+.B \-R
+Reload colors and reset wallpaper.
+.TP
+.B \-t <theme|themes>
+Apply specified theme or list available themes.
+.TP
+.B \-g <theme_name>
+Save current colors as a new theme with the given name.
+.TP
+.B \-q
+Quiet mode. Suppress output, useful for scripts.
+.SH EXAMPLES
+Generate colorscheme from an image:
+.B
+walrs \-i ~/Pictures/sunset.jpg
+.PP
+Generate colorscheme using kmeans backend:
+.B
+walrs \-i photo.jpg \-k kmeans
+.PP
+Adjust brightness and saturation:
+.B
+walrs \-i image.jpg \-b 20 \-s 40
+.PP
+Apply existing theme:
+.B
+walrs \-t vscode
+.PP
+Save current colors as a new theme:
+.B
+walrs \-g my_sunset_theme
+.SH FILES
+.TP
+~/.config/walrs/
+Configuration directory.
+.TP
+~/.config/walrs/templates/
+Templates directory.
+.TP
+~/.config/wal/colorschemes/
+Themes directory.
+.TP
+~/.cache/wal/colors
+Generated colors file.
+.TP
+~/.cache/wal/colors.json
+Generated colors in JSON format.
+.TP
+~/.cache/wal/wal
+Current wallpaper path.
+.SH AUTHOR
+Developed by Pixel.
+.SH LICENSE
+GNU General Public License v3.0
