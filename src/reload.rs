@@ -1,76 +1,9 @@
-use std::fs::OpenOptions;
+use std::fs::{create_dir_all, OpenOptions};
 use std::fs::{read_dir, read_to_string};
 use std::io::Write;
-use std::process::{Command, Stdio};
 
+use crate::utils::{get_cache, get_home, info, run, warning};
 use crate::wallpaper;
-
-use crate::utils::{get_cache, info};
-
-fn run(command: &str) -> bool {
-    Command::new("sh")
-        .arg("-c")
-        .arg(command)
-        .stdout(Stdio::null())
-        .stderr(Stdio::null())
-        .status()
-        .map(|s| s.success())
-        .unwrap_or(false)
-}
-
-fn tty(cache: &str) {
-    let path = format!("{}/wal/colors-tty.sh", cache);
-    if Command::new("tty")
-        .arg("-s")
-        .status()
-        .map(|s| s.success())
-        .unwrap_or(false)
-    {
-        run(&format!("chmod +x {}", path));
-        run(&path);
-    }
-}
-
-fn xrdb(cache: &str, send: bool) {
-    if run("which xrdb") {
-        run(&format!(
-            "xrdb -merge -quiet {}/wal/colors.Xresources",
-            cache
-        ));
-        info("Xrdb", "xrdb colorscheme set", send);
-    }
-}
-
-fn i3(send: bool) {
-    if run("pgrep -x i3") {
-        run("i3-msg reload");
-        info("i3", "i3 colorscheme set", send);
-    }
-}
-
-fn bspwm(send: bool) {
-    if run("pgrep -x bspwm") {
-        run("bspc wm -r");
-        info("Bspwm", "bspwm colorscheme set", send);
-    }
-}
-
-fn kitty(cache: &str, send: bool) {
-    if run("which kitty") && run("pgrep kitty") {
-        run(&format!(
-            "kitty @ set-colors --all {}/wal/colors-kitty.conf",
-            cache
-        ));
-        info("Kitty", "kitty colorscheme set", send);
-    }
-}
-
-fn polybar(send: bool) {
-    if run("which polybar") && run("pgrep polybar") {
-        run("pkill -USR1 polybar");
-        info("Polybar", "polybar colorscheme set", send);
-    }
-}
 
 fn colors(colors: Vec<String>, send: bool) {
     for i in read_dir("/dev/pts/").expect("Can't load terminals") {
@@ -113,9 +46,6 @@ pub fn reload(send: bool, set_wal: bool) {
         .map(|line| line.to_string())
         .collect();
 
-    // Spawn threads
-    let cache = get_cache(send).to_string_lossy().to_string();
-
     if set_wal {
         let wallpaper = read_to_string(format!("{}/wal/wal", cache))
             .expect("run 'cp /etc/walrs/templates/wal ~/.config/walrs/templates/' and restart app")
@@ -127,11 +57,46 @@ pub fn reload(send: bool, set_wal: bool) {
         wallpaper::change_wallpaper(wallpaper.as_str(), send);
     }
     colors(lines, send);
-    xrdb(&cache, send);
-    kitty(&cache, send);
-    i3(send);
-    bspwm(send);
-    polybar(send);
-    tty(&cache);
+
+    let scripts_dir = get_home(send).join(".config").join("walrs").join("scripts");
+
+    if !scripts_dir.exists() {
+        match create_dir_all(&scripts_dir) {
+            Ok(_) => {
+                run(&format!(
+                    "cp /etc/walrs/scripts/* {}",
+                    scripts_dir.to_string_lossy().to_string()
+                ));
+            }
+            Err(_) => return,
+        }
+    }
+
+    match read_dir(scripts_dir) {
+        Ok(v) => {
+            for scr in v {
+                let script = scr.unwrap().path();
+                if !script.is_file() {
+                    continue;
+                };
+                if !run(&format!(
+                    "bash {}",
+                    &script.canonicalize().unwrap().to_string_lossy()
+                )) {
+                    warning(
+                        "Script",
+                        &format!(
+                            "can't run {}",
+                            script.file_name().unwrap().to_string_lossy()
+                        ),
+                        send,
+                    );
+                }
+            }
+            info("Scripts", "scripts runs successfully", send);
+        }
+        _ => return,
+    }
+
     info("Colors", "colorscheme applied successfully", send);
 }

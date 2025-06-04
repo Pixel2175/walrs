@@ -31,7 +31,6 @@ pub fn print_colors(send: bool) {
 pub fn warning(title: &str, message: &str, send: bool) {
     if send {
         println!("[\x1b[33mW\x1b[0m] \x1b[31m{title}:\x1b[0m {message}.");
-        exit(1)
     }
 }
 

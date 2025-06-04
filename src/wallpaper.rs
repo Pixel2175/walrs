@@ -2,7 +2,7 @@ use crate::utils::run;
 use crate::utils::{info, warning};
 use std::env;
 use std::path::Path;
-use std::process::{Command, Stdio};
+use std::process::{exit, Command, Stdio};
 
 fn run_with_output(command: &str) -> Option<String> {
     let output = Command::new("sh")
@@ -112,6 +112,7 @@ fn set_wm_wallpaper(img: &str, send: bool) {
         info("Wallpaper", "set solid background with xsetroot", send);
     } else {
         warning("Wallpaper", "can't find any app to set wallpaper", send);
+        exit(1)
     }
 }
 
@@ -202,6 +203,7 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
                 "no suitable wallpaper tool found for Sway",
                 send,
             );
+            exit(1)
         }
     } else if d.contains("awesome") {
         spawn(&format!(
@@ -255,6 +257,7 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
                 "no suitable Wayland wallpaper tool found",
                 send,
             );
+            exit(1);
         }
     } else if d.contains("wayfire") {
         // Wayfire compositor
@@ -310,7 +313,7 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
 pub fn change_wallpaper(img: &str, send: bool) {
     if !Path::new(img).is_file() {
         warning("Wallpaper", "invalid image path", send);
-        return;
+        exit(1)
     }
 
     match get_desktop_env() {

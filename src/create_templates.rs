@@ -1,5 +1,8 @@
 use crate::utils::{get_cache, get_config, warning};
-use std::fs::{self, create_dir_all, read_to_string, write};
+use std::{
+    fs::{self, create_dir_all, read_to_string, write},
+    process::exit,
+};
 
 fn change(template: &str, colors: (u8, u8, u8), alpha: u8) -> String {
     let (r, g, b) = colors;
@@ -126,6 +129,7 @@ pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str, send: b
     let cache_path = format!("{}/wal/", get_cache(send).to_string_lossy().to_string());
     create_dir_all(&cache_path).unwrap_or_else(|_| {
         warning("Create", "can't create the cache folder", send);
+        exit(1)
     });
 
     // Check if user templates directory exists and has templates
@@ -149,6 +153,7 @@ pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str, send: b
     if !has_user_templates {
         create_dir_all(&user_template_path).unwrap_or_else(|_| {
             warning("Create", "can't create user template path", send);
+            exit(1)
         });
 
         if let Ok(entries) = fs::read_dir(system_template_path) {

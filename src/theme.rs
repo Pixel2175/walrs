@@ -4,6 +4,7 @@ use crate::{
     utils::{get_config, run, warning},
 };
 use std::fs::{create_dir_all, read_dir, read_to_string};
+use std::process::exit;
 
 pub fn collect_themes(subdir: &str, send: bool) -> Vec<String> {
     let base = get_config(send);
@@ -23,9 +24,12 @@ pub fn collect_themes(subdir: &str, send: bool) -> Vec<String> {
 }
 
 pub fn set_theme(theme_name: String, send: bool) {
-    let (dark, light) = (collect_themes("dark", send), collect_themes("light", send));
-    let mut theme: Vec<String> = dark.into_iter().chain(light).collect();
-    if theme.is_empty() {
+    let mut theme: Vec<String> = ["dark", "light"]
+        .iter()
+        .flat_map(|variant| collect_themes(variant, send))
+        .collect();
+
+    if !theme.is_empty() {
         let dis = get_config(send).join("wal").join("colorschemes");
         create_dir_all(&dis).unwrap();
         run(&format!(
@@ -64,5 +68,6 @@ pub fn set_theme(theme_name: String, send: bool) {
         reload(send, false);
     } else {
         warning("Theme", "Can't find theme", send);
+        exit(1)
     }
 }

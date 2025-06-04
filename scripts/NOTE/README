@@ -1,0 +1,6 @@
+walrs will read the directory and run all the scripts with bash
+so if you have any scripts want to run it after walrs done it job please but it here 
+if you want to run python scripts just make new shell script that runs python :)
+take it easy
+
+bash myscripts.sh
