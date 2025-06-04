@@ -12,7 +12,7 @@ use reload::reload;
 use std::fs::{copy, create_dir_all};
 use std::path::Path;
 use std::process::exit;
-use theme::{collect_themes, set_theme};
+use theme::{print_themes, set_theme, theme_exists};
 use utils::*;
 
 #[derive(FromArgs)]
@@ -92,176 +92,89 @@ struct Arg {
     version: bool,
 }
 
-fn image_path(image: Option<String>, send: bool) -> String {
-    match image {
-        Some(ref v) if Path::new(v).exists() => match get_absolute_path(v) {
-            Some(p) => {
-                if Path::new(&p).is_file() {
-                    p
-                } else {
-                    std::str::from_utf8(
-                        &std::process::Command::new("sh")
-                            .arg("-c")
-                            .arg(format!("find \"{}\" -type f | sort -R | head -n1", p))
-                            .output()
-                            .unwrap()
-                            .stdout,
-                    )
-                    .unwrap()
-                    .trim()
-                    .to_string()
-                }
-            }
-            None => {
-                warning("Wallpaper", "Can't find wallpaper absolute path!", send);
-                exit(1);
-            }
-        },
-        Some(_) => {
-            warning("Image", "Image does not exist", send);
-            exit(1);
-        }
-        None => {
-            warning("Image", "Can't find Image", send);
-            exit(1);
-        }
-    }
-}
-
-fn print_themes(send: bool) {
-    let (dark, light) = (collect_themes("dark", send), collect_themes("light", send));
-
-    println!("[\x1b[33mDark\x1b[0m]");
-    for theme in dark {
-        println!("    -{theme}")
-    }
-
-    println!("[\x1b[33mLight\x1b[0m]");
-    for theme in light {
-        println!("    -{theme}")
-    }
-}
-
 fn main() {
+    // get and load args from user
     let arg: Arg = argh::from_env();
+    // save the quit status
+    let send = !arg.quit;
+    // save the backend
     let backend = match arg.backend {
-        Some(v) => {
-            if v == "backends" {
-                println!(
-                    "┌──────────────────────┬───────────────────────┐  
-│ Method               │ Description           │  
-├──────────────────────┼───────────────────────┤  
-│ kmeans               │ best colors, slow     │  
-│ color_thief          │ balanced              │  
-│ palette_extract      │ fast, weak colors     │  
-│ all                  │ use all methods       │  
-└──────────────────────┴───────────────────────┘"
-                );
-                exit(0)
-            } else {
-                v
-            }
-        }
+        Some(v) => v,
         None => "all".to_string(),
     };
+    // print the version
     if arg.version {
-        info(
-            "Version",
-            &format!("walrs {}", env!("CARGO_PKG_VERSION")),
-            !arg.quit,
-        );
+        info("Version", env!("CARGO_PKG_VERSION"), send);
         exit(0);
     }
 
+    // reload colors without setting wallpaper
     if arg.reload_no {
-        reload(!arg.quit, true);
+        reload(send, true);
         exit(0);
     }
 
+    // reload colors with setting wallpaper
     if arg.reload {
-        reload(!arg.quit, false);
+        reload(send, false);
         exit(0);
     }
 
+    // if user didn't type any thing
     if arg.image.is_none() && arg.theme.is_none() && arg.generate.is_none() {
-        println!("Usage: walrs [-i <image>] [-k <backend>] [-r] [-R] [-t <theme>] [-g <generate>] [-s <saturation>] [-b <brightness>] [-q] [-v]
-
-walrs - Generate colorscheme from image
-
-Options:
-  -i, --image       path/to/your/wal.png | path/to/your/wallpapers/
-  -k, --backend     change the colors backend (walrs -k backends)
-  -r, --reload      reload without changing the wallpaper
-  -R, --reload-no   reload with changing the wallpaper
-  -t, --theme       use external theme file
-  -g, --generate    generate theme in themes folder (.cache/wal/colorschemes)
-  -s, --saturation  specify the saturation value -128 => 127
-  -b, --brightness  specify the brightness value -128 => 127
-  -q, --quit        set quit mode (no output)
-  -v, --version     version
-  --help, help      display usage information
-");
+        warning("Args", "run: walrs --help", send);
         exit(1);
     }
 
+    // show or set theme from user
     if let Some(v) = arg.theme {
         if v == "themes" {
-            print_themes(!arg.quit);
+            print_themes(send);
         } else {
-            if get_config(!arg.quit)
-                .join("wal")
-                .join("colorscheme")
-                .exists()
-                || get_config(!arg.quit)
-                    .join("walrs")
-                    .join("colorscheme")
-                    .exists()
-            {
-                set_theme(v, !arg.quit);
+            let config = get_config(send);
+            if theme_exists(&config) {
+                set_theme(v, send);
             } else {
-                create_dir_all(&format!(
-                    "{}/walrs/colorschemes",
-                    get_config(!arg.quit).to_string_lossy().to_string()
-                ))
-                .unwrap();
+                let colorschemes_dir = get_config(send).join("walrs").join("colorschemes");
+                create_dir_all(&colorschemes_dir).unwrap();
+                let etc = Path::new("/etc/");
+                if !theme_exists(etc) {
+                    warning("theme", "Can't find configuration directory", send);
+                    exit(1)
+                }
                 run(&format!(
-                    "cp -r /etc/walrs/colorschemes/* {}/walrs/colorschemes",
-                    get_config(!arg.quit).to_string_lossy().to_string()
+                    "cp -r /etc/walrs/colorschemes/* {}",
+                    colorschemes_dir.display()
                 ));
-                set_theme(v, !arg.quit);
+                set_theme(v, send);
             };
         }
         exit(0);
     }
 
+    // generate a new theme from current colors
     if let Some(v) = arg.generate {
-        let dis = get_config(!arg.quit).join("walrs").join("colorschemes");
-        create_dir_all(&dis.join("dark")).unwrap();
+        let dis = get_config(send).join("walrs").join("colorschemes");
+        create_dir_all(dis.join("dark")).unwrap();
         copy(
-            get_config(!arg.quit).join("wal").join("colors"),
+            get_cache(send).join("wal").join("colors"),
             dis.join("dark").join(v),
         )
         .unwrap();
-        info("Generate", "generate colors", !arg.quit);
+        info("Generate", "generate colors", send);
         exit(0);
     };
 
+    // analyze the image and generate the palette
     if arg.image.is_some() {
-        let image_path = image_path(arg.image, !arg.quit);
+        let image_path = image_path(arg.image, send);
+        let palette = get_colors(&image_path, &backend, send, arg.brightness, arg.saturation);
+        info("Generate", "generate colors", send);
 
-        let palette = get_colors(
-            &image_path,
-            &backend,
-            !arg.quit,
-            arg.brightness,
-            arg.saturation,
-        );
-        info("Generate", "generate colors", !arg.quit);
+        create_template(palette, &image_path, send);
+        info("Template", "create templates", send);
 
-        create_template(palette, &image_path, !arg.quit);
-        info("Template", "create templates", !arg.quit);
-
-        reload(!arg.quit, true);
-        print_colors(!arg.quit);
+        reload(send, true);
+        print_colors(send);
     };
 }

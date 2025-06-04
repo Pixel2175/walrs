@@ -8,19 +8,19 @@ fn change(template: &str, colors: (u8, u8, u8), alpha: u8) -> String {
     let (r, g, b) = colors;
 
     if template.contains(".strip") {
-        format!("{:02x}{:02x}{:02x}", r, g, b)
+        format!("{r:02x}{g:02x}{b:02x}")
     } else if template.contains(".xrgba") {
-        format!("{:02x}/{:02x}/{:02x}/{:02x}", r, g, b, alpha)
+        format!("{r:02x}/{g:02x}/{b:02x}/{alpha:02x}")
     } else if template.contains(".rgba") {
-        format!("{},{},{},{}", r, g, b, alpha)
+        format!("{r},{g},{b},{alpha}")
     } else if template.contains(".rgb") {
-        format!("{},{},{}", r, g, b)
+        format!("{r},{g},{b}")
     } else if template.contains(".alpha_per") {
         format!("{:.1}", (alpha / 255) * 100)
     } else if template.contains(".alpha") {
-        format!("#{:02x}{:02x}{:02x}{:02x}", r, g, b, alpha)
+        format!("#{r:02x}{g:02x}{b:02x}{alpha:02x}")
     } else {
-        format!("#{:02x}{:02x}{:02x}", r, g, b)
+        format!("#{r:02x}{g:02x}{b:02x}")
     }
 }
 
@@ -33,7 +33,7 @@ fn fill_template(
 ) {
     let output_path = format!(
         "{}/wal/{}",
-        get_cache(send).to_string_lossy().to_string(),
+        get_cache(send).to_string_lossy(),
         template_name
     );
     let alpha = colors.1;
@@ -92,13 +92,13 @@ fn fill_template(
         let color = colors.0[i];
 
         let patterns = [
-            format!("{{color{}.strip}}", i),
-            format!("{{color{}.xrgba}}", i),
-            format!("{{color{}.rgba}}", i),
-            format!("{{color{}.rgb}}", i),
-            format!("{{color{}.alpha_dec}}", i),
-            format!("{{color{}.alpha}}", i),
-            format!("{{color{}}}", i),
+            format!("{{color{i}.strip}}"),
+            format!("{{color{i}.xrgba}}"),
+            format!("{{color{i}.rgba}}"),
+            format!("{{color{i}.rgb}}"),
+            format!("{{color{i}.alpha_dec}}"),
+            format!("{{color{i}.alpha}}"),
+            format!("{{color{i}}}"),
         ];
 
         for pattern in patterns {
@@ -111,7 +111,7 @@ fn fill_template(
         let checksum = colors
             .0
             .iter()
-            .map(|(r, g, b)| format!("{:02X}{:02X}{:02X}", r, g, b))
+            .map(|(r, g, b)| format!("{r:02X}{g:02X}{b:02X}"))
             .collect::<Vec<String>>()
             .join("");
         result = result.replace("{checksum}", &checksum);
@@ -124,9 +124,9 @@ pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str, send: b
     let system_template_path = "/etc/walrs/templates/";
     let user_template_path = format!(
         "{}/walrs/templates/",
-        get_config(send).to_string_lossy().to_string()
+        get_config(send).to_string_lossy()
     );
-    let cache_path = format!("{}/wal/", get_cache(send).to_string_lossy().to_string());
+    let cache_path = format!("{}/wal/", get_cache(send).to_string_lossy());
     create_dir_all(&cache_path).unwrap_or_else(|_| {
         warning("Create", "can't create the cache folder", send);
         exit(1)
@@ -167,7 +167,7 @@ pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str, send: b
                     };
 
                     // Copy template to user directory
-                    let user_file_path = format!("{}{}", user_template_path, name);
+                    let user_file_path = format!("{user_template_path}{name}");
                     let _ = write(&user_file_path, &content);
 
                     fill_template(&name, &content, &colors, wallpaper, send);

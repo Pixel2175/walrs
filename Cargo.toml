@@ -1,6 +1,6 @@
 [package]
 name = "walrs"
-version = "1.1.1"
+version = "1.1.2"
 edition = "2024"
 description = "walrs - Generate colorscheme from image."
 license = "GPL-3.0" 

@@ -69,8 +69,8 @@ fn get_desktop_env() -> Option<String> {
 
     // Check for other environment variables
     for key in keys.iter() {
-        if let Ok(val) = env::var(key) {
-            if !val.is_empty() {
+        if let Ok(val) = env::var(key)
+            && !val.is_empty() {
                 if *key == "DESKTOP_STARTUP_ID" && val.contains("awesome") {
                     return Some("AWESOME".to_string());
                 }
@@ -83,24 +83,23 @@ fn get_desktop_env() -> Option<String> {
                     return Some(val);
                 }
             }
-        }
     }
     None
 }
 
 fn set_wm_wallpaper(img: &str, send: bool) {
     if run("which xwallpaper") {
-        spawn(&format!("xwallpaper --zoom '{}'", img));
+        spawn(&format!("xwallpaper --zoom '{img}'"));
         info("Wallpaper", "wallpaper set with xwallpaper", send);
     } else if run("which feh") {
         // I thought there was a problem, but there isn't.
-        spawn(&format!("feh --no-fehbg --bg-fill '{}'", img));
+        spawn(&format!("feh --no-fehbg --bg-fill '{img}'"));
         info("Wallpaper", "wallpaper set with feh", send);
     } else if run("which hsetroot") {
-        spawn(&format!("hsetroot -fill '{}'", img));
+        spawn(&format!("hsetroot -fill '{img}'"));
         info("Wallpaper", "wallpaper set with hsetroot", send);
     } else if run("which nitrogen") {
-        spawn(&format!("nitrogen --set-zoom-fill --save '{}'", img));
+        spawn(&format!("nitrogen --set-zoom-fill --save '{img}'"));
         info("Wallpaper", "wallpaper set with nitrogen", send);
     } else if run("which xsetroot") {
         warning(
@@ -147,8 +146,7 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
         } else {
             // Fallback to default monitor
             spawn(&format!(
-                "xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/workspace0/last-image --set '{}'",
-                abs_path
+                "xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/workspace0/last-image --set '{abs_path}'"
             ));
         }
         info("Wallpaper", "wallpaper set with XFCE settings", send);
@@ -157,31 +155,26 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
         if run("gsettings get org.gnome.desktop.background picture-uri-dark") {
             // GNOME 42+ with light/dark mode support
             spawn(&format!(
-                "gsettings set org.gnome.desktop.background picture-uri 'file://{}'",
-                abs_path
+                "gsettings set org.gnome.desktop.background picture-uri 'file://{abs_path}'"
             ));
             spawn(&format!(
-                "gsettings set org.gnome.desktop.background picture-uri-dark 'file://{}'",
-                abs_path
+                "gsettings set org.gnome.desktop.background picture-uri-dark 'file://{abs_path}'"
             ));
         } else {
             // Older GNOME versions
             spawn(&format!(
-                "gsettings set org.gnome.desktop.background picture-uri 'file://{}'",
-                abs_path
+                "gsettings set org.gnome.desktop.background picture-uri 'file://{abs_path}'"
             ));
         }
         info("Wallpaper", "wallpaper set with GNOME settings", send);
     } else if d.contains("mate") {
         spawn(&format!(
-            "gsettings set org.mate.background picture-filename '{}'",
-            abs_path
+            "gsettings set org.mate.background picture-filename '{abs_path}'"
         ));
         info("Wallpaper", "wallpaper set with MATE settings", send);
     } else if d.contains("cinnamon") {
         spawn(&format!(
-            "gsettings set org.cinnamon.desktop.background picture-uri 'file://{}'",
-            abs_path
+            "gsettings set org.cinnamon.desktop.background picture-uri 'file://{abs_path}'"
         ));
         info("Wallpaper", "wallpaper set with Cinnamon settings", send);
     } else if d == "sway" {
@@ -190,12 +183,11 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
                 spawn("swww init");
             }
             spawn(&format!(
-                "swww img '{}' --transition-type fade --transition-fps 60",
-                abs_path
+                "swww img '{abs_path}' --transition-type fade --transition-fps 60"
             ));
             info("Wallpaper", "wallpaper set with swww for Sway", send);
         } else if run("which swaybg") {
-            spawn(&format!("pkill swaybg; swaybg -i '{}' -m fill &", abs_path));
+            spawn(&format!("pkill swaybg; swaybg -i '{abs_path}' -m fill &"));
             info("Wallpaper", "wallpaper set with swaybg for Sway", send);
         } else {
             warning(
@@ -207,24 +199,21 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
         }
     } else if d.contains("awesome") {
         spawn(&format!(
-            "awesome-client \"require('gears').wallpaper.maximized('{}')\"",
-            abs_path
+            "awesome-client \"require('gears').wallpaper.maximized('{abs_path}')\""
         ));
         info("Wallpaper", "wallpaper set with Awesome WM", send);
     } else if d.contains("kde") || d.contains("plasma") {
         let script = format!(
-            r#"var allDesktops = desktops();for (i=0;i<allDesktops.length;i++){{d = allDesktops[i];d.wallpaperPlugin = "org.kde.image";d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");d.writeConfig("Image", "{}");}}"#,
-            abs_path
+            r#"var allDesktops = desktops();for (i=0;i<allDesktops.length;i++){{d = allDesktops[i];d.wallpaperPlugin = "org.kde.image";d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");d.writeConfig("Image", "{abs_path}");}}"#
         );
         spawn(&format!(
-            "qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript \"{}\"",
-            script
+            "qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript \"{script}\""
         ));
         info("Wallpaper", "wallpaper set with KDE Plasma settings", send);
     } else if d.contains("i3") {
         // i3 support
         if run("which feh") {
-            spawn(&format!("feh --no-fehbg --bg-fill '{}'", abs_path));
+            spawn(&format!("feh --no-fehbg --bg-fill '{abs_path}'"));
             info("Wallpaper", "wallpaper set with feh for i3", send);
         } else {
             set_wm_wallpaper(&abs_path, send);
@@ -232,7 +221,7 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
     } else if d.contains("bspwm") {
         // bspwm support
         if run("which feh") {
-            spawn(&format!("feh --no-fehbg --bg-fill '{}'", abs_path));
+            spawn(&format!("feh --no-fehbg --bg-fill '{abs_path}'"));
             info("Wallpaper", "wallpaper set with feh for bspwm", send);
         } else {
             set_wm_wallpaper(&abs_path, send);
@@ -243,13 +232,13 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
     } else if d.contains("wayland") {
         // Generic Wayland - try multiple approaches
         if run("which swaybg") {
-            spawn(&format!("pkill swaybg; swaybg -i '{}' -m fill &", abs_path));
+            spawn(&format!("pkill swaybg; swaybg -i '{abs_path}' -m fill &"));
             info("Wallpaper", "wallpaper set with swaybg", send);
         } else if run("which wbg") {
-            spawn(&format!("wbg '{}'", abs_path));
+            spawn(&format!("wbg '{abs_path}'"));
             info("Wallpaper", "wallpaper set with wbg", send);
         } else if run("which swww") {
-            spawn(&format!("swww img '{}'", abs_path));
+            spawn(&format!("swww img '{abs_path}'"));
             info("Wallpaper", "wallpaper set with swww", send);
         } else {
             warning(
@@ -262,31 +251,29 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
     } else if d.contains("wayfire") {
         // Wayfire compositor
         if run("which wbg") {
-            spawn(&format!("wbg '{}'", abs_path));
+            spawn(&format!("wbg '{abs_path}'"));
             info("Wallpaper", "wallpaper set with wbg for Wayfire", send);
         } else {
-            spawn(&format!("pkill swaybg; swaybg -i '{}' -m fill &", abs_path));
+            spawn(&format!("pkill swaybg; swaybg -i '{abs_path}' -m fill &"));
             info("Wallpaper", "wallpaper set with swaybg for Wayfire", send);
         }
     } else if d.contains("deepin") {
         spawn(&format!(
-            "gsettings set com.deepin.wrap.gnome.desktop.background picture-uri 'file://{}'",
-            abs_path
+            "gsettings set com.deepin.wrap.gnome.desktop.background picture-uri 'file://{abs_path}'"
         ));
         info("Wallpaper", "wallpaper set with Deepin settings", send);
     } else if d.contains("lxqt") {
         // LXQt uses pcmanfm-qt for desktop management
-        spawn(&format!("pcmanfm-qt --set-wallpaper='{}'", abs_path));
+        spawn(&format!("pcmanfm-qt --set-wallpaper='{abs_path}'"));
         info("Wallpaper", "wallpaper set with LXQt settings", send);
     } else if d.contains("lxde") {
         // LXDE uses pcmanfm for desktop management
-        spawn(&format!("pcmanfm --set-wallpaper='{}'", abs_path));
+        spawn(&format!("pcmanfm --set-wallpaper='{abs_path}'"));
         info("Wallpaper", "wallpaper set with LXDE settings", send);
     } else if d.contains("budgie") {
         // Budgie uses GNOME settings
         spawn(&format!(
-            "gsettings set org.gnome.desktop.background picture-uri 'file://{}'",
-            abs_path
+            "gsettings set org.gnome.desktop.background picture-uri 'file://{abs_path}'"
         ));
         info(
             "Wallpaper",
@@ -297,8 +284,7 @@ fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
         // Enlightenment WM - try using enlightenment_remote
         if run("which enlightenment_remote") {
             spawn(&format!(
-                "enlightenment_remote -desktop-bg-add 0 0 0 0 '{}'",
-                abs_path
+                "enlightenment_remote -desktop-bg-add 0 0 0 0 '{abs_path}'"
             ));
             info("Wallpaper", "wallpaper set with Enlightenment", send);
         } else {

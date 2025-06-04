@@ -3,6 +3,42 @@ use std::path::{Path, PathBuf};
 use std::process::{exit, Stdio};
 use std::{fs, process::Command};
 
+pub fn image_path(image: Option<String>, send: bool) -> String {
+    match image {
+        Some(ref v) if Path::new(v).exists() => match get_absolute_path(v) {
+            Some(p) => {
+                if Path::new(&p).is_file() {
+                    p
+                } else {
+                    std::str::from_utf8(
+                        &std::process::Command::new("sh")
+                            .arg("-c")
+                            .arg(format!("find \"{p}\" -type f | sort -R | head -n1"))
+                            .output()
+                            .unwrap()
+                            .stdout,
+                    )
+                    .unwrap()
+                    .trim()
+                    .to_string()
+                }
+            }
+            None => {
+                warning("Wallpaper", "Can't find wallpaper absolute path!", send);
+                exit(1);
+            }
+        },
+        Some(_) => {
+            warning("Image", "Image does not exist", send);
+            exit(1);
+        }
+        None => {
+            warning("Image", "Can't find Image", send);
+            exit(1);
+        }
+    }
+}
+
 pub fn run(command: &str) -> bool {
     Command::new("sh")
         .arg("-c")
@@ -15,16 +51,14 @@ pub fn run(command: &str) -> bool {
 }
 
 pub fn print_colors(send: bool) {
-    if send {
-        if let Ok(output) = Command::new("bash")
+    if send
+        && let Ok(output) = Command::new("bash")
             .arg("-c")
             .arg(r#"for i in {30..37} 90; do echo -en "\033[0;${i}m●\033[0m "; done; echo"#)
             .output()
-        {
-            if output.status.success() {
-                print!("{}", String::from_utf8_lossy(&output.stdout));
-            }
-        }
+        && output.status.success()
+    {
+        print!("{}", String::from_utf8_lossy(&output.stdout));
     }
 }
 

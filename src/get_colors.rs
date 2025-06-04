@@ -55,7 +55,7 @@ fn kmeans_colors(len: u8, native_rgba: RgbaImage) -> Vec<(u8, u8, u8)> {
         .map(|&lab| Srgb::from_color(lab))
         .collect();
 
-    return palette_kmeans
+    palette_kmeans
         .iter()
         .map(|color| {
             let (r, g, b) = (
@@ -65,7 +65,7 @@ fn kmeans_colors(len: u8, native_rgba: RgbaImage) -> Vec<(u8, u8, u8)> {
             );
             (r, g, b)
         })
-        .collect::<Vec<(u8, u8, u8)>>();
+        .collect::<Vec<(u8, u8, u8)>>()
 }
 
 fn color_thief_colors(len: u8, native_rgba: RgbaImage) -> Vec<(u8, u8, u8)> {
@@ -77,10 +77,10 @@ fn color_thief_colors(len: u8, native_rgba: RgbaImage) -> Vec<(u8, u8, u8)> {
         palette_extract::PixelFilter::White,
     );
 
-    return palette_extract
+    palette_extract
         .iter()
         .map(|color| (color.r, color.g, color.b))
-        .collect::<Vec<(u8, u8, u8)>>();
+        .collect::<Vec<(u8, u8, u8)>>()
 }
 
 fn palette_extract_colors(len: u8, native_rgba: RgbaImage, send: bool) -> Vec<(u8, u8, u8)> {
@@ -90,14 +90,27 @@ fn palette_extract_colors(len: u8, native_rgba: RgbaImage, send: bool) -> Vec<(u
             exit(1)
         });
 
-    return palette_thief
+    palette_thief
         .iter()
         .map(|color| (color.r, color.g, color.b))
-        .collect::<Vec<(u8, u8, u8)>>();
+        .collect::<Vec<(u8, u8, u8)>>()
 }
 
 fn extract_colors(len: u8, backend: &str, native_rgba: RgbaImage, send: bool) -> Vec<(u8, u8, u8)> {
     match backend {
+        "backends" => {
+            println!(
+                "┌──────────────────────┬───────────────────────┐  
+│ Method               │ Description           │  
+├──────────────────────┼───────────────────────┤  
+│ kmeans               │ best colors, slow     │  
+│ color_thief          │ balanced              │  
+│ palette_extract      │ fast, weak colors     │  
+│ all                  │ use all methods       │  
+└──────────────────────┴───────────────────────┘"
+            );
+            exit(0)
+        }
         "kmeans" => kmeans_colors(10, native_rgba),
         "color_thief" => color_thief_colors(10, native_rgba),
         "palette_extract" => palette_extract_colors(10, native_rgba, send),
@@ -108,12 +121,12 @@ fn extract_colors(len: u8, backend: &str, native_rgba: RgbaImage, send: bool) ->
                 .for_each(|c| {
                     collected.push(*c);
                 });
-            color_thief_colors(len / 3 as u8, native_rgba.clone())
+            color_thief_colors(len / 3_u8, native_rgba.clone())
                 .iter()
                 .for_each(|c| {
                     collected.push(*c);
                 });
-            palette_extract_colors(len / 3 as u8, native_rgba, send)
+            palette_extract_colors(len / 3_u8, native_rgba, send)
                 .iter()
                 .for_each(|c| {
                     collected.push(*c);
@@ -150,7 +163,7 @@ pub fn get_colors(
 
     let image = core_image.resize(
         400,
-        (core_image.height() as f32 * (400 as f32 / core_image.width() as f32)) as u32,
+        (core_image.height() as f32 * (400_f32 / core_image.width() as f32)) as u32,
         image::imageops::FilterType::Lanczos3,
     );
 

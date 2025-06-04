@@ -4,7 +4,26 @@ use crate::{
     utils::{get_config, run, warning},
 };
 use std::fs::{create_dir_all, read_dir, read_to_string};
+use std::path::Path;
 use std::process::exit;
+
+pub fn theme_exists(dir: &Path) -> bool {
+    dir.join("walrs").join("colorscheme").exists() || dir.join("wal").join("colorscheme").exists()
+}
+
+pub fn print_themes(send: bool) {
+    let (dark, light) = (collect_themes("dark", send), collect_themes("light", send));
+
+    println!("[\x1b[33mDark\x1b[0m]");
+    for theme in dark {
+        println!("    -{theme}")
+    }
+
+    println!("[\x1b[33mLight\x1b[0m]");
+    for theme in light {
+        println!("    -{theme}")
+    }
+}
 
 pub fn collect_themes(subdir: &str, send: bool) -> Vec<String> {
     let base = get_config(send);
@@ -23,7 +42,18 @@ pub fn collect_themes(subdir: &str, send: bool) -> Vec<String> {
     themes
 }
 
+fn hex_to_rgb(file: Vec<String>) -> Vec<(u8, u8, u8)> {
+    file.iter()
+        .map(|h| {
+            u32::from_str_radix(&h[1..], 16)
+                .map(|v| ((v >> 16) as u8, (v >> 8 & 0xFF) as u8, (v & 0xFF) as u8))
+        })
+        .collect::<Result<Vec<_>, _>>()
+        .unwrap()
+}
+
 pub fn set_theme(theme_name: String, send: bool) {
+    let base = get_config(send);
     let mut theme: Vec<String> = ["dark", "light"]
         .iter()
         .flat_map(|variant| collect_themes(variant, send))
@@ -34,35 +64,26 @@ pub fn set_theme(theme_name: String, send: bool) {
         create_dir_all(&dis).unwrap();
         run(&format!(
             "cp -r /etc/walrs/colorschemes/* {}/walrs/colorschemes",
-            get_config(send).to_string_lossy().to_string()
+            base.display()
         ));
     }
     theme.sort();
     theme.dedup();
     if theme.contains(&theme_name) {
-        let base = get_config(send);
-
         let file: Vec<String> = [
-            base.join("wal/colorschemes/dark").join(&theme_name),
-            base.join("wal/colorschemes/light").join(&theme_name),
-            base.join("walrs/colorschemes/dark").join(&theme_name),
-            base.join("walrs/colorschemes/light").join(&theme_name),
+            base.join("wal/colorschemes/dark"),
+            base.join("wal/colorschemes/light"),
+            base.join("walrs/colorschemes/dark"),
+            base.join("walrs/colorschemes/light"),
         ]
         .into_iter()
-        .find_map(|p| read_to_string(p).ok())
+        .find_map(|p| read_to_string(p.join(&theme_name)).ok())
         .unwrap()
         .lines()
         .map(|l| l.to_string())
         .collect();
 
-        let rgb_colors = file
-            .iter()
-            .map(|h| {
-                u32::from_str_radix(&h[1..], 16)
-                    .map(|v| ((v >> 16) as u8, (v >> 8 & 0xFF) as u8, (v & 0xFF) as u8))
-            })
-            .collect::<Result<Vec<_>, _>>()
-            .unwrap();
+        let rgb_colors = hex_to_rgb(file);
 
         create_template((rgb_colors, 100), "None", send);
         reload(send, false);
