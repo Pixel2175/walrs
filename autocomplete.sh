@@ -5,16 +5,9 @@
 
 set -e
 
-# Colors
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-YELLOW='\033[1;33m'
-NC='\033[0m'
-
-
 # Check if walrs exists
 if ! command -v walrs &> /dev/null; then
-    echo -e "${RED}Error: walrs not found in PATH${NC}"
+    echo -e "Error: walrs not found in PATH$"
     exit 1
 fi
 
@@ -57,7 +50,7 @@ for i in (seq -128 127)
 end
 EOF
         
-        echo -e "${GREEN}Fish completion installed to: ~/.config/fish/completions/walrs.fish${NC}"
+        echo -e "Fish completion installed to: ~/.config/fish/completions/walrs.fish"
         ;;
         
     "zsh")
@@ -94,11 +87,11 @@ EOF
         # Add to fpath in .zshrc if not already there
         if ! grep -q "fpath=(.*\.zsh/completions" ~/.zshrc 2>/dev/null; then
             echo 'fpath=(~/.zsh/completions $fpath)' >> ~/.zshrc
-            echo -e "${GREEN}Added ~/.zsh/completions to fpath in ~/.zshrc${NC}"
+            echo -e "Added ~/.zsh/completions to fpath in ~/.zshrc"
         fi
         
-        echo -e "${GREEN}Zsh completion installed to: ~/.zsh/completions/_walrs${NC}"
-        echo -e "${YELLOW}Restart zsh or run: source ~/.zshrc && compinit${NC}"
+        echo -e "Zsh completion installed to: ~/.zsh/completions/_walrs"
+        echo -e "Restart zsh or run: source ~/.zshrc && compinit"
         ;;
         
     "bash")
@@ -159,12 +152,12 @@ EOF
         
 
         echo "source ~/.local/share/bash-completion/completions/walrs" >> ~/.bashrc
-        echo -e "${GREEN}Bash completion installed to: $COMPLETION_DIR/walrs${NC}"
+        echo -e "Bash completion installed to: $COMPLETION_DIR/walrs$"
         ;;
         
     *)
-        echo -e "${RED}Unsupported shell: $CURRENT_SHELL${NC}"
-        echo -e "${YELLOW}Supported shells: fish, zsh, bash${NC}"
+        echo -e "Unsupported shell: $CURRENT_SHELL"
+        echo -e "Supported shells: fish, zsh, bash"
         exit 1
         ;;
 esac
