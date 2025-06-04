@@ -75,11 +75,13 @@ pub fn info(title: &str, message: &str, send: bool) {
 }
 
 pub fn get_home(send: bool) -> PathBuf {
-    env::home_dir().unwrap_or_else(|| {
+    Path::new(&env::var("HOME").unwrap_or_else(|_| {
         warning("Home", "can't find the home dir", send);
         exit(1)
-    })
+    }))
+    .to_path_buf()
 }
+
 pub fn get_config(send: bool) -> PathBuf {
     get_home(send).join(".config")
 }
