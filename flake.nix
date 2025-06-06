@@ -11,10 +11,10 @@
       in {
         packages.default = pkgs.rustPlatform.buildRustPackage rec {
           pname = "walrs";
-          version = "1.1.3";
+          version = "1.1.4";
           src = ./.;
           
-          cargoHash = "sha256-ItjbG/fPAW1mDJI5JXZ73L4c3UeDZzjBdADsyWhqzm8=";         
+          cargoHash = "sha256-fmiOuxCZoCPOx6OE7YB2pJBegk3y88a9ByDEW/b79Rw=";         
           nativeBuildInputs = with pkgs; [ bash ];
           
           preBuild = ''
