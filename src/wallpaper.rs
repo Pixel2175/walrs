@@ -69,8 +69,8 @@ fn get_desktop_env() -> Option<String> {
 
     // Check for other environment variables
     for key in keys.iter() {
-        if let Ok(val) = env::var(key)
-            && !val.is_empty() {
+        if let Ok(val) = env::var(key) {
+            if !val.is_empty() {
                 if *key == "DESKTOP_STARTUP_ID" && val.contains("awesome") {
                     return Some("AWESOME".to_string());
                 }
@@ -83,6 +83,7 @@ fn get_desktop_env() -> Option<String> {
                     return Some(val);
                 }
             }
+        }
     }
     None
 }
