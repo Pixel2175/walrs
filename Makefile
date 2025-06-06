@@ -7,20 +7,25 @@ build:
 
 install: build
 	sudo install -m755 target/release/walrs /usr/bin/walrs
-	sudo mkdir -p /etc/walrs/templates/ /etc/walrs/scripts/ /etc/walrs/colorschemes/
-	sudo cp -r templates/* /etc/walrs/templates/
-	sudo cp -r scripts/* /etc/walrs/scripts/
-	sudo cp -r colorschemes/* /etc/walrs/colorschemes/
 	sudo install -m644 walrs.1 /usr/share/man/man1/
+	mkdir -p ~/.cache/walrs/templates/ ~/.cache/walrs/scripts/ ~/.cache/walrs/colorschemes/
+	cp -r templates/* ~/.cache/walrs/templates/
+	cp -r scripts/* ~/.cache/walrs/scripts/
+	cp -r colorschemes/* ~/.cache/walrs/colorschemes/
 	bash ./autocomplete.sh
+uninstall:
+	sudo rm -rf /usr/bin/walrs ~/.cache/walrs ~/.config/walrs/ /usr/share/man/man1/walrs.1
 
 
 nix:
 	nix build
-	sudo cp ./result/bin/walrs /usr/bin/walrs
-	sudo mkdir -p /etc/walrs
-	sudo cp -r ./result/etc/walrs/* /etc/walrs/
-	sudo cp ./result/share/man/man1/walrs.1 /usr/share/man/man1/walrs.1clean:
+	mkdir -p ~/.cache/walrs/templates/ ~/.cache/walrs/scripts/ ~/.cache/walrs/colorschemes/
+	sudo cp ./result/bin/walrs ~/.local/bin/ 
+	cp -r templates/* ~/.cache/walrs/templates/
+	cp -r scripts/* ~/.cache/walrs/scripts/
+	cp -r colorschemes/* ~/.cache/walrs/colorschemes/
+	bash ./autocomplete.sh
+clean:
 	cargo clean
 
 
