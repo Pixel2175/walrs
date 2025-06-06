@@ -51,14 +51,16 @@ pub fn run(command: &str) -> bool {
 }
 
 pub fn print_colors(send: bool) {
-    if send
-        && let Ok(output) = Command::new("bash")
+    if send {
+        if let Ok(output) = Command::new("bash")
             .arg("-c")
             .arg(r#"for i in {30..37} 90; do echo -en "\033[0;${i}m●\033[0m "; done; echo"#)
             .output()
-        && output.status.success()
-    {
-        print!("{}", String::from_utf8_lossy(&output.stdout));
+        {
+            if output.status.success() {
+                print!("{}", String::from_utf8_lossy(&output.stdout));
+            }
+        }
     }
 }
 
