@@ -121,11 +121,8 @@ fn fill_template(
 }
 
 pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str, send: bool) {
-    let system_template_path = "/etc/walrs/templates/";
-    let user_template_path = format!(
-        "{}/walrs/templates/",
-        get_config(send).to_string_lossy()
-    );
+    let system_template_path = get_cache(send).join("walrs").join("templates");
+    let user_template_path = format!("{}/walrs/templates/", get_config(send).to_string_lossy());
     let cache_path = format!("{}/wal/", get_cache(send).to_string_lossy());
     create_dir_all(&cache_path).unwrap_or_else(|_| {
         warning("Create", "can't create the cache folder", send);
