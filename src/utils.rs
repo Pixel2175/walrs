@@ -3,6 +3,10 @@ use std::path::{Path, PathBuf};
 use std::process::{exit, Stdio};
 use std::{fs, process::Command};
 
+pub fn share_files() -> PathBuf {
+    PathBuf::from("/usr").join("share").join("walrs")
+}
+
 pub fn image_path(image: Option<String>, send: bool) -> String {
     match image {
         Some(ref v) if Path::new(v).exists() => match get_absolute_path(v) {
@@ -95,8 +99,10 @@ pub fn get_cache(send: bool) -> PathBuf {
 }
 
 pub fn get_absolute_path(path_str: &str) -> Option<String> {
-    fs::canonicalize(Path::new(path_str))
-        .ok()?
-        .to_str()
-        .map(|s| s.to_string())
+    let path = Path::new(path_str);
+    if !path.is_absolute() {
+        fs::canonicalize(path).ok()?.to_str().map(|s| s.to_string())
+    } else {
+        Some(path_str.to_string())
+    }
 }

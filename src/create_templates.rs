@@ -1,4 +1,4 @@
-use crate::utils::{get_cache, get_config, warning};
+use crate::utils::{get_cache, get_config, share_files, warning};
 use std::{
     fs::{self, create_dir_all, read_to_string, write},
     process::exit,
@@ -31,11 +31,7 @@ fn fill_template(
     wallpaper: &str,
     send: bool,
 ) {
-    let output_path = format!(
-        "{}/wal/{}",
-        get_cache(send).to_string_lossy(),
-        template_name
-    );
+    let output_path = get_cache(send).join("wal").join(template_name);
     let alpha = colors.1;
 
     let mut result = template
@@ -121,9 +117,9 @@ fn fill_template(
 }
 
 pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str, send: bool) {
-    let system_template_path = get_cache(send).join("walrs").join("templates");
-    let user_template_path = format!("{}/walrs/templates/", get_config(send).to_string_lossy());
-    let cache_path = format!("{}/wal/", get_cache(send).to_string_lossy());
+    let system_template_path = share_files().join("templates");
+    let user_template_path = get_config(send).join("walrs").join("templates");
+    let cache_path = get_cache(send).join("wal");
     create_dir_all(&cache_path).unwrap_or_else(|_| {
         warning("Create", "can't create the cache folder", send);
         exit(1)
@@ -164,7 +160,7 @@ pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str, send: b
                     };
 
                     // Copy template to user directory
-                    let user_file_path = format!("{user_template_path}{name}");
+                    let user_file_path = format!("{}{name}", user_template_path.display());
                     let _ = write(&user_file_path, &content);
 
                     fill_template(&name, &content, &colors, wallpaper, send);

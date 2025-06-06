@@ -136,14 +136,14 @@ fn main() {
         } else {
             let colorschemes_dir = config.join("walrs").join("colorschemes");
             create_dir_all(&colorschemes_dir).unwrap();
-            let walrs_cache = get_cache(send);
+            let walrs_cache = share_files();
             if !theme_exists(&walrs_cache) {
                 warning("theme", "Can't find configuration directory", send);
                 exit(1)
             }
             run(&format!(
                 "cp -r {}/* {}",
-                walrs_cache.join("walrs").join("colorschemes").display(),
+                walrs_cache.join("colorschemes").display(),
                 colorschemes_dir.display()
             ));
             set_theme(v, send);

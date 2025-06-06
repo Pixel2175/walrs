@@ -1,4 +1,4 @@
-use crate::utils::{get_cache, get_config, info, run, warning};
+use crate::utils::{get_cache, get_config, info, run, share_files, warning};
 use crate::wallpaper::change_wallpaper;
 use std::fs::{create_dir_all, OpenOptions};
 use std::fs::{read_dir, read_to_string};
@@ -57,7 +57,7 @@ pub fn get_wallpaper(cache: &Path, send: bool) -> String {
 
 pub fn reload(send: bool, set_wal: bool) {
     let cache = get_cache(send).join("wal");
-    let walrs_cache = get_cache(send).join("walrs");
+    let walrs_cache = share_files();
     let file_path = cache.join("colors");
 
     // read the colors file and load all the colors

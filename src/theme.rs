@@ -1,7 +1,7 @@
 use crate::{
     create_templates::create_template,
     reload::reload,
-    utils::{get_cache, get_config, run, warning},
+    utils::{get_config, run, share_files, warning},
 };
 use std::fs::{create_dir_all, read_dir, read_to_string};
 use std::path::Path;
@@ -64,7 +64,7 @@ pub fn set_theme(theme_name: String, send: bool) {
         create_dir_all(&dis).unwrap();
         run(&format!(
             "cp -r {}/* {}",
-            get_cache(send).join("walrs").join("colorschemes").display(),
+            share_files().join("colorschemes").display(),
             base.join("walrs").join("colorschemes").display()
         ));
     }
