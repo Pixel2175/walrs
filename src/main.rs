@@ -12,10 +12,10 @@ use create_templates::create_template;
 use get_colors::get_colors;
 use reload::reload;
 use std::fs::{copy, create_dir_all};
-use std::path::Path;
 use std::process::exit;
 use theme::{print_themes, set_theme, theme_exists};
 use utils::*;
+use wallpaper::change_wallpaper;
 
 #[derive(FromArgs)]
 #[argh(description = "walrs - Generate colorscheme from image")]
@@ -130,26 +130,25 @@ fn main() {
 
     // show or set theme from user
     if let Some(v) = arg.theme {
+        let config = get_config(send);
         if v == "themes" {
             print_themes(send);
+        } else if theme_exists(&config) {
+            set_theme(v, send);
         } else {
-            let config = get_config(send);
-            if theme_exists(&config) {
-                set_theme(v, send);
-            } else {
-                let colorschemes_dir = get_config(send).join("walrs").join("colorschemes");
-                create_dir_all(&colorschemes_dir).unwrap();
-                let etc = Path::new("/etc/");
-                if !theme_exists(etc) {
-                    warning("theme", "Can't find configuration directory", send);
-                    exit(1)
-                }
-                run(&format!(
-                    "cp -r /etc/walrs/colorschemes/* {}",
-                    colorschemes_dir.display()
-                ));
-                set_theme(v, send);
-            };
+            let colorschemes_dir = config.join("walrs").join("colorschemes");
+            create_dir_all(&colorschemes_dir).unwrap();
+            let walrs_cache = get_cache(send);
+            if !theme_exists(&walrs_cache) {
+                warning("theme", "Can't find configuration directory", send);
+                exit(1)
+            }
+            run(&format!(
+                "cp -r {}/* {}",
+                walrs_cache.join("walrs").join("colorschemes").display(),
+                colorschemes_dir.display()
+            ));
+            set_theme(v, send);
         }
         exit(0);
     }
@@ -176,7 +175,8 @@ fn main() {
         create_template(palette, &image_path, send);
         info("Template", "create templates", send);
 
-        reload(send, true);
+        change_wallpaper(&image_path, send);
+        reload(send, false);
         print_colors(send);
     };
 }

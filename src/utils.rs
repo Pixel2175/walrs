@@ -75,21 +75,26 @@ pub fn info(title: &str, message: &str, send: bool) {
 }
 
 pub fn get_home(send: bool) -> PathBuf {
-    Path::new(&env::var("HOME").unwrap_or_else(|_| {
+    env::var("HOME").map(PathBuf::from).unwrap_or_else(|_| {
         warning("Home", "can't find the home dir", send);
         exit(1)
-    }))
-    .to_path_buf()
+    })
 }
 
 pub fn get_config(send: bool) -> PathBuf {
-    get_home(send).join(".config")
+    env::var_os("XDG_CONFIG_HOME")
+        .map(PathBuf::from)
+        .unwrap_or_else(|| get_home(send).join(".config"))
 }
 pub fn get_cache(send: bool) -> PathBuf {
-    get_home(send).join(".cache")
+    env::var_os("XDG_CACHE_HOME")
+        .map(PathBuf::from)
+        .unwrap_or_else(|| get_home(send).join(".cache"))
 }
 
-pub fn get_absolute_path(path_str: &str) -> Option<String> {
-    let path = Path::new(path_str);
-    fs::canonicalize(path).ok()?.to_str().map(|s| s.to_string())
+fn get_absolute_path(path_str: &str) -> Option<String> {
+    fs::canonicalize(Path::new(path_str))
+        .ok()?
+        .to_str()
+        .map(|s| s.to_string())
 }

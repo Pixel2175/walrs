@@ -1,14 +1,14 @@
 use crate::{
     create_templates::create_template,
     reload::reload,
-    utils::{get_config, run, warning},
+    utils::{get_cache, get_config, run, warning},
 };
 use std::fs::{create_dir_all, read_dir, read_to_string};
 use std::path::Path;
 use std::process::exit;
 
 pub fn theme_exists(dir: &Path) -> bool {
-    dir.join("walrs").join("colorscheme").exists() || dir.join("wal").join("colorscheme").exists()
+    dir.join("walrs").join("colorschemes").exists() || dir.join("wal").join("colorschemes").exists()
 }
 
 pub fn print_themes(send: bool) {
@@ -60,11 +60,12 @@ pub fn set_theme(theme_name: String, send: bool) {
         .collect();
 
     if !theme.is_empty() {
-        let dis = get_config(send).join("wal").join("colorschemes");
+        let dis = get_config(send).join("walrs").join("colorschemes");
         create_dir_all(&dis).unwrap();
         run(&format!(
-            "cp -r /etc/walrs/colorschemes/* {}/walrs/colorschemes",
-            base.display()
+            "cp -r {}/* {}",
+            get_cache(send).join("walrs").join("colorschemes").display(),
+            base.join("walrs").join("colorschemes").display()
         ));
     }
     theme.sort();

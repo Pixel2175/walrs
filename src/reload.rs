@@ -43,7 +43,6 @@ fn colors(colors: Vec<String>, send: bool) {
 
 // read ~/.cache/wal/wal file and return the wallpaper path
 pub fn get_wallpaper(cache: &Path, send: bool) -> String {
-    
     read_to_string(cache.join("wal"))
         .unwrap_or_else(|_| {
             warning("Wallpaper", "Can't find the wallpaper", send);
@@ -58,6 +57,7 @@ pub fn get_wallpaper(cache: &Path, send: bool) -> String {
 
 pub fn reload(send: bool, set_wal: bool) {
     let cache = get_cache(send).join("wal");
+    let walrs_cache = get_cache(send).join("walrs");
     let file_path = cache.join("colors");
 
     // read the colors file and load all the colors
@@ -84,8 +84,9 @@ pub fn reload(send: bool, set_wal: bool) {
         match create_dir_all(&scripts_dir) {
             Ok(_) => {
                 run(&format!(
-                    "cp /etc/walrs/scripts/* {}",
-                    scripts_dir.to_string_lossy()
+                    "cp -r {}/* {}",
+                    walrs_cache.join("scripts").display(),
+                    scripts_dir.display()
                 ));
             }
             Err(_) => return,
