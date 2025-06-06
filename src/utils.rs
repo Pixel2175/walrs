@@ -94,7 +94,7 @@ pub fn get_cache(send: bool) -> PathBuf {
         .unwrap_or_else(|| get_home(send).join(".cache"))
 }
 
-fn get_absolute_path(path_str: &str) -> Option<String> {
+pub fn get_absolute_path(path_str: &str) -> Option<String> {
     fs::canonicalize(Path::new(path_str))
         .ok()?
         .to_str()
