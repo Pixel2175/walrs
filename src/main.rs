@@ -1,5 +1,3 @@
-#![feature(let_chains)]
-
 mod create_templates;
 mod get_colors;
 mod reload;
