@@ -116,9 +116,8 @@ fn set_wm_wallpaper(img: &str, send: bool) {
     }
 }
 
-fn set_desktop_wallpaper(desktop: &str, img: &str, send: bool) {
-    let d = desktop.to_lowercase();
-    let abs_path = get_absolute_path(&d).unwrap_or_else(|| {
+fn set_desktop_wallpaper(d: &str, img: &str, send: bool) {
+    let abs_path = get_absolute_path(img).unwrap_or_else(|| {
         warning("Wallpaper", "failed to get absolute path", send);
         img.to_string()
     });
@@ -380,7 +379,7 @@ pub fn change_wallpaper(img: &str, send: bool) {
                     send,
                 );
             }
-            set_desktop_wallpaper(&d, img, send);
+            set_desktop_wallpaper(&d.to_lowercase(), img, send);
         }
         None => {
             if send {

@@ -32,7 +32,7 @@ fn to_gray(r: u8, g: u8, b: u8, v: u8) -> (u8, u8, u8) {
     (gray, gray, gray)
 }
 
-fn kmeans_colors(len: u8, native_rgba: RgbaImage) -> Vec<(u8, u8, u8)> {
+fn kmeans_colors(len: u8, native_rgba: &RgbaImage) -> Vec<(u8, u8, u8)> {
     let pixels_kmeans: Vec<Lab> = native_rgba
         .pixels()
         .filter(|p| p.0[3] > 0) // Filter out transparent pixels
@@ -68,7 +68,7 @@ fn kmeans_colors(len: u8, native_rgba: RgbaImage) -> Vec<(u8, u8, u8)> {
         .collect::<Vec<(u8, u8, u8)>>()
 }
 
-fn color_thief_colors(len: u8, native_rgba: RgbaImage) -> Vec<(u8, u8, u8)> {
+fn color_thief_colors(len: u8, native_rgba: &RgbaImage) -> Vec<(u8, u8, u8)> {
     let palette_extract = palette_extract::get_palette_with_options(
         &native_rgba,
         palette_extract::PixelEncoding::Rgba,
@@ -83,7 +83,7 @@ fn color_thief_colors(len: u8, native_rgba: RgbaImage) -> Vec<(u8, u8, u8)> {
         .collect::<Vec<(u8, u8, u8)>>()
 }
 
-fn palette_extract_colors(len: u8, native_rgba: RgbaImage, send: bool) -> Vec<(u8, u8, u8)> {
+fn palette_extract_colors(len: u8, native_rgba: &RgbaImage, send: bool) -> Vec<(u8, u8, u8)> {
     let palette_thief = color_thief::get_palette(&native_rgba, ColorFormat::Rgba, 5, len)
         .unwrap_or_else(|_| {
             warning("Backend", "palette thief can't extract the palette", send);
@@ -96,7 +96,12 @@ fn palette_extract_colors(len: u8, native_rgba: RgbaImage, send: bool) -> Vec<(u
         .collect::<Vec<(u8, u8, u8)>>()
 }
 
-fn extract_colors(len: u8, backend: &str, native_rgba: RgbaImage, send: bool) -> Vec<(u8, u8, u8)> {
+fn extract_colors(
+    len: u8,
+    backend: &str,
+    native_rgba: &RgbaImage,
+    send: bool,
+) -> Vec<(u8, u8, u8)> {
     match backend {
         "backends" => {
             println!(
@@ -116,12 +121,10 @@ fn extract_colors(len: u8, backend: &str, native_rgba: RgbaImage, send: bool) ->
         "palette_extract" => palette_extract_colors(10, native_rgba, send),
         "all" => {
             let mut collected: Vec<(u8, u8, u8)> = Vec::new();
-            kmeans_colors(len, native_rgba.clone())
-                .iter()
-                .for_each(|c| {
-                    collected.push(*c);
-                });
-            color_thief_colors(len / 3_u8, native_rgba.clone())
+            kmeans_colors(len, native_rgba).iter().for_each(|c| {
+                collected.push(*c);
+            });
+            color_thief_colors(len / 3_u8, native_rgba)
                 .iter()
                 .for_each(|c| {
                     collected.push(*c);
@@ -169,11 +172,11 @@ pub fn get_colors(
 
     let native_rgba = image.to_rgba8();
     let alpha = &native_rgba.get_pixel(0, 0)[3];
-    let mut collect_rgb: Vec<(u8, u8, u8)> = extract_colors(30, backend, native_rgba.clone(), send);
+    let mut collect_rgb: Vec<(u8, u8, u8)> = extract_colors(30, backend, &native_rgba, send);
 
     collect_rgb = remove_duplicates(collect_rgb);
     while collect_rgb.len() <= 21 {
-        collect_rgb.push(extract_colors(1, backend, native_rgba.clone(), send)[0]);
+        collect_rgb.push(extract_colors(1, backend, &native_rgba, send)[0]);
     }
 
     collect_rgb.sort_by(|a, b| {
