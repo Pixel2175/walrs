@@ -12,7 +12,7 @@ No external dependencies are required — just an app to set your wallpaper.
 
   Report issues or bugs on GitHub.  
   Full documentation and details available at:[https://pixelll.is-a.dev/tools/walrs](https://pixelll.is-a.dev/tools/walrs)<br/>
-  special thanks to Steve Emms :[https://www.linuxlinks.com/linux-candy-walrs-fast-colorscheme-generator/](https://www.linuxlinks.com/linux-candy-walrs-fast-colorscheme-generator/)
+  special thanks to Steve Emms :[https://www.linuxlinks.com/linux-candy-walrs-fast-colorscheme-generator/](https://www.linuxlinks.com/linux-candy-walrs-fast-colorscheme-generator/)<br/>
 and don't forget to give us a star :)
 </div>
 
