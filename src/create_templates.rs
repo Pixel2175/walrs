@@ -160,7 +160,7 @@ pub fn create_template(colors: (Vec<(u8, u8, u8)>, u8), wallpaper: &str, send: b
                     };
 
                     // Copy template to user directory
-                    let user_file_path = format!("{}{name}", user_template_path.display());
+                    let user_file_path = format!("{}/{name}", user_template_path.display());
                     let _ = write(&user_file_path, &content);
 
                     fill_template(&name, &content, &colors, wallpaper, send);
