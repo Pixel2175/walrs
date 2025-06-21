@@ -121,19 +121,20 @@ fn extract_colors(
         "palette_extract" => palette_extract_colors(10, native_rgba, send),
         "all" => {
             let mut collected: Vec<(u8, u8, u8)> = Vec::new();
-            kmeans_colors(len, native_rgba).iter().for_each(|c| {
+            kmeans_colors(len - 2, native_rgba).iter().for_each(|c| {
                 collected.push(*c);
             });
-            color_thief_colors(len / 3_u8, native_rgba)
+            color_thief_colors(len / 3_u8 + 2, native_rgba)
                 .iter()
                 .for_each(|c| {
                     collected.push(*c);
                 });
-            palette_extract_colors(len / 3_u8, native_rgba, send)
+            palette_extract_colors(len / 3_u8 + 2, native_rgba, send)
                 .iter()
                 .for_each(|c| {
                     collected.push(*c);
                 });
+
             collected
         }
         &_ => {
