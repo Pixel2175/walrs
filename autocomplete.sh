@@ -5,12 +5,6 @@
 
 set -e
 
-# Check if walrs exists
-if ! command -v walrs &> /dev/null; then
-    echo -e "Error: walrs not found in PATH$"
-    exit 1
-fi
-
 # Get shell from $SHELL variable
 CURRENT_SHELL=$(basename "$SHELL")
 
