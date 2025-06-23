@@ -72,7 +72,7 @@ pub fn reload(send: bool, set_wal: bool, run_scripts: bool) {
 
     // applie the wallpaper
     if !set_wal {
-        change_wallpaper(&get_wallpaper(&cache, send), send);
+        change_wallpaper(&get_wallpaper(&cache.clone(), send.clone()), send.clone())
     }
 
     // change terminal colors

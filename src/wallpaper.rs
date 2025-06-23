@@ -230,11 +230,7 @@ fn set_desktop_wallpaper(d: &str, img: &str, send: bool) {
             "qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript \"{script}\""
         ));
         info("Wallpaper", "wallpaper set with KDE Plasma settings", send);
-    } else if d.contains("i3") {
-        set_wm_wallpaper(&abs_path, send);
-    } else if d.contains("bspwm") {
-        set_wm_wallpaper(&abs_path, send);
-    } else if d.contains("qtile") {
+    } else if d.contains("i3") || d.contains("bspwm") || d.contains("qtile") {
         set_wm_wallpaper(&abs_path, send);
     } else if d.contains("wayland") {
         // Generic Wayland - try multiple approaches
