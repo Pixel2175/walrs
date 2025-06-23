@@ -55,7 +55,7 @@ pub fn get_wallpaper(cache: &Path, send: bool) -> String {
         .to_string()
 }
 
-pub fn reload(send: bool, set_wal: bool) {
+pub fn reload(send: bool, set_wal: bool, run_scripts: bool) {
     let cache = get_cache(send).join("wal");
     let walrs_cache = share_files();
     let file_path = cache.join("colors");
@@ -71,53 +71,55 @@ pub fn reload(send: bool, set_wal: bool) {
         .collect();
 
     // applie the wallpaper
-    if set_wal {
+    if !set_wal {
         change_wallpaper(&get_wallpaper(&cache, send), send);
     }
 
     // change terminal colors
     colors(lines, send);
 
-    // initial scripts files
-    let scripts_dir = get_config(send).join("walrs").join("scripts");
-    if !scripts_dir.exists() {
-        match create_dir_all(&scripts_dir) {
-            Ok(_) => {
-                run(&format!(
-                    "cp -r {}/* {}",
-                    walrs_cache.join("scripts").display(),
-                    scripts_dir.display()
-                ));
-            }
-            Err(_) => return,
-        }
-    }
-
-    // read the scripts directory and run them
-    match read_dir(scripts_dir) {
-        Ok(v) => {
-            for scr in v {
-                let script = scr.unwrap().path();
-                if !script.is_file() {
-                    continue;
-                };
-                if !run(&format!(
-                    "bash {}",
-                    &script.canonicalize().unwrap().to_string_lossy()
-                )) {
-                    warning(
-                        "Script",
-                        &format!(
-                            "can't run {}",
-                            script.file_name().unwrap().to_string_lossy()
-                        ),
-                        send,
-                    );
+    if !run_scripts {
+        // initial scripts files
+        let scripts_dir = get_config(send).join("walrs").join("scripts");
+        if !scripts_dir.exists() {
+            match create_dir_all(&scripts_dir) {
+                Ok(_) => {
+                    run(&format!(
+                        "cp -r {}/* {}",
+                        walrs_cache.join("scripts").display(),
+                        scripts_dir.display()
+                    ));
                 }
+                Err(_) => return,
             }
-            info("Scripts", "scripts runs successfully", send);
         }
-        _ => return,
+
+        // read the scripts directory and run them
+        match read_dir(scripts_dir) {
+            Ok(v) => {
+                for scr in v {
+                    let script = scr.unwrap().path();
+                    if !script.is_file() {
+                        continue;
+                    };
+                    if !run(&format!(
+                        "bash {}",
+                        &script.canonicalize().unwrap().to_string_lossy()
+                    )) {
+                        warning(
+                            "Script",
+                            &format!(
+                                "can't run {}",
+                                script.file_name().unwrap().to_string_lossy()
+                            ),
+                            send,
+                        );
+                    }
+                }
+                info("Scripts", "scripts runs successfully", send);
+            }
+            _ => return,
+        }
     }
     info("Colors", "colorscheme applied successfully", send);
 }

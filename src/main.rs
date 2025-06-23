@@ -13,7 +13,6 @@ use std::fs::{copy, create_dir_all};
 use std::process::exit;
 use theme::{print_themes, set_theme, theme_exists};
 use utils::*;
-use wallpaper::change_wallpaper;
 
 #[derive(FromArgs)]
 #[argh(description = "walrs - Generate colorscheme from image")]
@@ -21,7 +20,7 @@ struct Arg {
     #[argh(
         option,
         short = 'i',
-        description = "path/to/your/wal.png | path/to/your/wallpapers/"
+        description = "path/to/your/wal.png | path/to/your/wallpapers/ | this will change the wallpaper"
     )]
     image: Option<String>,
 
@@ -39,12 +38,11 @@ struct Arg {
         description = "reload without changing the wallpaper"
     )]
     reload: bool,
-
     #[argh(
         switch,
         short = 'R',
         long = "reload-no",
-        description = "reload with changing the wallpaper"
+        description = "this will removed next update use -w instead"
     )]
     reload_no: bool,
 
@@ -82,6 +80,22 @@ struct Arg {
 
     #[argh(
         switch,
+        short = 'S',
+        long = "scripts",
+        description = "this will skip runing the scripts in ~/.config/walrs/scripts/"
+    )]
+    run_scripts: Option<bool>,
+
+    #[argh(
+        switch,
+        short = 'W',
+        long = "wallpaperless",
+        description = "this will skip changing the wallpaper"
+    )]
+    wallpaperless: Option<bool>,
+
+    #[argh(
+        switch,
         short = 'q',
         long = "quit",
         description = "set quit mode (no output)"
@@ -108,15 +122,24 @@ fn main() {
         exit(0);
     }
 
-    // reload colors without setting wallpaper
+    // this will be removed next update
     if arg.reload_no {
-        reload(send, true);
+        warning(
+            "Reload",
+            "this will be removed in the next update, use -W instead\n",
+            send,
+        );
+        reload(send, true, arg.run_scripts.unwrap_or(false));
         exit(0);
     }
 
     // reload colors with setting wallpaper
     if arg.reload {
-        reload(send, false);
+        reload(
+            send,
+            arg.wallpaperless.unwrap_or(false),
+            arg.run_scripts.unwrap_or(false),
+        );
         exit(0);
     }
 
@@ -132,12 +155,12 @@ fn main() {
         if v == "themes" {
             print_themes(send);
         } else if theme_exists(&config) {
-            set_theme(v, send);
+            set_theme(v, send, arg.run_scripts.unwrap_or(false));
         } else {
             let colorschemes_dir = config.join("walrs").join("colorschemes");
             create_dir_all(&colorschemes_dir).unwrap();
             let walrs_cache = share_files();
-            if !theme_exists(&walrs_cache.parent().unwrap()) {
+            if !theme_exists(walrs_cache.parent().unwrap()) {
                 warning("theme", "Can't find configuration directory", send);
                 exit(1)
             }
@@ -146,7 +169,7 @@ fn main() {
                 walrs_cache.join("colorschemes").display(),
                 colorschemes_dir.display()
             ));
-            set_theme(v, send);
+            set_theme(v, send, arg.run_scripts.unwrap_or(false));
         }
         exit(0);
     }
@@ -173,8 +196,12 @@ fn main() {
         create_template(palette, &image_path, send);
         info("Template", "create templates", send);
 
-        change_wallpaper(&image_path, send);
-        reload(send, false);
+        // change_wallpaper(&image_path, send);
+        reload(
+            send,
+            arg.wallpaperless.unwrap_or(false),
+            arg.run_scripts.unwrap_or(false),
+        );
         print_colors(send);
     };
 }

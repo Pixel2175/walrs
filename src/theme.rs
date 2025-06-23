@@ -52,7 +52,7 @@ fn hex_to_rgb(file: Vec<String>) -> Vec<(u8, u8, u8)> {
         .unwrap()
 }
 
-pub fn set_theme(theme_name: String, send: bool) {
+pub fn set_theme(theme_name: String, send: bool, scripts: bool) {
     let base = get_config(send);
     let mut theme: Vec<String> = ["dark", "light"]
         .iter()
@@ -87,7 +87,7 @@ pub fn set_theme(theme_name: String, send: bool) {
         let rgb_colors = hex_to_rgb(file);
 
         create_template((rgb_colors, 100), "None", send);
-        reload(send, false);
+        reload(send, false, !scripts);
     } else {
         warning("Theme", "Can't find theme", send);
         exit(1)

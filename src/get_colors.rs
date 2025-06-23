@@ -70,7 +70,7 @@ fn kmeans_colors(len: u8, native_rgba: &RgbaImage) -> Vec<(u8, u8, u8)> {
 
 fn color_thief_colors(len: u8, native_rgba: &RgbaImage) -> Vec<(u8, u8, u8)> {
     let palette_extract = palette_extract::get_palette_with_options(
-        &native_rgba,
+        native_rgba,
         palette_extract::PixelEncoding::Rgba,
         Quality::new(5),
         MaxColors::new(len),
@@ -84,7 +84,7 @@ fn color_thief_colors(len: u8, native_rgba: &RgbaImage) -> Vec<(u8, u8, u8)> {
 }
 
 fn palette_extract_colors(len: u8, native_rgba: &RgbaImage, send: bool) -> Vec<(u8, u8, u8)> {
-    let palette_thief = color_thief::get_palette(&native_rgba, ColorFormat::Rgba, 5, len)
+    let palette_thief = color_thief::get_palette(native_rgba, ColorFormat::Rgba, 5, len)
         .unwrap_or_else(|_| {
             warning("Backend", "palette thief can't extract the palette", send);
             exit(1)
@@ -166,8 +166,8 @@ pub fn get_colors(
     };
 
     let image = core_image.resize(
-        400,
-        (core_image.height() as f32 * (400_f32 / core_image.width() as f32)) as u32,
+        250,
+        (core_image.height() as f32 * (250_f32 / core_image.width() as f32)) as u32,
         image::imageops::FilterType::Lanczos3,
     );
 
