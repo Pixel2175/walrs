@@ -24,15 +24,16 @@ case "$CURRENT_SHELL" in
 complete -c walrs -e
 
 # Basic flags
-complete -c walrs -s i -l image -d "path to image or wallpapers directory" -r -F
-complete -c walrs -s k -l backend -d "change the colors backend" -x -a "kmeans color_thief palette_extract all backends"
+complete -c walrs -s i -l image -d "path to image or directory" -r -F
 complete -c walrs -s r -l reload -d "reload without changing the wallpaper"
-complete -c walrs -s R -l reload-no -d "reload with changing the wallpaper"  
-complete -c walrs -s t -l theme -d "use external theme file" -r -F
-complete -c walrs -s g -l generate -d "generate theme in themes folder" -x
-complete -c walrs -s s -l saturation -d "saturation value -128 to 127" -x
-complete -c walrs -s b -l brightness -d "brightness value -128 to 127" -x
-complete -c walrs -s q -l quit -d "set quit mode (no output)"
+complete -c walrs -s R -l reload-no -d "will be removed in the next update; use -w instead"  
+complete -c walrs -s t -l theme -d "use external theme file from .config/walrs/colorschemes" -r -F
+complete -c walrs -s g -l generate -d "generate & save theme to .config/walrs/colorschemes" -x
+complete -c walrs -s s -l saturation -d "set saturation value (-128 to 127)" -x
+complete -c walrs -s b -l brightness -d "set brightness value (-128 to 127)" -x
+complete -c walrs -s S -l scripts -d "skip running scripts in ~/.config/walrs/scripts/"
+complete -c walrs -s W -l walless -d "skip changing the wallpaper"
+complete -c walrs -s q -l quiet -d "set quit mode (no output)"
 complete -c walrs -s v -l version -d "show version"
 complete -c walrs -l help -d "display help"
 complete -c walrs -a help -d "display help"
@@ -62,16 +63,17 @@ _walrs() {
     typeset -A opt_args
 
     _arguments \
-        '(-i --image)'{-i,--image}'[path to image or wallpapers directory]:image file:_files -g "*.{jpg,jpeg,png,bmp,gif,tiff,webp}(-.)"' \
-        '(-k --backend)'{-k,--backend}'[change the colors backend]:backend:(kmeans color_thief palette_extract all backends)' \
+        '(-i --image)'{-i,--image}'[path to image or directory]:image file:_files -g "*.{jpg,jpeg,png,bmp,gif,tiff,webp}(-.)"' \
         '(-r --reload)'{-r,--reload}'[reload without changing the wallpaper]' \
-        '(-R --reload-no)'{-R,--reload-no}'[reload with changing the wallpaper]' \
-        '(-t --theme)'{-t,--theme}'[use external theme file]:theme file:_files -g "*.json(-.)"' \
-        '(-g --generate)'{-g,--generate}'[generate theme in themes folder]:theme name:' \
-        '(-s --saturation)'{-s,--saturation}'[specify the saturation value -128 => 127]:saturation:({-128..127})' \
-        '(-b --brightness)'{-b,--brightness}'[specify the brightness value -128 => 127]:brightness:({-128..127})' \
-        '(-q --quit)'{-q,--quit}'[set quit mode (no output)]' \
-        '(-v --version)'{-v,--version}'[version]' \
+        '(-R --reload-no)'{-R,--reload-no}'[will be removed in the next update; use -w instead]' \
+        '(-t --theme)'{-t,--theme}'[use external theme file from .config/walrs/colorschemes]:theme file:_files -g "*.json(-.)"' \
+        '(-g --generate)'{-g,--generate}'[generate & save theme to .config/walrs/colorschemes]:theme name:' \
+        '(-s --saturation)'{-s,--saturation}'[set saturation value (-128 to 127)]:saturation:({-128..127})' \
+        '(-b --brightness)'{-b,--brightness}'[set brightness value (-128 to 127)]:brightness:({-128..127})' \
+        '(-S --scripts)'{-S,--scripts}'[skip running scripts in ~/.config/walrs/scripts/]' \
+        '(-W --walless)'{-W,--walless}'[skip changing the wallpaper]' \
+        '(-q --quiet)'{-q,--quiet}'[set quit mode (no output)]' \
+        '(-v --version)'{-v,--version}'[show version]' \
         '(--help)--help[display usage information]'
 }
 
@@ -111,16 +113,12 @@ _walrs_completion() {
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
 
-    opts="-i --image -k --backend -r --reload -R --reload-no -t --theme -g --generate -s --saturation -b --brightness -q --quit -v --version --help help"
+    opts="-i --image -r --reload -R --reload-no -t --theme -g --generate -s --saturation -b --brightness -S --scripts -W --walless -q --quiet -v --version --help help"
 
     case ${prev} in
         -i|--image)
             COMPREPLY=( $(compgen -f -X '!*.@(jpg|jpeg|png|bmp|gif|tiff|webp)' -- "${cur}") )
             COMPREPLY+=( $(compgen -d -- "${cur}") )
-            return 0
-            ;;
-        -k|--backend)
-            COMPREPLY=( $(compgen -W "kmeans color_thief palette_extract all backends" -- "${cur}") )
             return 0
             ;;
         -t|--theme)
@@ -144,9 +142,8 @@ _walrs_completion() {
 complete -F _walrs_completion walrs
 EOF
         
-
         echo "source ~/.local/share/bash-completion/completions/walrs" >> ~/.bashrc
-        echo -e "Bash completion installed to: $COMPLETION_DIR/walrs$"
+        echo -e "Bash completion installed to: $COMPLETION_DIR/walrs"
         ;;
         
     *)

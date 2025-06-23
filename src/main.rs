@@ -17,20 +17,8 @@ use utils::*;
 #[derive(FromArgs)]
 #[argh(description = "walrs - Generate colorscheme from image")]
 struct Arg {
-    #[argh(
-        option,
-        short = 'i',
-        description = "path/to/your/wal.png | path/to/your/wallpapers/ | this will change the wallpaper"
-    )]
+    #[argh(option, short = 'i', description = "path to image or directory")]
     image: Option<String>,
-
-    #[argh(
-        option,
-        short = 'k',
-        long = "backend",
-        description = "change the colors backend (walrs -k backends)"
-    )]
-    backend: Option<String>,
 
     #[argh(
         switch,
@@ -38,11 +26,12 @@ struct Arg {
         description = "reload without changing the wallpaper"
     )]
     reload: bool,
+
     #[argh(
         switch,
         short = 'R',
         long = "reload-no",
-        description = "this will removed next update use -w instead"
+        description = "will be removed in the next update; use -w instead"
     )]
     reload_no: bool,
 
@@ -50,7 +39,7 @@ struct Arg {
         option,
         short = 't',
         long = "theme",
-        description = "use external theme file"
+        description = "use external theme file from .config/walrs/colorschemes"
     )]
     theme: Option<String>,
 
@@ -58,7 +47,7 @@ struct Arg {
         option,
         short = 'g',
         long = "generate",
-        description = "generate theme in themes folder (.cache/wal/colorschemes)"
+        description = "generate & save theme to .config/walrs/colorschemes"
     )]
     generate: Option<String>,
 
@@ -66,7 +55,7 @@ struct Arg {
         option,
         short = 's',
         long = "saturation",
-        description = "specify the saturation value -128 => 127"
+        description = "set saturation value (-128 to 127)"
     )]
     saturation: Option<i8>,
 
@@ -74,7 +63,7 @@ struct Arg {
         option,
         short = 'b',
         long = "brightness",
-        description = "specify the brightness value -128 => 127"
+        description = "set brightness value (-128 to 127)"
     )]
     brightness: Option<i8>,
 
@@ -82,40 +71,37 @@ struct Arg {
         switch,
         short = 'S',
         long = "scripts",
-        description = "this will skip runing the scripts in ~/.config/walrs/scripts/"
+        description = "skip running scripts in ~/.config/walrs/scripts/"
     )]
     run_scripts: Option<bool>,
 
     #[argh(
         switch,
         short = 'W',
-        long = "wallpaperless",
-        description = "this will skip changing the wallpaper"
+        long = "walless",
+        description = "skip changing the wallpaper"
     )]
-    wallpaperless: Option<bool>,
+    walless: Option<bool>,
 
     #[argh(
         switch,
         short = 'q',
-        long = "quit",
+        long = "quiet",
         description = "set quit mode (no output)"
     )]
     quit: bool,
 
-    #[argh(switch, short = 'v', long = "version", description = "version ")]
+    #[argh(switch, short = 'v', long = "version", description = "show version")]
     version: bool,
 }
 
 fn main() {
     // get and load args from user
     let arg: Arg = argh::from_env();
+
     // save the quit status
     let send = !arg.quit;
-    // save the backend
-    let backend = match arg.backend {
-        Some(v) => v,
-        None => "all".to_string(),
-    };
+
     // print the version
     if arg.version {
         info("Version", env!("CARGO_PKG_VERSION"), send);
@@ -126,7 +112,7 @@ fn main() {
     if arg.reload_no {
         warning(
             "Reload",
-            "this will be removed in the next update, use -W instead\n",
+            "this will be removed in the next update, use -W instead",
             send,
         );
         reload(send, true, arg.run_scripts.unwrap_or(false));
@@ -137,7 +123,7 @@ fn main() {
     if arg.reload {
         reload(
             send,
-            arg.wallpaperless.unwrap_or(false),
+            arg.walless.unwrap_or(false),
             arg.run_scripts.unwrap_or(false),
         );
         exit(0);
@@ -190,16 +176,15 @@ fn main() {
     // analyze the image and generate the palette
     if arg.image.is_some() {
         let image_path = image_path(arg.image, send);
-        let palette = get_colors(&image_path, &backend, send, arg.brightness, arg.saturation);
+        let palette = get_colors(&image_path, send, arg.brightness, arg.saturation);
         info("Generate", "generate colors", send);
 
         create_template(palette, &image_path, send);
         info("Template", "create templates", send);
 
-        // change_wallpaper(&image_path, send);
         reload(
             send,
-            arg.wallpaperless.unwrap_or(false),
+            arg.walless.unwrap_or(false),
             arg.run_scripts.unwrap_or(false),
         );
         print_colors(send);
