@@ -11,7 +11,7 @@
       in {
         packages.default = pkgs.rustPlatform.buildRustPackage rec {
           pname = "walrs";
-          version = "1.1.4";
+          version = "1.1.7";
           src = ./.;
           
           cargoHash = "sha256-fmiOuxCZoCPOx6OE7YB2pJBegk3y88a9ByDEW/b79Rw=";         
