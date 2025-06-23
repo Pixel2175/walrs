@@ -3,47 +3,49 @@
 walrs \- Fast Rust-based wallpaper and colorscheme generator
 .SH SYNOPSIS
 .B walrs
-[\-i <image|directory>] [\-k <backend>] [\-b <value>] [\-s <value>]
-[\-r | \-R] [\-t <theme|themes>] [\-g <theme_name>] [\-q]
+[\-i <image|directory>] [\-b <value>] [\-s <value>]
+[\-r | \-R] [\-t <theme>] [\-g <theme_name>] [\-S] [\-W] [\-q] [\-v]
 .SH DESCRIPTION
 .B walrs
 is a command-line utility that generates a color scheme from the dominant colors in an image. This palette can then be applied system-wide and on the fly in various programs.
 .SH OPTIONS
 .TP
-.B \-i <image|directory>
-Generate colorscheme from specified image or a random image in the directory.
+.B \-i, \-\-image <image|directory>
+Path to image or directory. Generate colorscheme from specified image or a random image in the directory.
 .TP
-.B \-k <backend>
-Select color extraction backend. Options: kmeans, color_thief, palette_extract, all (default).
+.B \-r, \-\-reload
+Reload without changing the wallpaper.
 .TP
-.B \-b <value>
-Adjust brightness. Range: -128 to 127.
+.B \-R, \-\-reload\-no
+Will be removed in the next update; use \-w instead.
 .TP
-.B \-s <value>
-Adjust saturation. Range: -128 to 127.
+.B \-t, \-\-theme <theme>
+Use external theme file from .config/walrs/colorschemes.
 .TP
-.B \-r
-Reload colors without changing wallpaper.
+.B \-g, \-\-generate <theme_name>
+Generate & save theme to .config/walrs/colorschemes.
 .TP
-.B \-R
-Reload colors and reset wallpaper.
+.B \-s, \-\-saturation <value>
+Set saturation value. Range: -128 to 127.
 .TP
-.B \-t <theme|themes>
-Apply specified theme or list available themes.
+.B \-b, \-\-brightness <value>
+Set brightness value. Range: -128 to 127.
 .TP
-.B \-g <theme_name>
-Save current colors as a new theme with the given name.
+.B \-S, \-\-scripts
+Skip running scripts in ~/.config/walrs/scripts/.
 .TP
-.B \-q
-Quiet mode. Suppress output, useful for scripts.
+.B \-W, \-\-walless
+Skip changing the wallpaper.
+.TP
+.B \-q, \-\-quiet
+Set quit mode (no output).
+.TP
+.B \-v, \-\-version
+Show version.
 .SH EXAMPLES
 Generate colorscheme from an image:
 .B
 walrs \-i ~/Pictures/sunset.jpg
-.PP
-Generate colorscheme using kmeans backend:
-.B
-walrs \-i photo.jpg \-k kmeans
 .PP
 Adjust brightness and saturation:
 .B
@@ -51,21 +53,29 @@ walrs \-i image.jpg \-b 20 \-s 40
 .PP
 Apply existing theme:
 .B
-walrs \-t vscode
+walrs \-t my_theme
 .PP
 Save current colors as a new theme:
 .B
 walrs \-g my_sunset_theme
+.PP
+Skip wallpaper change and scripts:
+.B
+walrs \-i photo.jpg \-W \-S
+.PP
+Reload colors without changing wallpaper:
+.B
+walrs \-r
 .SH FILES
 .TP
 ~/.config/walrs/
 Configuration directory.
 .TP
-~/.config/walrs/templates/
-Templates directory.
-.TP
-~/.config/wal/colorschemes/
+~/.config/walrs/colorschemes/
 Themes directory.
+.TP
+~/.config/walrs/scripts/
+Scripts directory.
 .TP
 ~/.cache/wal/colors
 Generated colors file.
