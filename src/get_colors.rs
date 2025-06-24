@@ -149,15 +149,8 @@ pub fn get_colors(
 
     let (mut r, mut g, mut b) = collect_rgb[20];
     (r, g, b) = adjust_rgb(r, g, b, 40, 60);
-    println!("before: #{:02x}{:02x}{:02x}", r, g, b);
     (r, g, b) = to_gray(r, g, b, 0.4);
-    println!("after : #{:02x}{:02x}{:02x}", r, g, b);
     done[7] = (r, g, b);
     done[15] = (r, g, b);
-    //
-    // for color in &done {
-    //     println!("#{:02x}{:02x}{:02x}", color.0, color.1, color.2,)
-    // }
-    //
     (done, *alpha)
 }
