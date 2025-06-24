@@ -57,7 +57,7 @@ struct Arg {
         long = "saturation",
         description = "set saturation value (-128 to 127)"
     )]
-    saturation: Option<i8>,
+    saturation: Option<i16>,
 
     #[argh(
         option,
@@ -65,7 +65,7 @@ struct Arg {
         long = "brightness",
         description = "set brightness value (-128 to 127)"
     )]
-    brightness: Option<i8>,
+    brightness: Option<i16>,
 
     #[argh(
         switch,

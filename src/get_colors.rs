@@ -7,7 +7,8 @@ use std::collections::HashSet;
 use std::fs::read;
 use std::process::exit;
 
-fn adjust_rgb(r: u8, g: u8, b: u8, brightness: i8, saturation: i8) -> (u8, u8, u8) {
+fn adjust_rgb(r: u8, g: u8, b: u8, brightness: i16, saturation: i16) -> (u8, u8, u8) {
+    let saturation = saturation + 50;
     let avg = ((r as u16 + g as u16 + b as u16) / 3) as f32;
 
     let r = ((r as f32 - avg) * (saturation as f32 / 100.0) + avg + brightness as f32)
@@ -32,15 +33,15 @@ fn to_gray(r: u8, g: u8, b: u8, v: f32) -> (u8, u8, u8) {
     )
 }
 
-fn generate_variation(color: (u8, u8, u8), offset: i8) -> (u8, u8, u8) {
+fn generate_variation(color: (u8, u8, u8), offset: i16) -> (u8, u8, u8) {
     adjust_rgb(color.0, color.1, color.2, offset, 50)
 }
 
 pub fn get_colors(
     image_path: &str,
     send: bool,
-    brightness: Option<i8>,
-    saturation: Option<i8>,
+    brightness: Option<i16>,
+    saturation: Option<i16>,
 ) -> (Vec<(u8, u8, u8)>, u8) {
     let core_image = match image::open(image_path) {
         Ok(img) => img,
@@ -120,7 +121,7 @@ pub fn get_colors(
     let mut i = 0;
     while collect_rgb.len() <= 21 {
         let base = collect_rgb[i % collect_rgb.len()];
-        let variation = generate_variation(base, 10 * (i as i8 + 1));
+        let variation = generate_variation(base, 10 * (i as i16 + 1));
         collect_rgb.push(variation);
         i += 1;
     }
@@ -141,15 +142,15 @@ pub fn get_colors(
             r,
             g,
             b,
-            brightness.unwrap_or(0) - 15,
-            saturation.unwrap_or(0) + 80,
+            brightness.unwrap_or(0),
+            saturation.unwrap_or(0) + 90,
         );
         done.push((r, g, b));
     }
 
     let (mut r, mut g, mut b) = collect_rgb[20];
-    (r, g, b) = adjust_rgb(r, g, b, 40, 60);
-    (r, g, b) = to_gray(r, g, b, 0.4);
+    (r, g, b) = adjust_rgb(r, g, b, 40, 80);
+    (r, g, b) = to_gray(r, g, b, 0.55);
     done[7] = (r, g, b);
     done[15] = (r, g, b);
     (done, *alpha)
