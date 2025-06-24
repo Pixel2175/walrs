@@ -87,7 +87,7 @@ pub fn set_theme(theme_name: String, send: bool, scripts: bool) {
         let rgb_colors = hex_to_rgb(file);
 
         create_template((rgb_colors, 100), "None", send);
-        reload(send, false, !scripts);
+        reload(send, true, scripts);
     } else {
         warning("Theme", "Can't find theme", send);
         exit(1)
