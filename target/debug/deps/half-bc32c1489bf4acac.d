@@ -1,0 +1,13 @@
+/home/gfed/walrs/target/debug/deps/half-bc32c1489bf4acac.d: /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/lib.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/bfloat.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/bfloat/convert.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/binary16.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/binary16/arch.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/binary16/arch/x86.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/leading_zeros.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/slice.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/vec.rs
+
+/home/gfed/walrs/target/debug/deps/libhalf-bc32c1489bf4acac.rmeta: /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/lib.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/bfloat.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/bfloat/convert.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/binary16.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/binary16/arch.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/binary16/arch/x86.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/leading_zeros.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/slice.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/vec.rs
+
+/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/lib.rs:
+/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/bfloat.rs:
+/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/bfloat/convert.rs:
+/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/binary16.rs:
+/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/binary16/arch.rs:
+/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/binary16/arch/x86.rs:
+/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/leading_zeros.rs:
+/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/slice.rs:
+/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/vec.rs:

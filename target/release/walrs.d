@@ -1,0 +1,1 @@
+/home/gfed/walrs/target/release/walrs: /home/gfed/walrs/src/create_templates.rs /home/gfed/walrs/src/get_colors.rs /home/gfed/walrs/src/main.rs /home/gfed/walrs/src/reload.rs /home/gfed/walrs/src/theme.rs /home/gfed/walrs/src/utils.rs /home/gfed/walrs/src/wallpaper.rs

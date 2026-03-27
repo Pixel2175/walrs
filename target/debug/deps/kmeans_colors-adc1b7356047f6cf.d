@@ -1,0 +1,11 @@
+/home/gfed/walrs/target/debug/deps/kmeans_colors-adc1b7356047f6cf.d: /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/lib.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/colors.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/colors/kmeans.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/colors/sort.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/kmeans.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/plus_plus.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/sort.rs
+
+/home/gfed/walrs/target/debug/deps/libkmeans_colors-adc1b7356047f6cf.rmeta: /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/lib.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/colors.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/colors/kmeans.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/colors/sort.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/kmeans.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/plus_plus.rs /home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/sort.rs
+
+/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/lib.rs:
+/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/colors.rs:
+/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/colors/kmeans.rs:
+/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/colors/sort.rs:
+/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/kmeans.rs:
+/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/plus_plus.rs:
+/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/sort.rs:

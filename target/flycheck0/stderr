@@ -1,0 +1,2518 @@
+   0.074940980s  INFO prepare_target{force=false package_id=walrs v1.1.7 (/home/gfed/walrs) target="walrs"}: cargo::core::compiler::fingerprint: fingerprint error for walrs v1.1.7 (/home/gfed/walrs)/Check { test: false }/TargetInner { name: "walrs", doc: true, ..: with_path("/home/gfed/walrs/src/main.rs", Edition2024) }
+   0.074975539s  INFO prepare_target{force=false package_id=walrs v1.1.7 (/home/gfed/walrs) target="walrs"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/walrs-3ebb65742a69f3aa/bin-walrs`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: __libc_start_main
+  16: <unknown>
+   0.075974167s  INFO prepare_target{force=false package_id=argh v0.1.13 target="argh"}: cargo::core::compiler::fingerprint: fingerprint error for argh v0.1.13/Check { test: false }/TargetInner { ..: lib_target("argh", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/argh-0.1.13/src/lib.rs", Edition2018) }
+   0.075986898s  INFO prepare_target{force=false package_id=argh v0.1.13 target="argh"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/argh-4ae51f4389be4654/lib-argh`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: __libc_start_main
+  17: <unknown>
+   0.076563142s  INFO prepare_target{force=false package_id=argh_shared v0.1.13 target="argh_shared"}: cargo::core::compiler::fingerprint: fingerprint error for argh_shared v0.1.13/Check { test: false }/TargetInner { ..: lib_target("argh_shared", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/argh_shared-0.1.13/src/lib.rs", Edition2018) }
+   0.076575346s  INFO prepare_target{force=false package_id=argh_shared v0.1.13 target="argh_shared"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/argh_shared-8efa250bbab4ab25/lib-argh_shared`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.076749722s  INFO prepare_target{force=false package_id=serde v1.0.219 target="serde"}: cargo::core::compiler::fingerprint: fingerprint error for serde v1.0.219/Check { test: false }/TargetInner { ..: lib_target("serde", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.219/src/lib.rs", Edition2018) }
+   0.076759461s  INFO prepare_target{force=false package_id=serde v1.0.219 target="serde"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/serde-0013e8270b7392d0/lib-serde`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.077086420s  INFO prepare_target{force=false package_id=rust-fuzzy-search v0.1.1 target="rust_fuzzy_search"}: cargo::core::compiler::fingerprint: fingerprint error for rust-fuzzy-search v0.1.1/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("rust_fuzzy_search", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rust-fuzzy-search-0.1.1/src/lib.rs", Edition2018) }
+   0.077097531s  INFO prepare_target{force=false package_id=rust-fuzzy-search v0.1.1 target="rust_fuzzy_search"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/rust-fuzzy-search-11377a2c77e9113d/lib-rust_fuzzy_search`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.077226242s  INFO prepare_target{force=false package_id=color-thief v0.2.2 target="color_thief"}: cargo::core::compiler::fingerprint: fingerprint error for color-thief v0.2.2/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("color_thief", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/color-thief-0.2.2/src/lib.rs", Edition2015) }
+   0.077235346s  INFO prepare_target{force=false package_id=color-thief v0.2.2 target="color_thief"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/color-thief-b8af80a26db5e2d9/lib-color_thief`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: __libc_start_main
+  17: <unknown>
+   0.077380572s  INFO prepare_target{force=false package_id=rgb v0.8.50 target="rgb"}: cargo::core::compiler::fingerprint: fingerprint error for rgb v0.8.50/Check { test: false }/TargetInner { ..: lib_target("rgb", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rgb-0.8.50/src/lib.rs", Edition2021) }
+   0.077389990s  INFO prepare_target{force=false package_id=rgb v0.8.50 target="rgb"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/rgb-bc65ac2a2c553761/lib-rgb`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.077546537s  INFO prepare_target{force=false package_id=bytemuck v1.23.0 target="bytemuck"}: cargo::core::compiler::fingerprint: fingerprint error for bytemuck v1.23.0/Check { test: false }/TargetInner { ..: lib_target("bytemuck", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bytemuck-1.23.0/src/lib.rs", Edition2018) }
+   0.077555579s  INFO prepare_target{force=false package_id=bytemuck v1.23.0 target="bytemuck"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/bytemuck-79addcb7bfc3518b/lib-bytemuck`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.077695566s  INFO prepare_target{force=false package_id=image v0.25.6 target="image"}: cargo::core::compiler::fingerprint: fingerprint error for image v0.25.6/Check { test: false }/TargetInner { ..: lib_target("image", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/image-0.25.6/src/lib.rs", Edition2021) }
+   0.077703692s  INFO prepare_target{force=false package_id=image v0.25.6 target="image"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/image-096c0c2eb23f2fd8/lib-image`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: __libc_start_main
+  17: <unknown>
+   0.078164394s  INFO prepare_target{force=false package_id=byteorder-lite v0.1.0 target="byteorder_lite"}: cargo::core::compiler::fingerprint: fingerprint error for byteorder-lite v0.1.0/Check { test: false }/TargetInner { name_inferred: true, benched: false, ..: lib_target("byteorder_lite", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/byteorder-lite-0.1.0/src/lib.rs", Edition2021) }
+   0.078174689s  INFO prepare_target{force=false package_id=byteorder-lite v0.1.0 target="byteorder_lite"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/byteorder-lite-14ac1f7e1b753936/lib-byteorder_lite`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.078298944s  INFO prepare_target{force=false package_id=color_quant v1.1.0 target="color_quant"}: cargo::core::compiler::fingerprint: fingerprint error for color_quant v1.1.0/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("color_quant", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/color_quant-1.1.0/src/lib.rs", Edition2015) }
+   0.078307506s  INFO prepare_target{force=false package_id=color_quant v1.1.0 target="color_quant"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/color_quant-85a308a807441ee1/lib-color_quant`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.078416773s  INFO prepare_target{force=false package_id=exr v1.73.0 target="exr"}: cargo::core::compiler::fingerprint: fingerprint error for exr v1.73.0/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("exr", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/exr-1.73.0/src/lib.rs", Edition2018) }
+   0.078425146s  INFO prepare_target{force=false package_id=exr v1.73.0 target="exr"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/exr-b989016a54973b5f/lib-exr`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.078656825s  INFO prepare_target{force=false package_id=bit_field v0.10.2 target="bit_field"}: cargo::core::compiler::fingerprint: fingerprint error for bit_field v0.10.2/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("bit_field", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bit_field-0.10.2/src/lib.rs", Edition2015) }
+   0.078665364s  INFO prepare_target{force=false package_id=bit_field v0.10.2 target="bit_field"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/bit_field-44d414ea29fbb303/lib-bit_field`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.078785906s  INFO prepare_target{force=false package_id=half v2.6.0 target="half"}: cargo::core::compiler::fingerprint: fingerprint error for half v2.6.0/Check { test: false }/TargetInner { ..: lib_target("half", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/half-2.6.0/src/lib.rs", Edition2021) }
+   0.078794021s  INFO prepare_target{force=false package_id=half v2.6.0 target="half"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/half-bc32c1489bf4acac/lib-half`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.078934371s  INFO prepare_target{force=false package_id=cfg-if v1.0.0 target="cfg_if"}: cargo::core::compiler::fingerprint: fingerprint error for cfg-if v1.0.0/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("cfg_if", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cfg-if-1.0.0/src/lib.rs", Edition2018) }
+   0.078942375s  INFO prepare_target{force=false package_id=cfg-if v1.0.0 target="cfg_if"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/cfg-if-c0f628587b6c9534/lib-cfg_if`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.079053640s  INFO prepare_target{force=false package_id=lebe v0.5.2 target="lebe"}: cargo::core::compiler::fingerprint: fingerprint error for lebe v0.5.2/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("lebe", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lebe-0.5.2/src/lib.rs", Edition2018) }
+   0.079061329s  INFO prepare_target{force=false package_id=lebe v0.5.2 target="lebe"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/lebe-f3c3b92944318407/lib-lebe`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.079171000s  INFO prepare_target{force=false package_id=miniz_oxide v0.8.8 target="miniz_oxide"}: cargo::core::compiler::fingerprint: fingerprint error for miniz_oxide v0.8.8/Check { test: false }/TargetInner { ..: lib_target("miniz_oxide", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/miniz_oxide-0.8.8/src/lib.rs", Edition2021) }
+   0.079179008s  INFO prepare_target{force=false package_id=miniz_oxide v0.8.8 target="miniz_oxide"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/miniz_oxide-f3b1123aa3bf68bd/lib-miniz_oxide`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.079331179s  INFO prepare_target{force=false package_id=adler2 v2.0.0 target="adler2"}: cargo::core::compiler::fingerprint: fingerprint error for adler2 v2.0.0/Check { test: false }/TargetInner { ..: lib_target("adler2", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/adler2-2.0.0/src/lib.rs", Edition2021) }
+   0.079339123s  INFO prepare_target{force=false package_id=adler2 v2.0.0 target="adler2"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/adler2-efaa248e205a0450/lib-adler2`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.079464413s  INFO prepare_target{force=false package_id=simd-adler32 v0.3.7 target="simd_adler32"}: cargo::core::compiler::fingerprint: fingerprint error for simd-adler32 v0.3.7/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("simd_adler32", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/simd-adler32-0.3.7/src/lib.rs", Edition2018) }
+   0.079475095s  INFO prepare_target{force=false package_id=simd-adler32 v0.3.7 target="simd_adler32"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/simd-adler32-8fcdee69d83b51d4/lib-simd_adler32`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.079592048s  INFO prepare_target{force=false package_id=rayon-core v1.12.1 target="rayon_core"}: cargo::core::compiler::fingerprint: fingerprint error for rayon-core v1.12.1/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("rayon_core", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rayon-core-1.12.1/src/lib.rs", Edition2021) }
+   0.079600799s  INFO prepare_target{force=false package_id=rayon-core v1.12.1 target="rayon_core"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/rayon-core-d7f1068eec2200f7/lib-rayon_core`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.079761084s  INFO prepare_target{force=false package_id=crossbeam-deque v0.8.6 target="crossbeam_deque"}: cargo::core::compiler::fingerprint: fingerprint error for crossbeam-deque v0.8.6/Check { test: false }/TargetInner { ..: lib_target("crossbeam_deque", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/crossbeam-deque-0.8.6/src/lib.rs", Edition2021) }
+   0.079769874s  INFO prepare_target{force=false package_id=crossbeam-deque v0.8.6 target="crossbeam_deque"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/crossbeam-deque-2ce5634e62fc9d66/lib-crossbeam_deque`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.079927525s  INFO prepare_target{force=false package_id=crossbeam-epoch v0.9.18 target="crossbeam_epoch"}: cargo::core::compiler::fingerprint: fingerprint error for crossbeam-epoch v0.9.18/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("crossbeam_epoch", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/crossbeam-epoch-0.9.18/src/lib.rs", Edition2021) }
+   0.079936064s  INFO prepare_target{force=false package_id=crossbeam-epoch v0.9.18 target="crossbeam_epoch"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/crossbeam-epoch-586845eb67151bda/lib-crossbeam_epoch`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: __libc_start_main
+  21: <unknown>
+   0.080073783s  INFO prepare_target{force=false package_id=crossbeam-utils v0.8.21 target="crossbeam_utils"}: cargo::core::compiler::fingerprint: fingerprint error for crossbeam-utils v0.8.21/Check { test: false }/TargetInner { ..: lib_target("crossbeam_utils", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/crossbeam-utils-0.8.21/src/lib.rs", Edition2021) }
+   0.080081857s  INFO prepare_target{force=false package_id=crossbeam-utils v0.8.21 target="crossbeam_utils"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/crossbeam-utils-ebbfa41503d261b2/lib-crossbeam_utils`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: __libc_start_main
+  22: <unknown>
+   0.080421367s  INFO prepare_target{force=false package_id=smallvec v1.15.0 target="smallvec"}: cargo::core::compiler::fingerprint: fingerprint error for smallvec v1.15.0/Check { test: false }/TargetInner { ..: lib_target("smallvec", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/smallvec-1.15.0/src/lib.rs", Edition2018) }
+   0.080430731s  INFO prepare_target{force=false package_id=smallvec v1.15.0 target="smallvec"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/smallvec-3607920f8577a4af/lib-smallvec`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.080556298s  INFO prepare_target{force=false package_id=zune-inflate v0.2.54 target="zune_inflate"}: cargo::core::compiler::fingerprint: fingerprint error for zune-inflate v0.2.54/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("zune_inflate", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zune-inflate-0.2.54/src/lib.rs", Edition2021) }
+   0.080564940s  INFO prepare_target{force=false package_id=zune-inflate v0.2.54 target="zune_inflate"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/zune-inflate-d4a430c184ad8765/lib-zune_inflate`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.080699316s  INFO prepare_target{force=false package_id=gif v0.13.1 target="gif"}: cargo::core::compiler::fingerprint: fingerprint error for gif v0.13.1/Check { test: false }/TargetInner { name_inferred: true, benched: false, ..: lib_target("gif", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gif-0.13.1/src/lib.rs", Edition2021) }
+   0.080709748s  INFO prepare_target{force=false package_id=gif v0.13.1 target="gif"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/gif-31aa9b1daed79ab8/lib-gif`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.080874763s  INFO prepare_target{force=false package_id=weezl v0.1.10 target="weezl"}: cargo::core::compiler::fingerprint: fingerprint error for weezl v0.1.10/Check { test: false }/TargetInner { benched: false, ..: lib_target("weezl", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/weezl-0.1.10/src/lib.rs", Edition2018) }
+   0.080884075s  INFO prepare_target{force=false package_id=weezl v0.1.10 target="weezl"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/weezl-7f3c104cd40fec32/lib-weezl`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.081005692s  INFO prepare_target{force=false package_id=image-webp v0.2.1 target="image_webp"}: cargo::core::compiler::fingerprint: fingerprint error for image-webp v0.2.1/Check { test: false }/TargetInner { ..: lib_target("image_webp", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/image-webp-0.2.1/src/lib.rs", Edition2021) }
+   0.081014085s  INFO prepare_target{force=false package_id=image-webp v0.2.1 target="image_webp"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/image-webp-4a6027a2da565765/lib-image_webp`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.081162414s  INFO prepare_target{force=false package_id=quick-error v2.0.1 target="quick_error"}: cargo::core::compiler::fingerprint: fingerprint error for quick-error v2.0.1/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("quick_error", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/quick-error-2.0.1/src/lib.rs", Edition2018) }
+   0.081171822s  INFO prepare_target{force=false package_id=quick-error v2.0.1 target="quick_error"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/quick-error-86035ca5023951fb/lib-quick_error`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.081287007s  INFO prepare_target{force=false package_id=num-traits v0.2.19 target="num_traits"}: cargo::core::compiler::fingerprint: fingerprint error for num-traits v0.2.19/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("num_traits", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/num-traits-0.2.19/src/lib.rs", Edition2021) }
+   0.081296666s  INFO prepare_target{force=false package_id=num-traits v0.2.19 target="num_traits"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/num-traits-ed8051672bc2b50e/lib-num_traits`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.081557398s  INFO prepare_target{force=false package_id=png v0.17.16 target="png"}: cargo::core::compiler::fingerprint: fingerprint error for png v0.17.16/Check { test: false }/TargetInner { ..: lib_target("png", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/png-0.17.16/src/lib.rs", Edition2018) }
+   0.081566756s  INFO prepare_target{force=false package_id=png v0.17.16 target="png"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/png-d1458a2e00977bda/lib-png`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.081789605s  INFO prepare_target{force=false package_id=bitflags v1.3.2 target="bitflags"}: cargo::core::compiler::fingerprint: fingerprint error for bitflags v1.3.2/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("bitflags", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bitflags-1.3.2/src/lib.rs", Edition2018) }
+   0.081798291s  INFO prepare_target{force=false package_id=bitflags v1.3.2 target="bitflags"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/bitflags-0f2d64b056d2a9c9/lib-bitflags`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.081918516s  INFO prepare_target{force=false package_id=crc32fast v1.4.2 target="crc32fast"}: cargo::core::compiler::fingerprint: fingerprint error for crc32fast v1.4.2/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("crc32fast", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/crc32fast-1.4.2/src/lib.rs", Edition2015) }
+   0.081926425s  INFO prepare_target{force=false package_id=crc32fast v1.4.2 target="crc32fast"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/crc32fast-b6128a93e25fcf8f/lib-crc32fast`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.082052934s  INFO prepare_target{force=false package_id=fdeflate v0.3.7 target="fdeflate"}: cargo::core::compiler::fingerprint: fingerprint error for fdeflate v0.3.7/Check { test: false }/TargetInner { ..: lib_target("fdeflate", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fdeflate-0.3.7/src/lib.rs", Edition2021) }
+   0.082060892s  INFO prepare_target{force=false package_id=fdeflate v0.3.7 target="fdeflate"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/fdeflate-8c0336e677ad74a9/lib-fdeflate`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.082188148s  INFO prepare_target{force=false package_id=flate2 v1.1.1 target="flate2"}: cargo::core::compiler::fingerprint: fingerprint error for flate2 v1.1.1/Check { test: false }/TargetInner { ..: lib_target("flate2", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/flate2-1.1.1/src/lib.rs", Edition2018) }
+   0.082195597s  INFO prepare_target{force=false package_id=flate2 v1.1.1 target="flate2"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/flate2-ded623df8912c4a9/lib-flate2`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.082393017s  INFO prepare_target{force=false package_id=qoi v0.4.1 target="qoi"}: cargo::core::compiler::fingerprint: fingerprint error for qoi v0.4.1/Check { test: false }/TargetInner { doctest: false, ..: lib_target("qoi", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/qoi-0.4.1/src/lib.rs", Edition2021) }
+   0.082402030s  INFO prepare_target{force=false package_id=qoi v0.4.1 target="qoi"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/qoi-b28be2da197e21fa/lib-qoi`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.082550271s  INFO prepare_target{force=false package_id=ravif v0.11.12 target="ravif"}: cargo::core::compiler::fingerprint: fingerprint error for ravif v0.11.12/Check { test: false }/TargetInner { ..: lib_target("ravif", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ravif-0.11.12/src/lib.rs", Edition2021) }
+   0.082558400s  INFO prepare_target{force=false package_id=ravif v0.11.12 target="ravif"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/ravif-7de33af4317ffbe9/lib-ravif`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.082903492s  INFO prepare_target{force=false package_id=avif-serialize v0.8.3 target="avif_serialize"}: cargo::core::compiler::fingerprint: fingerprint error for avif-serialize v0.8.3/Check { test: false }/TargetInner { ..: lib_target("avif_serialize", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/avif-serialize-0.8.3/src/lib.rs", Edition2021) }
+   0.082912552s  INFO prepare_target{force=false package_id=avif-serialize v0.8.3 target="avif_serialize"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/avif-serialize-e987b960a056b589/lib-avif_serialize`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.083071266s  INFO prepare_target{force=false package_id=arrayvec v0.7.6 target="arrayvec"}: cargo::core::compiler::fingerprint: fingerprint error for arrayvec v0.7.6/Check { test: false }/TargetInner { ..: lib_target("arrayvec", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/arrayvec-0.7.6/src/lib.rs", Edition2018) }
+   0.083079726s  INFO prepare_target{force=false package_id=arrayvec v0.7.6 target="arrayvec"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/arrayvec-24404c735fe619d8/lib-arrayvec`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.083235232s  INFO prepare_target{force=false package_id=imgref v1.11.0 target="imgref"}: cargo::core::compiler::fingerprint: fingerprint error for imgref v1.11.0/Check { test: false }/TargetInner { ..: lib_target("imgref", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/imgref-1.11.0/src/lib.rs", Edition2021) }
+   0.083243401s  INFO prepare_target{force=false package_id=imgref v1.11.0 target="imgref"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/imgref-bc42783a0b2955f9/lib-imgref`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.083368377s  INFO prepare_target{force=false package_id=loop9 v0.1.5 target="loop9"}: cargo::core::compiler::fingerprint: fingerprint error for loop9 v0.1.5/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("loop9", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/loop9-0.1.5/src/lib.rs", Edition2021) }
+   0.083376346s  INFO prepare_target{force=false package_id=loop9 v0.1.5 target="loop9"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/loop9-8e53f5efb5df924a/lib-loop9`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.083513424s  INFO prepare_target{force=false package_id=rav1e v0.7.1 target="rav1e"}: cargo::core::compiler::fingerprint: fingerprint error for rav1e v0.7.1/Check { test: false }/TargetInner { name_inferred: true, benched: false, ..: lib_target("rav1e", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rav1e-0.7.1/src/lib.rs", Edition2021) }
+   0.083521497s  INFO prepare_target{force=false package_id=rav1e v0.7.1 target="rav1e"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/rav1e-63d3daaaffa4c3e0/lib-rav1e`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.084120377s  INFO prepare_target{force=false package_id=av1-grain v0.2.4 target="av1_grain"}: cargo::core::compiler::fingerprint: fingerprint error for av1-grain v0.2.4/Check { test: false }/TargetInner { ..: lib_target("av1_grain", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/av1-grain-0.2.4/src/lib.rs", Edition2021) }
+   0.084130218s  INFO prepare_target{force=false package_id=av1-grain v0.2.4 target="av1_grain"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/av1-grain-aed68a0b689ae885/lib-av1_grain`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.084385954s  INFO prepare_target{force=false package_id=anyhow v1.0.98 target="anyhow"}: cargo::core::compiler::fingerprint: fingerprint error for anyhow v1.0.98/Check { test: false }/TargetInner { ..: lib_target("anyhow", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/anyhow-1.0.98/src/lib.rs", Edition2018) }
+   0.084395119s  INFO prepare_target{force=false package_id=anyhow v1.0.98 target="anyhow"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/anyhow-24694159eb1b0149/lib-anyhow`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: __libc_start_main
+  21: <unknown>
+   0.084698787s  INFO prepare_target{force=false package_id=log v0.4.27 target="log"}: cargo::core::compiler::fingerprint: fingerprint error for log v0.4.27/Check { test: false }/TargetInner { ..: lib_target("log", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/log-0.4.27/src/lib.rs", Edition2021) }
+   0.084708299s  INFO prepare_target{force=false package_id=log v0.4.27 target="log"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/log-6c26b6b2d8f0cbbe/lib-log`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: __libc_start_main
+  21: <unknown>
+   0.084875901s  INFO prepare_target{force=false package_id=nom v7.1.3 target="nom"}: cargo::core::compiler::fingerprint: fingerprint error for nom v7.1.3/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("nom", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/nom-7.1.3/src/lib.rs", Edition2018) }
+   0.084884937s  INFO prepare_target{force=false package_id=nom v7.1.3 target="nom"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/nom-7b5c0497f51a90c2/lib-nom`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: __libc_start_main
+  21: <unknown>
+   0.085075154s  INFO prepare_target{force=false package_id=memchr v2.7.4 target="memchr"}: cargo::core::compiler::fingerprint: fingerprint error for memchr v2.7.4/Check { test: false }/TargetInner { benched: false, ..: lib_target("memchr", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memchr-2.7.4/src/lib.rs", Edition2021) }
+   0.085083834s  INFO prepare_target{force=false package_id=memchr v2.7.4 target="memchr"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/memchr-7645323c876d267e/lib-memchr`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: __libc_start_main
+  22: <unknown>
+   0.085220736s  INFO prepare_target{force=false package_id=minimal-lexical v0.2.1 target="minimal_lexical"}: cargo::core::compiler::fingerprint: fingerprint error for minimal-lexical v0.2.1/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("minimal_lexical", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/minimal-lexical-0.2.1/src/lib.rs", Edition2018) }
+   0.085229220s  INFO prepare_target{force=false package_id=minimal-lexical v0.2.1 target="minimal_lexical"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/minimal-lexical-591ef1d2d075c1e8/lib-minimal_lexical`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: __libc_start_main
+  22: <unknown>
+   0.085353434s  INFO prepare_target{force=false package_id=num-rational v0.4.2 target="num_rational"}: cargo::core::compiler::fingerprint: fingerprint error for num-rational v0.4.2/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("num_rational", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/num-rational-0.4.2/src/lib.rs", Edition2021) }
+   0.085361757s  INFO prepare_target{force=false package_id=num-rational v0.4.2 target="num_rational"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/num-rational-2575e4b1025cfa27/lib-num_rational`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: __libc_start_main
+  21: <unknown>
+   0.085567477s  INFO prepare_target{force=false package_id=num-bigint v0.4.6 target="num_bigint"}: cargo::core::compiler::fingerprint: fingerprint error for num-bigint v0.4.6/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("num_bigint", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/num-bigint-0.4.6/src/lib.rs", Edition2021) }
+   0.085576290s  INFO prepare_target{force=false package_id=num-bigint v0.4.6 target="num_bigint"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/num-bigint-57f39d399a7f00d9/lib-num_bigint`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: __libc_start_main
+  22: <unknown>
+   0.085803691s  INFO prepare_target{force=false package_id=num-integer v0.1.46 target="num_integer"}: cargo::core::compiler::fingerprint: fingerprint error for num-integer v0.1.46/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("num_integer", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/num-integer-0.1.46/src/lib.rs", Edition2018) }
+   0.085813261s  INFO prepare_target{force=false package_id=num-integer v0.1.46 target="num_integer"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/num-integer-7a266ce4f7dd460f/lib-num_integer`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: <unknown>
+  22: __libc_start_main
+  23: <unknown>
+   0.085973174s  INFO prepare_target{force=false package_id=v_frame v0.3.8 target="v_frame"}: cargo::core::compiler::fingerprint: fingerprint error for v_frame v0.3.8/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("v_frame", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/v_frame-0.3.8/src/lib.rs", Edition2021) }
+   0.085981854s  INFO prepare_target{force=false package_id=v_frame v0.3.8 target="v_frame"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/v_frame-918e9212e2a6a6ac/lib-v_frame`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: __libc_start_main
+  21: <unknown>
+   0.086157660s  INFO prepare_target{force=false package_id=aligned-vec v0.5.0 target="aligned_vec"}: cargo::core::compiler::fingerprint: fingerprint error for aligned-vec v0.5.0/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("aligned_vec", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/aligned-vec-0.5.0/src/lib.rs", Edition2021) }
+   0.086166735s  INFO prepare_target{force=false package_id=aligned-vec v0.5.0 target="aligned_vec"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/aligned-vec-f8927b27ab5dd54f/lib-aligned_vec`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: __libc_start_main
+  22: <unknown>
+   0.086299612s  INFO prepare_target{force=false package_id=bitstream-io v2.6.0 target="bitstream_io"}: cargo::core::compiler::fingerprint: fingerprint error for bitstream-io v2.6.0/Check { test: false }/TargetInner { ..: lib_target("bitstream_io", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bitstream-io-2.6.0/src/lib.rs", Edition2018) }
+   0.086308291s  INFO prepare_target{force=false package_id=bitstream-io v2.6.0 target="bitstream_io"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/bitstream-io-a171675cf8c056c8/lib-bitstream_io`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.086437666s  INFO prepare_target{force=false package_id=itertools v0.12.1 target="itertools"}: cargo::core::compiler::fingerprint: fingerprint error for itertools v0.12.1/Check { test: false }/TargetInner { name_inferred: true, tested: false, benched: false, ..: lib_target("itertools", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/itertools-0.12.1/src/lib.rs", Edition2018) }
+   0.086446321s  INFO prepare_target{force=false package_id=itertools v0.12.1 target="itertools"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/itertools-32c134e4b6a08268/lib-itertools`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.086592325s  INFO prepare_target{force=false package_id=either v1.15.0 target="either"}: cargo::core::compiler::fingerprint: fingerprint error for either v1.15.0/Check { test: false }/TargetInner { ..: lib_target("either", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/either-1.15.0/src/lib.rs", Edition2021) }
+   0.086600358s  INFO prepare_target{force=false package_id=either v1.15.0 target="either"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/either-64e2d7c1f06ee275/lib-either`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: __libc_start_main
+  21: <unknown>
+   0.086737865s  INFO prepare_target{force=false package_id=libc v0.2.172 target="libc"}: cargo::core::compiler::fingerprint: fingerprint error for libc v0.2.172/Check { test: false }/TargetInner { ..: lib_target("libc", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/lib.rs", Edition2021) }
+   0.086746128s  INFO prepare_target{force=false package_id=libc v0.2.172 target="libc"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/libc-e46a30a973a966be/lib-libc`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.087107089s  INFO prepare_target{force=false package_id=maybe-rayon v0.1.1 target="maybe_rayon"}: cargo::core::compiler::fingerprint: fingerprint error for maybe-rayon v0.1.1/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("maybe_rayon", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/maybe-rayon-0.1.1/src/lib.rs", Edition2021) }
+   0.087117205s  INFO prepare_target{force=false package_id=maybe-rayon v0.1.1 target="maybe_rayon"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/maybe-rayon-6d8819c5e7edd7e6/lib-maybe_rayon`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.087293382s  INFO prepare_target{force=false package_id=rayon v1.10.0 target="rayon"}: cargo::core::compiler::fingerprint: fingerprint error for rayon v1.10.0/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("rayon", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rayon-1.10.0/src/lib.rs", Edition2021) }
+   0.087302112s  INFO prepare_target{force=false package_id=rayon v1.10.0 target="rayon"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/rayon-47ead220c3b1febd/lib-rayon`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: __libc_start_main
+  21: <unknown>
+   0.087476779s  INFO prepare_target{force=false package_id=new_debug_unreachable v1.0.6 target="debug_unreachable"}: cargo::core::compiler::fingerprint: fingerprint error for new_debug_unreachable v1.0.6/Check { test: false }/TargetInner { ..: lib_target("debug_unreachable", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/new_debug_unreachable-1.0.6/src/lib.rs", Edition2021) }
+   0.087488209s  INFO prepare_target{force=false package_id=new_debug_unreachable v1.0.6 target="debug_unreachable"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/new_debug_unreachable-2a8183eabcec0bde/lib-debug_unreachable`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.087697178s  INFO prepare_target{force=false package_id=once_cell v1.21.3 target="once_cell"}: cargo::core::compiler::fingerprint: fingerprint error for once_cell v1.21.3/Check { test: false }/TargetInner { ..: lib_target("once_cell", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/once_cell-1.21.3/src/lib.rs", Edition2021) }
+   0.087710556s  INFO prepare_target{force=false package_id=once_cell v1.21.3 target="once_cell"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/once_cell-4bddb7701e6fbf76/lib-once_cell`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.088018105s  INFO prepare_target{force=false package_id=profiling v1.0.16 target="profiling"}: cargo::core::compiler::fingerprint: fingerprint error for profiling v1.0.16/Check { test: false }/TargetInner { ..: lib_target("profiling", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/profiling-1.0.16/src/lib.rs", Edition2018) }
+   0.088028500s  INFO prepare_target{force=false package_id=profiling v1.0.16 target="profiling"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/profiling-5a13c8938daaec9f/lib-profiling`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.088484735s  INFO prepare_target{force=false package_id=thiserror v1.0.69 target="thiserror"}: cargo::core::compiler::fingerprint: fingerprint error for thiserror v1.0.69/Check { test: false }/TargetInner { ..: lib_target("thiserror", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-1.0.69/src/lib.rs", Edition2021) }
+   0.088494526s  INFO prepare_target{force=false package_id=thiserror v1.0.69 target="thiserror"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/thiserror-db7f18ce135a6a48/lib-thiserror`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.088825915s  INFO prepare_target{force=false package_id=tiff v0.9.1 target="tiff"}: cargo::core::compiler::fingerprint: fingerprint error for tiff v0.9.1/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("tiff", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tiff-0.9.1/src/lib.rs", Edition2021) }
+   0.088835449s  INFO prepare_target{force=false package_id=tiff v0.9.1 target="tiff"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/tiff-7b19f9deb507454f/lib-tiff`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.089023422s  INFO prepare_target{force=false package_id=jpeg-decoder v0.3.1 target="jpeg_decoder"}: cargo::core::compiler::fingerprint: fingerprint error for jpeg-decoder v0.3.1/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("jpeg_decoder", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/jpeg-decoder-0.3.1/src/lib.rs", Edition2021) }
+   0.089032422s  INFO prepare_target{force=false package_id=jpeg-decoder v0.3.1 target="jpeg_decoder"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/jpeg-decoder-9dc7dd5a8b51594a/lib-jpeg_decoder`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.089165462s  INFO prepare_target{force=false package_id=zune-core v0.4.12 target="zune_core"}: cargo::core::compiler::fingerprint: fingerprint error for zune-core v0.4.12/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("zune_core", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zune-core-0.4.12/src/lib.rs", Edition2021) }
+   0.089174032s  INFO prepare_target{force=false package_id=zune-core v0.4.12 target="zune_core"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/zune-core-ce654a93360b06b3/lib-zune_core`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.089291634s  INFO prepare_target{force=false package_id=zune-jpeg v0.4.16 target="zune_jpeg"}: cargo::core::compiler::fingerprint: fingerprint error for zune-jpeg v0.4.16/Check { test: false }/TargetInner { ..: lib_target("zune_jpeg", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zune-jpeg-0.4.16/src/lib.rs", Edition2021) }
+   0.089299687s  INFO prepare_target{force=false package_id=zune-jpeg v0.4.16 target="zune_jpeg"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/zune-jpeg-3e0446567d8414ec/lib-zune_jpeg`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.089437530s  INFO prepare_target{force=false package_id=kmeans_colors v0.7.0 target="kmeans_colors"}: cargo::core::compiler::fingerprint: fingerprint error for kmeans_colors v0.7.0/Check { test: false }/TargetInner { ..: lib_target("kmeans_colors", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/kmeans_colors-0.7.0/src/lib.rs", Edition2018) }
+   0.089445591s  INFO prepare_target{force=false package_id=kmeans_colors v0.7.0 target="kmeans_colors"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/kmeans_colors-adc1b7356047f6cf/lib-kmeans_colors`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: __libc_start_main
+  17: <unknown>
+   0.089902154s  INFO prepare_target{force=false package_id=fxhash v0.2.1 target="fxhash"}: cargo::core::compiler::fingerprint: fingerprint error for fxhash v0.2.1/Check { test: false }/TargetInner { ..: lib_target("fxhash", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fxhash-0.2.1/lib.rs", Edition2015) }
+   0.089911524s  INFO prepare_target{force=false package_id=fxhash v0.2.1 target="fxhash"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/fxhash-600cd5fe726932ef/lib-fxhash`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.090052654s  INFO prepare_target{force=false package_id=byteorder v1.5.0 target="byteorder"}: cargo::core::compiler::fingerprint: fingerprint error for byteorder v1.5.0/Check { test: false }/TargetInner { benched: false, ..: lib_target("byteorder", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/byteorder-1.5.0/src/lib.rs", Edition2021) }
+   0.090063688s  INFO prepare_target{force=false package_id=byteorder v1.5.0 target="byteorder"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/byteorder-fb1f33589d219a17/lib-byteorder`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.090186339s  INFO prepare_target{force=false package_id=palette v0.7.6 target="palette"}: cargo::core::compiler::fingerprint: fingerprint error for palette v0.7.6/Check { test: false }/TargetInner { name_inferred: true, benched: false, ..: lib_target("palette", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/palette-0.7.6/src/lib.rs", Edition2018) }
+   0.090194418s  INFO prepare_target{force=false package_id=palette v0.7.6 target="palette"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/palette-3dc9c1a7e86203ce/lib-palette`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.090421872s  INFO prepare_target{force=false package_id=approx v0.5.1 target="approx"}: cargo::core::compiler::fingerprint: fingerprint error for approx v0.5.1/Check { test: false }/TargetInner { ..: lib_target("approx", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/approx-0.5.1/src/lib.rs", Edition2015) }
+   0.090430124s  INFO prepare_target{force=false package_id=approx v0.5.1 target="approx"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/approx-9f37eec4fdd52a4a/lib-approx`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.090570778s  INFO prepare_target{force=false package_id=fast-srgb8 v1.0.0 target="fast_srgb8"}: cargo::core::compiler::fingerprint: fingerprint error for fast-srgb8 v1.0.0/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("fast_srgb8", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fast-srgb8-1.0.0/src/lib.rs", Edition2018) }
+   0.090579102s  INFO prepare_target{force=false package_id=fast-srgb8 v1.0.0 target="fast_srgb8"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/fast-srgb8-2d0ab07f078d5922/lib-fast_srgb8`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.090920967s  INFO prepare_target{force=false package_id=phf v0.11.3 target="phf"}: cargo::core::compiler::fingerprint: fingerprint error for phf v0.11.3/Check { test: false }/TargetInner { tested: false, ..: lib_target("phf", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/phf-0.11.3/src/lib.rs", Edition2021) }
+   0.090930769s  INFO prepare_target{force=false package_id=phf v0.11.3 target="phf"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/phf-f9d31791e0f76f5f/lib-phf`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.091321287s  INFO prepare_target{force=false package_id=phf_shared v0.11.3 target="phf_shared"}: cargo::core::compiler::fingerprint: fingerprint error for phf_shared v0.11.3/Check { test: false }/TargetInner { tested: false, ..: lib_target("phf_shared", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/phf_shared-0.11.3/src/lib.rs", Edition2021) }
+   0.091331348s  INFO prepare_target{force=false package_id=phf_shared v0.11.3 target="phf_shared"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/phf_shared-f028329457343708/lib-phf_shared`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.091483599s  INFO prepare_target{force=false package_id=siphasher v1.0.1 target="siphasher"}: cargo::core::compiler::fingerprint: fingerprint error for siphasher v1.0.1/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("siphasher", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/siphasher-1.0.1/src/lib.rs", Edition2018) }
+   0.091492383s  INFO prepare_target{force=false package_id=siphasher v1.0.1 target="siphasher"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/siphasher-4291fc9ea6fe19ea/lib-siphasher`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: __libc_start_main
+  21: <unknown>
+   0.091621646s  INFO prepare_target{force=false package_id=rand v0.9.1 target="rand"}: cargo::core::compiler::fingerprint: fingerprint error for rand v0.9.1/Check { test: false }/TargetInner { ..: lib_target("rand", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rand-0.9.1/src/lib.rs", Edition2021) }
+   0.091629373s  INFO prepare_target{force=false package_id=rand v0.9.1 target="rand"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/rand-8370e5b88458ebc4/lib-rand`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.091820398s  INFO prepare_target{force=false package_id=rand_chacha v0.9.0 target="rand_chacha"}: cargo::core::compiler::fingerprint: fingerprint error for rand_chacha v0.9.0/Check { test: false }/TargetInner { ..: lib_target("rand_chacha", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rand_chacha-0.9.0/src/lib.rs", Edition2021) }
+   0.091828881s  INFO prepare_target{force=false package_id=rand_chacha v0.9.0 target="rand_chacha"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/rand_chacha-e855239e61c2c171/lib-rand_chacha`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.092004187s  INFO prepare_target{force=false package_id=ppv-lite86 v0.2.21 target="ppv_lite86"}: cargo::core::compiler::fingerprint: fingerprint error for ppv-lite86 v0.2.21/Check { test: false }/TargetInner { ..: lib_target("ppv_lite86", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/lib.rs", Edition2021) }
+   0.092012729s  INFO prepare_target{force=false package_id=ppv-lite86 v0.2.21 target="ppv_lite86"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/ppv-lite86-a33fe343308c2a80/lib-ppv_lite86`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.092164212s  INFO prepare_target{force=false package_id=zerocopy v0.8.25 target="zerocopy"}: cargo::core::compiler::fingerprint: fingerprint error for zerocopy v0.8.25/Check { test: false }/TargetInner { ..: lib_target("zerocopy", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zerocopy-0.8.25/src/lib.rs", Edition2021) }
+   0.092172618s  INFO prepare_target{force=false package_id=zerocopy v0.8.25 target="zerocopy"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/zerocopy-94777a1cad00fca5/lib-zerocopy`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: __libc_start_main
+  21: <unknown>
+   0.092459281s  INFO prepare_target{force=false package_id=rand_core v0.9.3 target="rand_core"}: cargo::core::compiler::fingerprint: fingerprint error for rand_core v0.9.3/Check { test: false }/TargetInner { ..: lib_target("rand_core", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rand_core-0.9.3/src/lib.rs", Edition2021) }
+   0.092468465s  INFO prepare_target{force=false package_id=rand_core v0.9.3 target="rand_core"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/rand_core-38913fe6d143ded8/lib-rand_core`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.092623448s  INFO prepare_target{force=false package_id=getrandom v0.3.3 target="getrandom"}: cargo::core::compiler::fingerprint: fingerprint error for getrandom v0.3.3/Check { test: false }/TargetInner { ..: lib_target("getrandom", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.3.3/src/lib.rs", Edition2021) }
+   0.092632018s  INFO prepare_target{force=false package_id=getrandom v0.3.3 target="getrandom"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/getrandom-7783c3971e3cb024/lib-getrandom`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: __libc_start_main
+  21: <unknown>
+   0.093065142s  INFO prepare_target{force=false package_id=structopt v0.3.26 target="structopt"}: cargo::core::compiler::fingerprint: fingerprint error for structopt v0.3.26/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("structopt", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-0.3.26/src/lib.rs", Edition2018) }
+   0.093075031s  INFO prepare_target{force=false package_id=structopt v0.3.26 target="structopt"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/structopt-5fa69011ef84f1a3/lib-structopt`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_main
+  18: <unknown>
+   0.093289919s  INFO prepare_target{force=false package_id=clap v2.34.0 target="clap"}: cargo::core::compiler::fingerprint: fingerprint error for clap v2.34.0/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("clap", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/clap-2.34.0/src/lib.rs", Edition2018) }
+   0.093298868s  INFO prepare_target{force=false package_id=clap v2.34.0 target="clap"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/clap-4ca3568d37215398/lib-clap`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.093494513s  INFO prepare_target{force=false package_id=textwrap v0.11.0 target="textwrap"}: cargo::core::compiler::fingerprint: fingerprint error for textwrap v0.11.0/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("textwrap", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/textwrap-0.11.0/src/lib.rs", Edition2015) }
+   0.093503107s  INFO prepare_target{force=false package_id=textwrap v0.11.0 target="textwrap"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/textwrap-3aac793b0bae4591/lib-textwrap`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: __libc_start_main
+  20: <unknown>
+   0.093649325s  INFO prepare_target{force=false package_id=unicode-width v0.1.14 target="unicode_width"}: cargo::core::compiler::fingerprint: fingerprint error for unicode-width v0.1.14/Check { test: false }/TargetInner { ..: lib_target("unicode_width", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/unicode-width-0.1.14/src/lib.rs", Edition2021) }
+   0.093657830s  INFO prepare_target{force=false package_id=unicode-width v0.1.14 target="unicode_width"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/unicode-width-51be57295701d2fb/lib-unicode_width`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: __libc_start_main
+  21: <unknown>
+   0.093802326s  INFO prepare_target{force=false package_id=lazy_static v1.5.0 target="lazy_static"}: cargo::core::compiler::fingerprint: fingerprint error for lazy_static v1.5.0/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("lazy_static", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lazy_static-1.5.0/src/lib.rs", Edition2015) }
+   0.093810971s  INFO prepare_target{force=false package_id=lazy_static v1.5.0 target="lazy_static"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/lazy_static-fa7b1da58a50c0eb/lib-lazy_static`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: __libc_start_main
+  19: <unknown>
+   0.094532212s  INFO prepare_target{force=false package_id=palette_extract v0.1.0 target="palette_extract"}: cargo::core::compiler::fingerprint: fingerprint error for palette_extract v0.1.0/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("palette_extract", ["lib"], "/home/gfed/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/palette_extract-0.1.0/src/lib.rs", Edition2021) }
+   0.094542784s  INFO prepare_target{force=false package_id=palette_extract v0.1.0 target="palette_extract"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/palette_extract-acaea2f52b275603/lib-palette_extract`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: __libc_start_main
+  17: <unknown>
+   0.094702952s  INFO prepare_target{force=false package_id=walrs v1.1.7 (/home/gfed/walrs) target="walrs"}: cargo::core::compiler::fingerprint: fingerprint error for walrs v1.1.7 (/home/gfed/walrs)/Check { test: true }/TargetInner { name: "walrs", doc: true, ..: with_path("/home/gfed/walrs/src/main.rs", Edition2024) }
+   0.094711530s  INFO prepare_target{force=false package_id=walrs v1.1.7 (/home/gfed/walrs) target="walrs"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gfed/walrs/target/debug/.fingerprint/walrs-283f106d9fc7a9f4/test-bin-walrs`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: __libc_start_main
+  16: <unknown>
+    Checking cfg-if v1.0.0
+    Checking simd-adler32 v0.3.7
+    Checking adler2 v2.0.0
+    Checking either v1.15.0
+    Checking bytemuck v1.23.0
+    Checking memchr v2.7.4
+    Checking arrayvec v0.7.6
+    Checking aligned-vec v0.5.0
+    Checking crossbeam-utils v0.8.21
+    Checking libc v0.2.172
+    Checking minimal-lexical v0.2.1
+    Checking num-traits v0.2.19
+    Checking anyhow v1.0.98
+    Checking bitflags v1.3.2
+    Checking log v0.4.27
+    Checking zerocopy v0.8.25
+    Checking crc32fast v1.4.2
+    Checking thiserror v1.0.69
+    Checking profiling v1.0.16
+    Checking quick-error v2.0.1
+    Checking bitstream-io v2.6.0
+    Checking imgref v1.11.0
+    Checking unicode-width v0.1.14
+    Checking once_cell v1.21.3
+    Checking miniz_oxide v0.8.8
+    Checking new_debug_unreachable v1.0.6
+    Checking itertools v0.12.1
+    Checking weezl v0.1.10
+    Checking siphasher v1.0.1
+    Checking avif-serialize v0.8.3
+    Checking rgb v0.8.50
+    Checking loop9 v0.1.5
+    Checking zune-inflate v0.2.54
+    Checking fdeflate v0.3.7
+    Checking textwrap v0.11.0
+    Checking half v2.6.0
+    Checking crossbeam-epoch v0.9.18
+    Checking byteorder-lite v0.1.0
+    Checking lebe v0.5.2
+    Checking jpeg-decoder v0.3.1
+    Checking nom v7.1.3
+    Checking smallvec v1.15.0
+    Checking phf_shared v0.11.3
+    Checking zune-core v0.4.12
+    Checking color_quant v1.1.0
+    Checking flate2 v1.1.1
+    Checking bit_field v0.10.2
+    Checking crossbeam-deque v0.8.6
+    Checking clap v2.34.0
+    Checking phf v0.11.3
+    Checking serde v1.0.219
+    Checking qoi v0.4.1
+    Checking getrandom v0.3.3
+    Checking image-webp v0.2.1
+    Checking fast-srgb8 v1.0.0
+    Checking gif v0.13.1
+    Checking zune-jpeg v0.4.16
+    Checking lazy_static v1.5.0
+    Checking byteorder v1.5.0
+    Checking rust-fuzzy-search v0.1.1
+    Checking rayon-core v1.12.1
+    Checking color-thief v0.2.2
+    Checking num-integer v0.1.46
+    Checking v_frame v0.3.8
+    Checking rand_core v0.9.3
+    Checking png v0.17.16
+    Checking approx v0.5.1
+    Checking palette_extract v0.1.0
+    Checking palette v0.7.6
+    Checking fxhash v0.2.1
+    Checking num-bigint v0.4.6
+    Checking tiff v0.9.1
+    Checking rayon v1.10.0
+    Checking exr v1.73.0
+    Checking ppv-lite86 v0.2.21
+    Checking rand_chacha v0.9.0
+    Checking rand v0.9.1
+    Checking num-rational v0.4.2
+    Checking structopt v0.3.26
+    Checking av1-grain v0.2.4
+    Checking argh_shared v0.1.13
+    Checking maybe-rayon v0.1.1
+    Checking rav1e v0.7.1
+    Checking argh v0.1.13
+    Checking ravif v0.11.12
+    Checking image v0.25.6
+    Checking kmeans_colors v0.7.0
+    Checking walrs v1.1.7 (/home/gfed/walrs)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.33s

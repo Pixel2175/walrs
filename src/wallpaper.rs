@@ -2,7 +2,7 @@ use crate::utils::run;
 use crate::utils::{get_absolute_path, info, warning};
 use std::env;
 use std::path::Path;
-use std::process::{exit, Command, Stdio};
+use std::process::{Command, Stdio, exit};
 
 fn run_with_output(command: &str) -> Option<String> {
     let output = Command::new("sh")
@@ -123,16 +123,16 @@ fn set_desktop_wallpaper(d: &str, img: &str, send: bool) {
     });
     if d.contains("hyprland") {
         // Hyprland-specific wallpaper handling
-        if run("which swww") {
-            if !run("pgrep -x swww-daemon") {
-                spawn("swww-daemon &");
+        if run("which awww") {
+            if !run("pgrep -x awww-daemon") {
+                spawn("awww-daemon &");
                 // Give daemon time to start
                 std::thread::sleep(std::time::Duration::from_millis(500));
             }
             spawn(&format!(
-                "swww img '{abs_path}' --transition-type fade --transition-fps 60"
+                "awww img '{abs_path}' --transition-type fade --transition-fps 60"
             ));
-            info("Wallpaper", "wallpaper set with swww for Hyprland", send);
+            info("Wallpaper", "wallpaper set with awww for Hyprland", send);
         } else if run("which hyprpaper") {
             spawn(&format!("hyprpaper '{abs_path}'"));
             info("Wallpaper", "wallpaper set with hyprpaper", send);
@@ -145,7 +145,7 @@ fn set_desktop_wallpaper(d: &str, img: &str, send: bool) {
         } else {
             warning(
                 "Wallpaper",
-                "no suitable wallpaper tool found for Hyprland (try installing swww, hyprpaper, swaybg, or wbg)",
+                "no suitable wallpaper tool found for Hyprland (try installing awww, hyprpaper, swaybg, or wbg)",
                 send,
             );
             exit(1);
@@ -197,22 +197,22 @@ fn set_desktop_wallpaper(d: &str, img: &str, send: bool) {
         ));
         info("Wallpaper", "wallpaper set with Cinnamon settings", send);
     } else if d.contains("sway") {
-        if run("which swww") {
-            if !run("pgrep -x swww-daemon") {
-                spawn("swww-daemon &");
+        if run("which awww") {
+            if !run("pgrep -x awww-daemon") {
+                spawn("awww-daemon &");
                 std::thread::sleep(std::time::Duration::from_millis(500));
             }
             spawn(&format!(
-                "swww img '{abs_path}' --transition-type fade --transition-fps 60"
+                "awww img '{abs_path}' --transition-type fade --transition-fps 60"
             ));
-            info("Wallpaper", "wallpaper set with swww for Sway", send);
+            info("Wallpaper", "wallpaper set with awww for Sway", send);
         } else if run("which swaybg") {
             spawn(&format!("pkill swaybg; swaybg -i '{abs_path}' -m fill &"));
             info("Wallpaper", "wallpaper set with swaybg for Sway", send);
         } else {
             warning(
                 "Wallpaper",
-                "no suitable wallpaper tool found for Sway (try installing swww or swaybg)",
+                "no suitable wallpaper tool found for Sway (try installing awww or swaybg)",
                 send,
             );
             exit(1)
@@ -234,13 +234,13 @@ fn set_desktop_wallpaper(d: &str, img: &str, send: bool) {
         set_wm_wallpaper(&abs_path, send);
     } else if d.contains("wayland") {
         // Generic Wayland - try multiple approaches
-        if run("which swww") {
-            if !run("pgrep -x swww-daemon") {
-                spawn("swww-daemon &");
+        if run("which awww") {
+            if !run("pgrep -x awww-daemon") {
+                spawn("awww-daemon &");
                 std::thread::sleep(std::time::Duration::from_millis(500));
             }
-            spawn(&format!("swww img '{abs_path}'"));
-            info("Wallpaper", "wallpaper set with swww", send);
+            spawn(&format!("awww img '{abs_path}'"));
+            info("Wallpaper", "wallpaper set with awww", send);
         } else if run("which swaybg") {
             spawn(&format!("pkill swaybg; swaybg -i '{abs_path}' -m fill &"));
             info("Wallpaper", "wallpaper set with swaybg", send);
@@ -250,7 +250,7 @@ fn set_desktop_wallpaper(d: &str, img: &str, send: bool) {
         } else {
             warning(
                 "Wallpaper",
-                "no suitable Wayland wallpaper tool found (try installing swww, swaybg, or wbg)",
+                "no suitable Wayland wallpaper tool found (try installing awww, swaybg, or wbg)",
                 send,
             );
             exit(1);
@@ -301,21 +301,21 @@ fn set_desktop_wallpaper(d: &str, img: &str, send: bool) {
                 "wallpaper set with wbg for fht-compositor",
                 send,
             );
-        } else if run("which swww") {
-            if !run("pgrep -x swww-daemon") {
-                spawn("swww-daemon &");
+        } else if run("which awww") {
+            if !run("pgrep -x awww-daemon") {
+                spawn("awww-daemon &");
                 std::thread::sleep(std::time::Duration::from_millis(500));
             }
-            spawn(&format!("swww img '{abs_path}'"));
+            spawn(&format!("awww img '{abs_path}'"));
             info(
                 "Wallpaper",
-                "wallpaper set with swww for fht-compositor",
+                "wallpaper set with awww for fht-compositor",
                 send,
             );
         } else {
             warning(
                 "Wallpaper",
-                "no suitable wallpaper tool found for fht-compositor (try installing swaybg, wbg, or swww)",
+                "no suitable wallpaper tool found for fht-compositor (try installing swaybg, wbg, or awww)",
                 send,
             );
             exit(1);
